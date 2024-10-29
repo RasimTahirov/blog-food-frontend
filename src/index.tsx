@@ -8,8 +8,8 @@ import '../styles/styles.scss';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div className='layout'>
-      <Main  />
+    <div className="layout">
+      <Main />
     </div>
   </StrictMode>
 );

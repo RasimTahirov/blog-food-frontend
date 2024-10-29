@@ -4,14 +4,14 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'header-bg': "url('./public/assets/header-backrorund/foodiesfeed.com_grapefruit-slices-pattern.jpg')"
+        headerDesktop:
+          "url('./public/assets/header-backrorund/foodiesfeed.com_grapefruit-slices-pattern.jpg')",
       },
       colors: {
-        buttonColor: '#4c1d1d',
-        buttonColor2: "#fff"
-      }
+        buttonColorRed: '#4c1d1d',
+        buttonColorWhite: '#fff',
+      },
     },
   },
-  plugins: [
-  ],
+  plugins: [],
 };
