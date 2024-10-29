@@ -12,13 +12,56 @@
   color: #fff;
 }
 
-.main-container {
-  @apply px-16;
+.container-max {
+  @apply mx-auto;
+  max-width: 90%;
 }
 
-.container-max {
-  @apply max-w-7xl mx-auto;
+@media (width < 640px) {
+  .main-container {
+    @apply px-4;
+  }
 }
+
+@media (min-width: 640px) {
+  .container-max {
+    @apply max-w-2xl;
+  }
+
+  .main-container {
+    @apply px-6;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-max {
+    @apply max-w-3xl;
+  }
+
+  .main-container {
+    @apply px-8;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-max {
+    @apply max-w-4xl;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-max {
+    @apply max-w-7xl;
+  }
+
+  .main-container {
+    @apply px-16;
+  }
+}
+
+// .container-max {
+//   @apply max-w-7xl mx-auto;
+// }
 
 .buttonRed {
   @apply px-5 py-1 bg-buttonColorRed rounded-xl h-10;
