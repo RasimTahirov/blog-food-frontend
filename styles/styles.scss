@@ -1,3 +1,33 @@
+@import url('../public/font/font.scss');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.layout {
+  height: 100vh;
+  font-family: 'Releway';
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+}
+
+// .container {
+//   @apply max-w-7xl mx-auto m-0; /* Ваш кастомный класс */
+// }
+
+.containers {
+  @apply px-16 w-full;
+}
+
+.containersss {
+  @apply max-w-7xl mx-auto
+}
+
+.button {
+  @apply px-5 py-1 bg-buttonColor;
+}
+
+.button2 {
+  @apply px-5 py-1 bg-buttonColor2;
+}
