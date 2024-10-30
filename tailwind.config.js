@@ -14,8 +14,8 @@ export default {
         buttonColorWhite: '#fff',
       },
       screens: {
-        'xs': '390px'
-      }
+        xs: '380px',
+      },
     },
   },
   plugins: [],

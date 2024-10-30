@@ -59,10 +59,6 @@
   }
 }
 
-// .container-max {
-//   @apply max-w-7xl mx-auto;
-// }
-
 .buttonRed {
   @apply px-5 py-1 bg-buttonColorRed rounded-xl h-10;
 }
@@ -73,4 +69,12 @@
 
 .buttonIcon {
   @apply p-2.5 bg-buttonColorRed rounded-xl;
+}
+
+.buttonHeader {
+  @apply xs:leading-4 max-sm:font-normal;
+}
+
+.IconSize {
+  @apply w-5 h-5;
 }
