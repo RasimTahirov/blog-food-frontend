@@ -1,3 +1,80 @@
+@import url('../public/font/font.scss');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.layout {
+  height: 100vh;
+  font-family: 'Releway';
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.container-max {
+  @apply mx-auto;
+  max-width: 90%;
+}
+
+@media (width < 640px) {
+  .main-container {
+    @apply px-4;
+  }
+}
+
+@media (min-width: 640px) {
+  .container-max {
+    @apply max-w-2xl;
+  }
+
+  .main-container {
+    @apply px-6;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-max {
+    @apply max-w-3xl;
+  }
+
+  .main-container {
+    @apply px-8;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-max {
+    @apply max-w-4xl;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-max {
+    @apply max-w-7xl;
+  }
+
+  .main-container {
+    @apply px-16;
+  }
+}
+
+.buttonRed {
+  @apply px-5 py-1 bg-buttonColorRed rounded-xl h-10;
+}
+
+.buttonWhite {
+  @apply px-5 py-1 bg-buttonColorWhite rounded-xl h-10;
+}
+
+.buttonIcon {
+  @apply p-2.5 bg-buttonColorRed rounded-xl;
+}
+
+.buttonHeader {
+  @apply xs:leading-4 max-sm:font-normal;
+}
+
+.IconSize {
+  @apply w-5 h-5;
+}
