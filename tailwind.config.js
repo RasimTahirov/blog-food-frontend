@@ -16,6 +16,7 @@ export default {
       colors: {
         buttonColorRed: '#4c1d1d',
         buttonColorWhite: '#fff',
+        hoverButton: '#7391e6'
       },
       screens: {
         xs: '380px',

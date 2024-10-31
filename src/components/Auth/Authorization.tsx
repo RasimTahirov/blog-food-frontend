@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 
 const Authorization = () => {
   return (
-    <div className="h-[100vh] grid items-center">
-      <div className="w-[950px] container-max rounded-3xl bg-black">
-        <div className="grid grid-cols-[35%_65%] h-[500px] ">
-          <div className="bg-authorization bg-cover rounded-tl-3xl rounded-bl-3xl"></div>
+    <div className="h-[100vh] grid items-center ">
+      <div className="w-[950px] container-max rounded-3xl bg-black max-sm:w-5/6 max-md:w-3/4 ">
+        <div className="grid grid-cols-[35%_65%] h-[500px] max-md:flex max-md:justify-center">
+          <div className="bg-authorization bg-cover rounded-tl-3xl rounded-bl-3xl max-md:hidden"></div>
           <div className="p-10 content-center">
             <div className="flex justify-center text-3xl mb-10 font-bold">
               Авторизация
@@ -32,7 +32,7 @@ const Authorization = () => {
               </div>
               <div className="grid justify-items-center text-white">
                 <span>Еще не зарегистрированы?</span>
-                <Link to="/register">Зарегистрироваться</Link>
+                <Link className='text-hoverButton hover:text-white' to="/register">Зарегистрироваться</Link>
               </div>
             </form>
           </div>
