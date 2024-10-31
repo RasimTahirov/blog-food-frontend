@@ -6,6 +6,7 @@ import {
   Bars2Icon,
   XMarkIcon,
 } from '@heroicons/react/16/solid';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -47,7 +48,9 @@ const Header = () => {
             </nav>
 
             {/* Неавторизованный пользователь */}
-            <button className="buttonRed hidden md:block">Войти</button>
+            {/* <button className="buttonRed hidden md:block"> */}
+            <Link className='buttonRed hidden md:block' to="/login">Войти</Link>
+            {/* </button> */}
             <button className="buttonIcon md:hidden">
               <ArrowRightEndOnRectangleIcon className="IconSize" />
             </button>
