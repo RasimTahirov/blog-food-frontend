@@ -24,10 +24,10 @@ const Footer = () => {
         </div>
         <div>
           <form className="grid justify-end gap-2 max-[400px]:justify-normal">
-            <span>Рассылка о вкусном и полезном</span>
+            <label htmlFor="email-input">Рассылка о вкусном и полезном</label>
             <input
               className="h-10 rounded-lg px-1.5 py-0.5 text-black"
-              type="text"
+              type="email"
               placeholder="введите email"
             />
             <button className="buttonWhite text-black">Подписаться</button>

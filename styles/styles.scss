@@ -60,11 +60,11 @@
 }
 
 .buttonRed {
-  @apply px-5 py-1 bg-buttonColorRed rounded-xl h-10;
+  @apply px-5 py-2 bg-buttonColorRed rounded-xl h-10;
 }
 
 .buttonWhite {
-  @apply px-5 py-1 bg-buttonColorWhite rounded-xl h-10;
+  @apply px-5 py-2 bg-buttonColorWhite rounded-xl h-10;
 }
 
 .buttonIcon {
@@ -80,5 +80,5 @@
 }
 
 .inputStyle {
-  @apply py-1 px-5 rounded-md
+  @apply py-1 px-5 rounded-md;
 }

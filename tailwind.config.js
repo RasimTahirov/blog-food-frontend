@@ -5,18 +5,18 @@ export default {
     extend: {
       backgroundImage: {
         headerDesktop:
-          "url('./public/assets/header-backrorund/foodiesfeed.com_grapefruit-slices-pattern.jpg')",
+          "url('./public/assets/header-background/foodiesfeed.com_grapefruit-slices-pattern.jpg')",
         headerPhone:
-          "url('./public/assets/header-backrorund/foodiesfeed.com_nourishing-seeds.jpg')",
+          "url('./public/assets/header-background/foodiesfeed.com_nourishing-seeds.jpg')",
         authorization:
-          "url('./public/assets/background/foodiesfeed.com_grapefruit-water-splash.jpg')",
+          "url('./assets/background/foodiesfeed.com_grapefruit-water-splash.jpg')",
         registration:
-          "url('./public/assets/background/foodiesfeed.com_lemon-macro.jpg')",
+          "url('./assets/background/foodiesfeed.com_lemon-macro.jpg')",
       },
       colors: {
         buttonColorRed: '#4c1d1d',
         buttonColorWhite: '#fff',
-        hoverButton: '#7391e6'
+        hoverButton: '#7391e6',
       },
       screens: {
         xs: '380px',
