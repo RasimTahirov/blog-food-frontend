@@ -11,4 +11,4 @@ const LoginRoutes = () => {
   );
 };
 
-export default LoginRoutes
+export default LoginRoutes;

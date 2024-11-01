@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowRightEndOnRectangleIcon,
   HeartIcon,
@@ -6,10 +7,9 @@ import {
   Bars2Icon,
   XMarkIcon,
 } from '@heroicons/react/16/solid';
-import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   return (
     <header className="container-max text-lg mt-4 w-full sm:w-4/5 md:w-3/4 lg:w-3/4">
@@ -22,9 +22,9 @@ const Header = () => {
           <div className="flex gap-10 items-center max-lg:gap-5 xs:justify-end">
             <nav className="relative max-md:flex gap-2.5 max-sm:grid">
               <div className="flex md:hidden items-center self-end">
-                <button onClick={() => setIsOpen(!isOpen)}>
+                <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
                   {' '}
-                  {isOpen ? (
+                  {isMenuOpen ? (
                     <Bars2Icon className="IconSize" />
                   ) : (
                     <XMarkIcon className="IconSize" />
@@ -33,7 +33,7 @@ const Header = () => {
               </div>
 
               <ul
-                className={`${isOpen ? 'hidden' : 'flex'} md:gap-4 md:flex md:static xs:absolute xs:gap-1  grid right-0 top-5`}
+                className={`${isMenuOpen ? 'hidden' : 'flex'} md:gap-4 md:flex md:static xs:absolute xs:gap-1  grid right-0 top-5`}
               >
                 <li>
                   <a href="">Главная</a>
@@ -48,12 +48,14 @@ const Header = () => {
             </nav>
 
             {/* Неавторизованный пользователь */}
-            {/* <button className="buttonRed hidden md:block"> */}
-            <Link className='buttonRed hidden md:block' to="/login">Войти</Link>
-            {/* </button> */}
-            <button className="buttonIcon md:hidden">
-              <ArrowRightEndOnRectangleIcon className="IconSize" />
+            <button className="max-md:hidden">
+              <Link className="buttonRed" to="/login">
+                Войти
+              </Link>
             </button>
+            <Link className="buttonIcon md:hidden" to="/login">
+              <ArrowRightEndOnRectangleIcon className="IconSize" />
+            </Link>
 
             {/* Авторизованный пользователь */}
             {/* <div className="flex gap-3">
@@ -70,18 +72,27 @@ const Header = () => {
           <p className="xl:text-5xl lg:text-5xl md:text-5xl sm:text-4xl xs:text-3xl  font-bold mb-2.5">
             Еда, которая согревает
           </p>
-          <div className="flex gap-2.5">
+          <div className="flex gap-2.5 mt-2.5">
             {/* Неавторизованный пользователь */}
-            <button className="buttonRed buttonHeader">Войти</button>
-            <button className="buttonWhite buttonHeader text-black ">
-              Зарегистрироваться
+            <button>
+              <Link className="buttonRed buttonHeader " to="/login">
+                Войти
+              </Link>
+            </button>
+            <button>
+              <Link
+                className="buttonWhite buttonHeader text-black"
+                to="/register"
+              >
+                Зарегистрироваться
+              </Link>
             </button>
 
             {/* Авторизованный пользователь */}
-            {/* <button className="buttonRed buttonHeader">
+            {/* <button className="buttonRed buttonHeader max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">
               Опубликовать рецепт
             </button>
-            <button className="buttonWhite buttonHeader text-black ">
+            <button className="buttonWhite buttonHeader text-black max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">
               Создать статью
             </button> */}
           </div>
