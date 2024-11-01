@@ -5,9 +5,9 @@ export default {
     extend: {
       backgroundImage: {
         headerDesktop:
-          "url('./public/assets/header-backrorund/foodiesfeed.com_grapefruit-slices-pattern.jpg')",
+          "url('./public/assets/header-background/foodiesfeed.com_grapefruit-slices-pattern.jpg')",
         headerPhone:
-          "url('./public/assets/header-backrorund/foodiesfeed.com_nourishing-seeds.jpg')",
+          "url('./public/assets/header-background/foodiesfeed.com_nourishing-seeds.jpg')",
         authorization:
           "url('./assets/background/foodiesfeed.com_grapefruit-water-splash.jpg')",
         registration:

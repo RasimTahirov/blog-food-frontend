@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 
-import LoginRoutes from '../../app/routes/LoginRoutes';
+import AuthRoutes from '../../app/routes/AuthRoutes';
 
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
@@ -17,7 +17,7 @@ const Main = () => {
     <div className="flex flex-col min-h-screen">
       {!shouldHideHeaderFooter && <Header />}
       <main className="flex-grow p-4">
-        <LoginRoutes />
+        <AuthRoutes />
       </main>
       {!shouldHideHeaderFooter && <Footer />}
     </div>
