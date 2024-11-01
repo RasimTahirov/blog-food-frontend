@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import AuthForm from './AuthForm';
 
 const Registration = () => {
