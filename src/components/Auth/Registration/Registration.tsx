@@ -1,23 +1,19 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { registerThunk, resetError } from '../../../redux/authSlice';
+import { registerThunk } from '../../../redux/authSlice';
 import { AppDispatch, RootState } from '../../../store/store';
-import { useEffect, useState } from 'react';
+import { FormValues } from '../types/FormValues';
 
-interface FormValues {
-  name: string;
-  email: string;
-  password: string;
-}
+import useErrorHandler from '../hooks/useErrorHandler';
 
 const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const { loading, error } = useSelector((state: RootState) => state.auth);
-  const [showError, setShowError] = useState(false);
+  const { error } = useSelector((state: RootState) => state.auth);
 
   const goBack = () => navigate('/');
+  const showError = useErrorHandler(error);
 
   const {
     register,
@@ -28,33 +24,13 @@ const Registration = () => {
     mode: 'onTouched',
   });
 
-  useEffect(() => {
-    dispatch(resetError())
-  }, [dispatch])
-
-  useEffect(() => {
-    if (error) {
-      setShowError(true);
-
-      const timer = setTimeout(() => {
-        setShowError(false);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [error]);
-
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const result = await dispatch(registerThunk(data));
-
     if (registerThunk.fulfilled.match(result)) {
       navigate('/login');
       reset();
     }
   };
-
-  if (loading) {
-    return <p>Загрузка... временная :</p>;
-  }
 
   return (
     <div className="h-[100vh] grid items-center">
