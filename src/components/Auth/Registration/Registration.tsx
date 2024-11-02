@@ -1,5 +1,9 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { registerThunk, resetError } from '../../../redux/authSlice';
+import { AppDispatch, RootState } from '../../../store/store';
+import { useEffect, useState } from 'react';
 
 interface FormValues {
   name: string;
@@ -9,6 +13,10 @@ interface FormValues {
 
 const Registration = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const { loading, error } = useSelector((state: RootState) => state.auth);
+  const [showError, setShowError] = useState(false);
+
   const goBack = () => navigate('/');
 
   const {
@@ -17,13 +25,36 @@ const Registration = () => {
     formState: { errors },
     reset,
   } = useForm<FormValues>({
-    mode: 'onBlur',
+    mode: 'onTouched',
   });
 
-  const onSubmit: SubmitHandler<FormValues> = () => {
-    console.log('hello');
-    reset();
+  useEffect(() => {
+    dispatch(resetError())
+  }, [dispatch])
+
+  useEffect(() => {
+    if (error) {
+      setShowError(true);
+
+      const timer = setTimeout(() => {
+        setShowError(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    const result = await dispatch(registerThunk(data));
+
+    if (registerThunk.fulfilled.match(result)) {
+      navigate('/login');
+      reset();
+    }
   };
+
+  if (loading) {
+    return <p>Загрузка... временная :</p>;
+  }
 
   return (
     <div className="h-[100vh] grid items-center">
@@ -43,12 +74,18 @@ const Registration = () => {
               </label>
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="grid justify-center gap-10 max-w-[240px] m-auto text-black"
+                className="grid justify-center gap-12 max-w-[240px] m-auto text-black"
               >
                 <div className="grid gap-7">
                   <div className="relative">
                     <input
-                      {...register('name', { required: 'Введите имя' })}
+                      {...register('name', {
+                        required: 'Введите имя',
+                        minLength: {
+                          value: 2,
+                          message: 'Минимум 2 символова',
+                        },
+                      })}
                       className="inputStyle"
                       type="text"
                       placeholder="Имя"
@@ -78,7 +115,13 @@ const Registration = () => {
                   </div>
                   <div className="relative">
                     <input
-                      {...register('password', { required: 'Введите пароль' })}
+                      {...register('password', {
+                        required: 'Введите пароль',
+                        minLength: {
+                          value: 5,
+                          message: 'Пароль должен быть не менее 5 символов',
+                        },
+                      })}
                       className="inputStyle"
                       type="password"
                       placeholder="Пароль"
@@ -90,10 +133,13 @@ const Registration = () => {
                     )}
                   </div>
                 </div>
-                <div>
+                <div className="relative">
                   <button className="buttonWhite w-full">
                     Зарегистрироваться
                   </button>
+                  {showError && error && (
+                    <p className="errorStyle mt-1.5">{error}</p>
+                  )}
                 </div>
                 <div className="grid justify-items-center text-white">
                   <span>Есть аккаунт?</span>
