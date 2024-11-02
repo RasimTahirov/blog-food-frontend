@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { registerThunk } from '../../../redux/authSlice';
+import { registerThunk } from '../../../redux/registerSlice';
 import { AppDispatch, RootState } from '../../../store/store';
 import { FormValues } from '../types/FormValues';
 
@@ -10,7 +10,7 @@ import useErrorHandler from '../hooks/useErrorHandler';
 const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const { error } = useSelector((state: RootState) => state.auth);
+  const { error } = useSelector((state: RootState) => state.register);
 
   const goBack = () => navigate('/');
   const showError = useErrorHandler(error);

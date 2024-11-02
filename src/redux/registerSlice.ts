@@ -1,29 +1,31 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const authThunk = createAsyncThunk(
-  'auth',
+export const registerThunk = createAsyncThunk(
+  'register',
   async (
-    userData: { email: string; password: string },
+    userData: { name: string; email: string; password: string },
     { rejectWithValue }
   ) => {
     try {
       const res = await axios.post(
-        'http://localhost:9000/api/auth/login',
+        'http://localhost:9000/api/auth/register',
         userData
       );
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
-        return rejectWithValue(error.response.data.message || 'Ошибка входа');
+        return rejectWithValue(
+          error.response.data.message || 'Ошибка регистрации'
+        );
       }
+      return rejectWithValue('Ошибка регистрации');
     }
   }
 );
 
-export interface User {
-  id: string;
-  name: string;
+interface User {
+  name?: string;
   email: string;
   password: string;
 }
@@ -40,8 +42,8 @@ const initialState: Data = {
   error: null,
 };
 
-const authSlice = createSlice({
-  name: 'auth',
+const registerSlice = createSlice({
+  name: 'register',
   initialState,
   reducers: {
     resetError(state) {
@@ -50,20 +52,20 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(authThunk.pending, (state) => {
+      .addCase(registerThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(authThunk.fulfilled, (state, action) => {
+      .addCase(registerThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
       })
-      .addCase(authThunk.rejected, (state, action) => {
+      .addCase(registerThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });
   },
 });
 
-export const { resetError } = authSlice.actions;
-export default authSlice.reducer;
+export const { resetError } = registerSlice.actions;
+export default registerSlice.reducer;

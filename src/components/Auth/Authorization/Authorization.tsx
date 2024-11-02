@@ -1,5 +1,8 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { authThunk } from '../../../redux/authSlice';
+import { AppDispatch, RootState } from '../../../store/store';
 
 interface FormValues {
   email: string;
@@ -8,6 +11,9 @@ interface FormValues {
 
 const Authorization = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const { error } = useSelector((state: RootState) => state.auth);
+
   const goBack = () => navigate('/');
 
   const {
@@ -19,9 +25,12 @@ const Authorization = () => {
     mode: 'onBlur',
   });
 
-  const onSubmit: SubmitHandler<FormValues> = () => {
-    console.log('hello');
-    reset();
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    const result = await dispatch(authThunk(data));
+    if (authThunk.fulfilled.match(result)) {
+      navigate('/');
+      reset();
+    }
   };
 
   return (
@@ -82,8 +91,9 @@ const Authorization = () => {
                     )}
                   </div>
                 </div>
-                <div>
+                <div className="relative">
                   <button className="buttonWhite w-full">Войти</button>
+                  {error && <span className="text-white mt-1.5">{error}</span>}
                 </div>
                 <div className="grid justify-items-center text-white">
                   <span>Еще не зарегистрированы?</span>
