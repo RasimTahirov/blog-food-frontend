@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import { pageConfig } from '../../config/PageConfig';
 
 import AuthRoutes from '../../app/routes/AuthRoutes';
 
@@ -8,7 +9,7 @@ import Header from '../Header/Header';
 const Main = () => {
   const location = useLocation();
 
-  const hideHeaderFooterRoutes = ['/login', '/register'];
+  const hideHeaderFooterRoutes = [pageConfig.login, pageConfig.register];
   const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(
     location.pathname
   );

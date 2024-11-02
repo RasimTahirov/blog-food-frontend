@@ -82,3 +82,7 @@
 .inputStyle {
   @apply py-1 px-5 rounded-md;
 }
+
+.errorStyle {
+  @apply absolute left-1.5 top-8 text-white;
+}
