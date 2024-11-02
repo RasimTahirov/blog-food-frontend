@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { pageConfig } from '../../config/PageConfig';
 import {
   ArrowRightEndOnRectangleIcon,
   HeartIcon,
@@ -49,11 +50,11 @@ const Header = () => {
 
             {/* Неавторизованный пользователь */}
             <button className="max-md:hidden">
-              <Link className="buttonRed" to="/login">
+              <Link className="buttonRed" to={pageConfig.login}>
                 Войти
               </Link>
             </button>
-            <Link className="buttonIcon md:hidden" to="/login">
+            <Link className="buttonIcon md:hidden" to={pageConfig.login}>
               <ArrowRightEndOnRectangleIcon className="IconSize" />
             </Link>
 
@@ -75,14 +76,14 @@ const Header = () => {
           <div className="flex gap-2.5 mt-2.5">
             {/* Неавторизованный пользователь */}
             <button>
-              <Link className="buttonRed buttonHeader " to="/login">
+              <Link className="buttonRed buttonHeader " to={pageConfig.login}>
                 Войти
               </Link>
             </button>
             <button>
               <Link
                 className="buttonWhite buttonHeader text-black"
-                to="/register"
+                to={pageConfig.register}
               >
                 Зарегистрироваться
               </Link>

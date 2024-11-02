@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { registerThunk } from '../../../redux/registerSlice';
 import { AppDispatch, RootState } from '../../../store/store';
 import { FormValues } from '../types/FormValues';
+import { pageConfig } from '../../../config/PageConfig';
 
 import useErrorHandler from '../hooks/useErrorHandler';
 
@@ -27,7 +28,7 @@ const Registration = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const result = await dispatch(registerThunk(data));
     if (registerThunk.fulfilled.match(result)) {
-      navigate('/login');
+      navigate(pageConfig.login);
       reset();
     }
   };
@@ -121,7 +122,7 @@ const Registration = () => {
                   <span>Есть аккаунт?</span>
                   <Link
                     className="text-hoverButton hover:text-white"
-                    to="/login"
+                    to={pageConfig.login}
                   >
                     Войти
                   </Link>

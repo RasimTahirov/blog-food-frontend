@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { authThunk } from '../../../redux/authSlice';
 import { AppDispatch, RootState } from '../../../store/store';
+import { pageConfig } from '../../../config/PageConfig';
 
 interface FormValues {
   email: string;
@@ -14,7 +15,7 @@ const Authorization = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { error } = useSelector((state: RootState) => state.auth);
 
-  const goBack = () => navigate('/');
+  const goBack = () => navigate(pageConfig.home);
 
   const {
     register,
@@ -28,13 +29,13 @@ const Authorization = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const result = await dispatch(authThunk(data));
     if (authThunk.fulfilled.match(result)) {
-      navigate('/');
+      navigate(pageConfig.home);
       reset();
     }
   };
 
   return (
-    <div className="h-[100vh] grid items-center ">
+    <div className="h-[100vh] grid items-center">
       <div className="w-[950px] m-auto container-max max-sm:w-5/6 max-md:w-3/4">
         <button
           className="bg-black mb-2.5 py-1.5 px-3.5 rounded-xl"
@@ -42,7 +43,7 @@ const Authorization = () => {
         >
           На главную
         </button>
-        <div className="  rounded-3xl bg-black  ">
+        <div className="rounded-3xl bg-black">
           <div className="grid grid-cols-[35%_65%] h-[500px] max-md:flex max-md:justify-center">
             <div className="bg-authorization bg-cover rounded-tl-3xl rounded-bl-3xl max-md:hidden"></div>
             <div className="p-10 content-center">
@@ -99,7 +100,7 @@ const Authorization = () => {
                   <span>Еще не зарегистрированы?</span>
                   <Link
                     className="text-hoverButton hover:text-white"
-                    to="/register"
+                    to={pageConfig.register}
                   >
                     Зарегистрироваться
                   </Link>
