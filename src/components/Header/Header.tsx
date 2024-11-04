@@ -88,6 +88,14 @@ const Header = () => {
                 Зарегистрироваться
               </Link>
             </button>
+            <button>
+              <Link
+                className="buttonWhite buttonHeader text-black"
+                to={pageConfig.account}
+              >
+                Зарегистрироваться
+              </Link>
+            </button>
 
             {/* Авторизованный пользователь */}
             {/* <button className="buttonRed buttonHeader max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">

@@ -29,6 +29,7 @@ const Authorization = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const result = await dispatch(authThunk(data));
     if (authThunk.fulfilled.match(result)) {
+      localStorage.setItem('user', JSON.stringify(result.payload));
       navigate(pageConfig.home);
       reset();
     }
