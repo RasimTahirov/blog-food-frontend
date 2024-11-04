@@ -5,7 +5,6 @@ import AuthRoutes from '../../app/routes/AuthRoutes';
 
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import Account from '../Account/Account';
 
 const Main = () => {
   const location = useLocation();
@@ -22,7 +21,6 @@ const Main = () => {
         <AuthRoutes />
       </main>
       {!shouldHideHeaderFooter && <Footer />}
-      {/* <Account /> */}
     </div>
   );
 };

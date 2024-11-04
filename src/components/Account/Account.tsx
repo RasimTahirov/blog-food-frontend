@@ -1,20 +1,33 @@
+import {
+  ArrowRightEndOnRectangleIcon,
+  HeartIcon,
+} from '@heroicons/react/16/solid';
 import avatar from '../../../public/assets/avatar/dceb8bb5ac5f91b63912faf77154483c.jpg';
+
 import GoBackHome from '../UI/GoBackHome/GoBackHome';
 
 const Account = () => {
   return (
-    <div className="grid items-center h-[100vh]">
-      <div className="container-max">
+    <div className="h-[100vh] grid items-center">
+      <div className="m-auto w-2/5 max-xl:w-2/5 max-lg:w-2/4 max-md:w-4/5">
         <GoBackHome />
-        <div className="bg-black w-[600px] rounded-3xl main-container">
-          <form className="grid items-center h-[380px] py-5">
+        <div className="bg-black rounded-3xl w-full">
+          <form className="grid items-center h-[380px] py-5 px-7">
             <div className="flex justify-between center mb-5">
               <div>
-                <img className="w-28 rounded-[50%]" src={avatar} alt="" />
+                <img className="w-14 rounded-[50%]" src={avatar} alt="" />
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-4 max-lg:hidden">
                 <button className="buttonWhite text-black">Израбнное</button>
                 <button className="buttonWhite text-black">Выйти</button>
+              </div>
+              <div className="flex gap-4 lg:hidden">
+                <button className="buttonWhite text-black">
+                  <HeartIcon className="IconSize" />
+                </button>
+                <button className="buttonWhite text-black">
+                  <ArrowRightEndOnRectangleIcon className="IconSize" />
+                </button>
               </div>
             </div>
             <div className="grid gap-5">
