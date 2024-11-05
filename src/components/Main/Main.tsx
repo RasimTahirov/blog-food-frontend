@@ -25,7 +25,7 @@ const Main = () => {
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
-      dispatch(setUser(JSON.parse(savedUser))); // `setUser` — ваш action для обновления состояния пользователя
+      dispatch(setUser(JSON.parse(savedUser)));
     }
   }, [dispatch]);
 

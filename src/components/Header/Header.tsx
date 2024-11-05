@@ -8,9 +8,12 @@ import {
   Bars2Icon,
   XMarkIcon,
 } from '@heroicons/react/16/solid';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   return (
     <header className="container-max text-lg mt-4 w-full sm:w-4/5 md:w-3/4 lg:w-3/4">
@@ -48,25 +51,27 @@ const Header = () => {
               </ul>
             </nav>
 
-            {/* Неавторизованный пользователь */}
-            <button className="max-md:hidden">
-              <Link className="buttonRed" to={pageConfig.login}>
-                Войти
-              </Link>
-            </button>
-            <Link className="buttonIcon md:hidden" to={pageConfig.login}>
-              <ArrowRightEndOnRectangleIcon className="IconSize" />
-            </Link>
-
-            {/* Авторизованный пользователь */}
-            {/* <div className="flex gap-3">
-              <button className="buttonIcon">
-                <HeartIcon className="IconSize" />
-              </button>
-              <button className="buttonIcon">
-                <UserCircleIcon className="IconSize" />
-              </button>
-            </div> */}
+            {user ? (
+              <div className="flex gap-3">
+                <button className="buttonIcon">
+                  <HeartIcon className="IconSize" />
+                </button>
+                <Link to={pageConfig.account} className="buttonIcon">
+                  <UserCircleIcon className="IconSize" />
+                </Link>
+              </div>
+            ) : (
+              <>
+                <button className="max-md:hidden">
+                  <Link className="buttonRed" to={pageConfig.login}>
+                    Войти
+                  </Link>
+                </button>
+                <Link className="buttonIcon md:hidden" to={pageConfig.login}>
+                  <ArrowRightEndOnRectangleIcon className="IconSize" />
+                </Link>
+              </>
+            )}
           </div>
         </div>
         <div className="grid absolute bottom-5 lg:max-w-[60%] md:max-w-[80%] sm:max-w-[85%] xs:max-w-[90%]">
@@ -74,36 +79,35 @@ const Header = () => {
             Еда, которая согревает
           </p>
           <div className="flex gap-2.5 mt-2.5">
-            {/* Неавторизованный пользователь */}
-            <button>
-              <Link className="buttonRed buttonHeader " to={pageConfig.login}>
-                Войти
-              </Link>
-            </button>
-            <button>
-              <Link
-                className="buttonWhite buttonHeader text-black"
-                to={pageConfig.register}
-              >
-                Зарегистрироваться
-              </Link>
-            </button>
-            <button>
-              <Link
-                className="buttonWhite buttonHeader text-black"
-                to={pageConfig.account}
-              >
-                Зарегистрироваться
-              </Link>
-            </button>
-
-            {/* Авторизованный пользователь */}
-            {/* <button className="buttonRed buttonHeader max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">
-              Опубликовать рецепт
-            </button>
-            <button className="buttonWhite buttonHeader text-black max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">
-              Создать статью
-            </button> */}
+            {user ? (
+              <>
+                <button className="buttonRed buttonHeader max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">
+                  Опубликовать рецепт
+                </button>
+                <button className="buttonWhite buttonHeader text-black max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">
+                  Создать статью
+                </button>
+              </>
+            ) : (
+              <>
+                <button>
+                  <Link
+                    className="buttonRed buttonHeader "
+                    to={pageConfig.login}
+                  >
+                    Войти
+                  </Link>
+                </button>
+                <button>
+                  <Link
+                    className="buttonWhite buttonHeader text-black"
+                    to={pageConfig.register}
+                  >
+                    Зарегистрироваться
+                  </Link>
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
