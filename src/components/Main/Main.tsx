@@ -6,8 +6,7 @@ import { setUser } from '../../redux/authSlice';
 
 import AuthRoutes from '../../app/routes/AuthRoutes';
 
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+import { Footer, Header } from '../Index';
 
 const Main = () => {
   const location = useLocation();

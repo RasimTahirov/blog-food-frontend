@@ -9,7 +9,7 @@ import { logout } from '../../redux/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../store/store';
 
-import GoBackHome from '../UI/GoBackHome/GoBackHome';
+import { GoBackHome } from '../Index';
 
 const Account = () => {
   const dispatch = useDispatch<AppDispatch>();

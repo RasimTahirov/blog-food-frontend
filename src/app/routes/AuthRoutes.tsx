@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from '../../store/store';
 
-import { Authorization, Registration } from '../../components/Auth';
-import Account from '../../components/Account/Account';
+import { Account, Authorization, Registration } from '../../components/Index';
 
 const AuthRoutes = () => {
   const user = useSelector((state: RootState) => state.auth.user);
