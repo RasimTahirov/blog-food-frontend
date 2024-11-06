@@ -8,12 +8,13 @@ import { pageConfig } from '../../../config/PageConfig';
 
 import useErrorHandler from '../hooks/useErrorHandler';
 
+import { GoBackHome } from '../../Index';
+
 const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const { error } = useSelector((state: RootState) => state.register);
 
-  const goBack = () => navigate('/');
   const showError = useErrorHandler(error);
 
   const {
@@ -36,12 +37,7 @@ const Registration = () => {
   return (
     <div className="h-[100vh] grid items-center">
       <div className="w-[950px] m-auto container-max max-sm:w-5/6 max-md:w-3/4">
-        <button
-          className="bg-black mb-2.5 py-1.5 px-3.5 rounded-xl"
-          onClick={goBack}
-        >
-          На главную
-        </button>
+        <GoBackHome />
         <div className="rounded-3xl bg-black">
           <div className="grid grid-cols-[35%_65%] h-[500px] max-md:flex max-md:justify-center">
             <div className="bg-registration bg-cover rounded-tl-3xl rounded-bl-3xl max-md:hidden"></div>

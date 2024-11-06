@@ -5,6 +5,8 @@ import { authThunk } from '../../../redux/authSlice';
 import { AppDispatch, RootState } from '../../../store/store';
 import { pageConfig } from '../../../config/PageConfig';
 
+import { GoBackHome } from '../../Index';
+
 interface FormValues {
   email: string;
   password: string;
@@ -14,8 +16,6 @@ const Authorization = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const { error } = useSelector((state: RootState) => state.auth);
-
-  const goBack = () => navigate(pageConfig.home);
 
   const {
     register,
@@ -29,6 +29,7 @@ const Authorization = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const result = await dispatch(authThunk(data));
     if (authThunk.fulfilled.match(result)) {
+      localStorage.setItem('user', JSON.stringify(result.payload));
       navigate(pageConfig.home);
       reset();
     }
@@ -37,12 +38,7 @@ const Authorization = () => {
   return (
     <div className="h-[100vh] grid items-center">
       <div className="w-[950px] m-auto container-max max-sm:w-5/6 max-md:w-3/4">
-        <button
-          className="bg-black mb-2.5 py-1.5 px-3.5 rounded-xl"
-          onClick={goBack}
-        >
-          На главную
-        </button>
+        <GoBackHome />
         <div className="rounded-3xl bg-black">
           <div className="grid grid-cols-[35%_65%] h-[500px] max-md:flex max-md:justify-center">
             <div className="bg-authorization bg-cover rounded-tl-3xl rounded-bl-3xl max-md:hidden"></div>
