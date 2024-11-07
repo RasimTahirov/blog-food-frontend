@@ -16,6 +16,7 @@ const Main = () => {
     pageConfig.login,
     pageConfig.register,
     pageConfig.account,
+    pageConfig.createPost
   ];
   const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(
     location.pathname

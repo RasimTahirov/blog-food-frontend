@@ -105,6 +105,6 @@ input {
   border-radius: 0;
 }
 
-input:focus {
+input:focus, select {
   outline: none;
 }
