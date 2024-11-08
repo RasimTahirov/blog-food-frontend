@@ -5,7 +5,7 @@ const Ingredient = () => {
     <>
       <div className="flex gap-5">
         <input
-          className="max-w-[40%] inputStyle2"
+          className="inputStyle2"
           type="text"
           placeholder="Например: курица"
         />

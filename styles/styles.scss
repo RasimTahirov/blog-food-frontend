@@ -84,7 +84,7 @@
 }
 
 .inputStyle2 {
-  @apply w-full py-1.5 px-2 rounded-md text-black
+  @apply border-solid border-2 border-black py-1 px-5 text-black rounded-md;
 }
 
 .errorStyle {

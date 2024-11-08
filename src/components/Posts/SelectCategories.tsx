@@ -14,7 +14,7 @@ const SelectCategories = () => {
         <option value="Porridges">Каши</option>
       </select>
     </div>
-  )
-}
+  );
+};
 
-export default SelectCategories
+export default SelectCategories;
