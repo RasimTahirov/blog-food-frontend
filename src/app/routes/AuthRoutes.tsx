@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 
 import { Account, Authorization, Registration } from '../../components/Index';
-import CreatePost from '../../components/Posts/CreatePost';
+import PostCreate from '../../components/Posts/PostCreate/PostCreate';
 
 const AuthRoutes = () => {
   const user = useSelector((state: RootState) => state.auth.user);
@@ -27,7 +27,7 @@ const AuthRoutes = () => {
         element={!user ? <Navigate to={pageConfig.login} /> : <Account />}
       />
       <Route path={pageConfig.account} element={<Account />} />
-      <Route path={pageConfig.createPost} element={<CreatePost />} />
+      <Route path={pageConfig.createPost} element={<PostCreate />} />
     </Routes>
   );
 };

@@ -23,7 +23,7 @@ export default {
         textBlack: '#333333',
       },
       backgroundColor: {
-        containerWhite: '#f8f9fa',
+        containerWhite: '#f3f3f3',
         containerNotification: '#e9f8eb',
         inputWhite: '#f3f3f3',
       },
