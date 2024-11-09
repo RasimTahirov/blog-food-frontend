@@ -18,8 +18,17 @@ export default {
         buttonColorWhite: '#fff',
         hoverButton: '#7391e6',
       },
+      textColor: {
+        textWhite: '#f8f9fa',
+        textBlack: '#333333',
+      },
       backgroundColor: {
-        tests: '#e9f8eb',
+        containerWhite: '#f8f9fa',
+        containerNotification: '#e9f8eb',
+        inputWhite: '#f3f3f3',
+      },
+      borderColor: {
+        borderBlack: '#495057',
       },
       screens: {
         xs: '380px',

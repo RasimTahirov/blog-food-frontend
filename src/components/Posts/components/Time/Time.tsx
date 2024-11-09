@@ -1,19 +1,21 @@
 const Time = () => {
   return (
     <div className="grid mb-5">
-      <label className="mb-1.5">Время на приготовление</label>
+      <label className="titleForm">Время на приготовление</label>
       <div className="flex gap-2.5">
         <div className="flex gap-2.5 items-center">
           <input
-            className="py-1.5 p-2 w-12 text-black bg-slate-200 text-center appearance-none rounded-md"
+            className="inputStyle text-center w-[70px]"
             type="number"
+            placeholder="0"
           />
           <label>Часов</label>
         </div>
         <div className="flex gap-2.5 items-center">
           <input
-            className="py-1.5 p-2 w-12 text-black bg-slate-200 text-center appearance-none rounded-md"
+            className="inputStyle text-center w-[70px]"
             type="number"
+            placeholder="0"
           />
           <label>Минут</label>
         </div>

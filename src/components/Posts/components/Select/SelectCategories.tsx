@@ -1,7 +1,7 @@
 const SelectCategories = () => {
   return (
-    <div className="text-black">
-      <select className="inputStyle2" name="" id="">
+    <div>
+      <select className="inputStyle w-[50%]" name="" id="">
         <option value="Breakfasts">Завтраки</option>
         <option value="Appetizers">Закуски</option>
         <option value="Salads">Салаты</option>

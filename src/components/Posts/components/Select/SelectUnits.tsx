@@ -1,11 +1,7 @@
 const SelectUnits = () => {
   return (
-    <div className="text-white">
-      <select
-        className="inputStyle2 text-black w-full py-1.5 px-2 h-full"
-        name="sada"
-        id=""
-      >
+    <div>
+      <select className="inputStyle py-1.5 px-2" name="" id="">
         <option value="Breakfasts">г</option>
         <option value="Appetizers">кг</option>
         <option value="Appetizers">шт</option>
