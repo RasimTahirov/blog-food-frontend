@@ -1,5 +1,5 @@
-import useManageList from '../hooks/useManageList';
 import { XMarkIcon, SparklesIcon } from '@heroicons/react/16/solid';
+import { AppDispatch, RootState } from '../../../store/store';
 import {
   Ingredient,
   Step,
@@ -7,26 +7,56 @@ import {
   CoverUpload,
   RecipeForm,
 } from './components/Index';
-import { SubmitButton } from '../../Index';
+import { GoBackHome, SubmitButton } from '../../Index';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addIngredient,
+  addStep,
+  createPostThunk,
+  removeIngredient,
+  removeStep,
+} from '../../../redux/postSlice';
 
 const PostCreate = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const {
-    items: ingredient,
-    addItem: addIngredient,
-    removeItem: removeIngredient,
-  } = useManageList();
-  const {
-    items: step,
-    addItem: addStep,
-    removeItem: removeStep,
-  } = useManageList();
+    title,
+    description,
+    categories,
+    ingredients,
+    steps,
+    image,
+    cookTime,
+  } = useSelector((state: RootState) => state.createPost.post);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const PostData = {
+      title,
+      description,
+      categories,
+      ingredients,
+      steps,
+      image,
+      cookTime,
+    };
+
+    dispatch(createPostThunk(PostData));
+
+    console.log(PostData);
+  };
 
   return (
     <div className="grid justify-center py-5 px-10 text-textBlack">
       <main>
-        <form>
-          <div className="mb-3">
-            <h3 className="text-5xl font-bold">Создание рецепта</h3>
+        <form onSubmit={handleSubmit} className="max-w-[555px]">
+          <div className="flex justify-between">
+            <div className="mb-3">
+              <h3 className="text-4xl font-bold">Создание рецепта</h3>
+            </div>
+            <div>
+              <GoBackHome />
+            </div>
           </div>
           <div className="grid mb-2.5">
             <CoverUpload />
@@ -35,13 +65,12 @@ const PostCreate = () => {
           <div className="grid">
             <label className="titleForm">Ингредиенты</label>
             <div className="grid gap-2.5">
-              <Ingredient />
-              {ingredient.map((ingredient) => (
+              {ingredients.map((ingredient) => (
                 <div className="flex gap-5" key={ingredient.id}>
-                  <Ingredient />
+                  <Ingredient ingredient={ingredient} />
                   <button
                     className="inputStyle h-full bg-white"
-                    onClick={(e) => removeIngredient(e, ingredient.id)}
+                    onClick={() => dispatch(removeIngredient(ingredient.id))}
                   >
                     <XMarkIcon className="w-5" />
                   </button>
@@ -50,7 +79,11 @@ const PostCreate = () => {
             </div>
           </div>
           <div className="w-[50%] mt-2.5 mb-2.5">
-            <button onClick={addIngredient} className="buttonStyle">
+            <button
+              type="button"
+              onClick={() => dispatch(addIngredient())}
+              className="buttonStyle"
+            >
               <span>Добавить ингредиент</span>
             </button>
           </div>
@@ -63,20 +96,24 @@ const PostCreate = () => {
               <p>Для создания рецепта необходимо иметь 3 шага</p>
             </div>
             <div className="grid gap-5">
-              <Step />
-              {step.map((step) => (
+              {steps.map((step, index) => (
                 <div key={step.id} className="relative">
-                  <Step />
+                  <Step steps={step} stepNumber={index + 1} />
                   <button
-                    onClick={(e) => removeStep(e, step.id)}
-                    className="absolute w-7 top-[10%] left-[90%]"
+                    type="button"
+                    className="absolute w-7 top-[21px] left-[90%]"
+                    onClick={() => dispatch(removeStep(step.id))}
                   >
                     <XMarkIcon />
                   </button>
                 </div>
               ))}
               <div className="mb-2.5">
-                <button onClick={addStep} className="buttonStyle">
+                <button
+                  type="button"
+                  className="buttonStyle"
+                  onClick={() => dispatch(addStep())}
+                >
                   Добавить шаг
                 </button>
               </div>

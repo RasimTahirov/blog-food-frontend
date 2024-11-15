@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 type ItemType = {
   id: number;
   name: string;
+  unit?: string;
 };
 
 const useManageList = (initialItems: ItemType[] = []) => {
@@ -18,7 +19,15 @@ const useManageList = (initialItems: ItemType[] = []) => {
     setItems(items.filter((item) => item.id !== id));
   };
 
-  return { items, addItem, removeItem };
+  const updateItem = (id: number, field: keyof ItemType, value: string) => {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, [field]: value } : item
+      )
+    );
+  };
+
+  return { items, addItem, removeItem, updateItem };
 };
 
 export default useManageList;

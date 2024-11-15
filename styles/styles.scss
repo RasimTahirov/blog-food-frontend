@@ -84,7 +84,7 @@
 }
 
 .inputStyle {
-  @apply borderStyle py-1 px-5 mb-1.5 text-textBlack bg-inputWhite h-full rounded-md;
+  @apply borderStyle py-1 px-2.5 mb-1.5 text-textBlack bg-inputWhite h-full rounded-md inputText;
 }
 
 .errorStyle {
@@ -105,4 +105,8 @@
 
 .containerCreate {
   @apply mb-1.5;
+}
+
+.inputText::placeholder {
+  @apply text-base;
 }

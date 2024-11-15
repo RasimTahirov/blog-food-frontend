@@ -1,7 +1,24 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../../../store/store';
+import { setCategories } from '../../../../../redux/postSlice';
+
 const SelectCategories = () => {
+  const dispatch = useDispatch();
+  const { categories } = useSelector(
+    (state: RootState) => state.createPost.post
+  );
+
+  const handleCategoriesChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(setCategories(e.target.value));
+  };
+
   return (
     <div>
-      <select className="inputStyle w-[50%]" name="" id="">
+      <select
+        className="inputStyle w-[50%]"
+        value={categories}
+        onChange={handleCategoriesChange}
+      >
         <option value="Breakfasts">Завтраки</option>
         <option value="Appetizers">Закуски</option>
         <option value="Salads">Салаты</option>
