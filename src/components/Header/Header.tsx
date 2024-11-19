@@ -40,10 +40,10 @@ const Header = () => {
                 className={`${isMenuOpen ? 'hidden' : 'flex'} md:gap-4 md:flex md:static xs:absolute xs:gap-1  grid right-0 top-5`}
               >
                 <li>
-                  <a href="">Главная</a>
+                  <Link to={pageConfig.home}>Главная</Link>
                 </li>
                 <li>
-                  <a href="">Рецепты</a>
+                  <Link to={pageConfig.recipeList}>Рецепты</Link>
                 </li>
                 <li>
                   <a href="">Блог</a>

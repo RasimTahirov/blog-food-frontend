@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../../store/store';
 import {
-  IngredientType,
   setIngredientAmount,
   setIngredientName,
   setIngredientUnit,
-} from '../../../../../redux/postSlice';
+} from '../../../../../redux/postCreateSlice';
+import { IngredientType } from '../../../../../types/types';
 
 const Ingredient = ({ ingredient }: { ingredient: IngredientType }) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -44,13 +44,13 @@ const Ingredient = ({ ingredient }: { ingredient: IngredientType }) => {
         value={ingredient.unit}
         onChange={handleUnitChange}
       >
-        <option value="g">г</option>
-        <option value="kg">кг</option>
-        <option value="pc">шт</option>
-        <option value="ml">мл</option>
-        <option value="l">л</option>
-        <option value="teaspoon">ч.л</option>
-        <option value="tablespoon">ст.л</option>
+        <option value="г">г</option>
+        <option value="кг">кг</option>
+        <option value="шт">шт</option>
+        <option value="мл">мл</option>
+        <option value="л">л</option>
+        <option value="ч.л">ч.л</option>
+        <option value="ст.л">ст.л</option>
       </select>
     </div>
   );

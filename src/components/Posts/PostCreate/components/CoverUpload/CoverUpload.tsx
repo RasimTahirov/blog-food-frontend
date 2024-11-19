@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { imageUploadThunk } from '../../../../../redux/postSlice';
+import { imageUploadThunk } from '../../../../../redux/postCreateSlice';
 import { AppDispatch } from '../../../../../store/store';
 import { useState } from 'react';
 
@@ -10,8 +10,9 @@ const CoverUpload = () => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setImage(URL.createObjectURL(file));
-      dispatch(imageUploadThunk(file));
+      const imageUrl = URL.createObjectURL(file);
+      setImage(imageUrl);
+      dispatch(imageUploadThunk({ imageData: file, type: 'cover' }));
     }
   };
 

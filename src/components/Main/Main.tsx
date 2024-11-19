@@ -7,6 +7,7 @@ import { setUser } from '../../redux/authSlice';
 import AuthRoutes from '../../app/routes/AuthRoutes';
 
 import { Footer, Header } from '../Index';
+import NavRoutes from '../../app/routes/NavRoutes';
 
 const Main = () => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const Main = () => {
     pageConfig.register,
     pageConfig.account,
     pageConfig.createPost,
+    pageConfig.recipe,
   ];
   const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(
     location.pathname
@@ -31,11 +33,12 @@ const Main = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {!shouldHideHeaderFooter && <Header />}
+      {/* {!shouldHideHeaderFooter && <Header />} */}
       <main className="flex-grow p-4">
         <AuthRoutes />
+        <NavRoutes />
       </main>
-      {!shouldHideHeaderFooter && <Footer />}
+      {/* {!shouldHideHeaderFooter && <Footer />} */}
     </div>
   );
 };

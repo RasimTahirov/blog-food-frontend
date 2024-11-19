@@ -33,6 +33,9 @@ export default {
       screens: {
         xs: '380px',
       },
+      boxShadow: {
+        posts: '1px 5px 11px 2px rgba(34, 60, 80, 0.25)',
+      },
     },
   },
   plugins: [],

@@ -6,6 +6,7 @@ import { RootState } from '../../store/store';
 
 import { Account, Authorization, Registration } from '../../components/Index';
 import PostCreate from '../../components/Posts/PostCreate/PostCreate';
+import NavRoutes from './NavRoutes';
 
 const AuthRoutes = () => {
   const user = useSelector((state: RootState) => state.auth.user);

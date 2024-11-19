@@ -110,3 +110,7 @@
 .inputText::placeholder {
   @apply text-base;
 }
+
+.borderTest {
+  @apply border-b inset-1;
+}

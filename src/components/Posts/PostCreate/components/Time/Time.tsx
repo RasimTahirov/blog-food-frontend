@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setTime } from '../../../../../redux/postSlice';
+import { setTime } from '../../../../../redux/postCreateSlice';
 import { AppDispatch, RootState } from '../../../../../store/store';
 
 const Time = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { cookTime } = useSelector((state: RootState) => state.createPost.post);
+  const { cookTime } = useSelector((state: RootState) => state.postCreate.post);
 
   const handleHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = Number(e.target.value);

@@ -6,16 +6,10 @@ import {
   imageUploadThunk,
   setDescriptionStep,
   setImageStep,
-  StepType,
-} from '../../../../../redux/postSlice';
+} from '../../../../../redux/postCreateSlice';
+import { StepType } from '../../../../../types/types';
 
-const Step = ({
-  steps,
-  stepNumber,
-}: {
-  steps: StepType;
-  stepNumber: number;
-}) => {
+const Step = ({ steps }: { steps: StepType }) => {
   const dispatch = useDispatch<AppDispatch>();
   const [image, setImage] = useState<string | null>(null);
 
@@ -27,11 +21,12 @@ const Step = ({
     const file = e.target.files?.[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      dispatch(setImageStep({ id: steps.id, image: imageUrl }));
-      setImage(URL.createObjectURL(file));
-      dispatch(imageUploadThunk(file)).then((res) => {
+      setImage(imageUrl);
+      dispatch(
+        imageUploadThunk({ imageData: file, type: 'step', id: steps.id })
+      ).then((res) => {
         if (imageUploadThunk.fulfilled.match(res)) {
-          dispatch(setImageStep({ id: steps.id, image: res.payload }));
+          dispatch(setImageStep({ id: steps.id, image: res.payload.url }));
         }
       });
     }
@@ -39,7 +34,7 @@ const Step = ({
 
   return (
     <div className="borderStyle rounded-lg p-5">
-      <p className="text-xl font-bold mb-1">Шаг {stepNumber}</p>
+      <p className="text-xl font-bold mb-1">Шаг {steps.stepNumber}</p>
       {image ? (
         <img
           src={image}

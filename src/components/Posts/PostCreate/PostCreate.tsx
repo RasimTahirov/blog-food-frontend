@@ -15,7 +15,7 @@ import {
   createPostThunk,
   removeIngredient,
   removeStep,
-} from '../../../redux/postSlice';
+} from '../../../redux/postCreateSlice';
 
 const PostCreate = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,7 +27,7 @@ const PostCreate = () => {
     steps,
     image,
     cookTime,
-  } = useSelector((state: RootState) => state.createPost.post);
+  } = useSelector((state: RootState) => state.postCreate.post);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -96,9 +96,9 @@ const PostCreate = () => {
               <p>Для создания рецепта необходимо иметь 3 шага</p>
             </div>
             <div className="grid gap-5">
-              {steps.map((step, index) => (
+              {steps.map((step) => (
                 <div key={step.id} className="relative">
-                  <Step steps={step} stepNumber={index + 1} />
+                  <Step steps={step} />
                   <button
                     type="button"
                     className="absolute w-7 top-[21px] left-[90%]"
