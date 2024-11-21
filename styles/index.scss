@@ -105,6 +105,17 @@ input {
   border-radius: 0;
 }
 
-input:focus {
+input:focus,
+select {
   outline: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  @apply appearance-none;
+}
+
+input[type='number'] {
+  @apply appearance-none; /* для Safari и Chrome */
+  -moz-appearance: textfield; /* для Firefox */
 }

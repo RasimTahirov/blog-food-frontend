@@ -4,8 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+#root {
+  background: #f8f9fa;
+}
+
 .layout {
-  height: 100vh;
+  height: 100%;
   font-family: 'Releway';
   font-size: 17px;
   font-weight: 500;
@@ -64,11 +68,15 @@
 }
 
 .buttonWhite {
-  @apply px-5 py-2 bg-buttonColorWhite rounded-xl h-10;
+  @apply px-5 py-2 bg-containerWhite rounded-xl h-10;
 }
 
 .buttonIcon {
   @apply p-2.5 bg-buttonColorRed rounded-xl;
+}
+
+.buttonIcon2 {
+  @apply p-2.5 bg-containerWhite rounded-xl;
 }
 
 .buttonHeader {
@@ -80,9 +88,33 @@
 }
 
 .inputStyle {
-  @apply py-1 px-5 rounded-md;
+  @apply borderStyle py-1 px-2.5 mb-1.5 text-textBlack bg-inputWhite h-full rounded-md inputText;
 }
 
 .errorStyle {
   @apply absolute left-1.5 top-8 text-white;
+}
+
+.borderStyle {
+  @apply border-solid border border-borderBlack;
+}
+
+.titleForm {
+  @apply text-xl mb-0.5 font-semibold;
+}
+
+.buttonStyle {
+  @apply relative py-1.5 px-2.5 rounded-md bg-inputWhite w-full text-textBlack border border-solid border-borderBlack;
+}
+
+.containerCreate {
+  @apply mb-1.5;
+}
+
+.inputText::placeholder {
+  @apply text-base;
+}
+
+.borderTest {
+  @apply border-b inset-1;
 }

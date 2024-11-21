@@ -9,7 +9,7 @@ const GoBackHome = () => {
       className="bg-black mb-2.5 py-1.5 px-3.5 rounded-xl max-xs:w-full"
       onClick={goBack}
     >
-      На главную
+      <p className="text-white">На главную</p>
     </button>
   );
 };

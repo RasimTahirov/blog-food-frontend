@@ -18,8 +18,23 @@ export default {
         buttonColorWhite: '#fff',
         hoverButton: '#7391e6',
       },
+      textColor: {
+        textWhite: '#f8f9fa',
+        textBlack: '#333333',
+      },
+      backgroundColor: {
+        containerWhite: '#f3f3f3',
+        containerNotification: '#e9f8eb',
+        inputWhite: '#f3f3f3',
+      },
+      borderColor: {
+        borderBlack: '#495057',
+      },
       screens: {
         xs: '380px',
+      },
+      boxShadow: {
+        posts: '1px 5px 11px 2px rgba(34, 60, 80, 0.25)',
       },
     },
   },
