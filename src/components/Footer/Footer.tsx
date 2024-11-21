@@ -1,6 +1,8 @@
+import { pageConfig } from '../../config/PageConfig';
+
 const Footer = () => {
   return (
-    <footer className="container-max bg-black mb-4 w-full rounded-3xl sm:w-4/5 md:w-3/4 lg:w-3/4 h-54">
+    <footer className="container-max bg-black mb-4 mt-5 w-full rounded-3xl sm:w-4/5 md:w-3/4 lg:w-3/4 h-54">
       <div className="main-container py-5">
         <div className="flex justify-between mb-7">
           <div>
@@ -10,10 +12,10 @@ const Footer = () => {
             <nav>
               <ul className="gap-4 flex ">
                 <li>
-                  <a href="">Главная</a>
+                  <a href={pageConfig.home}>Главная</a>
                 </li>
                 <li>
-                  <a href="">Рецепты</a>
+                  <a href={pageConfig.recipeList}>Рецепты</a>
                 </li>
                 <li>
                   <a href="">Блог</a>

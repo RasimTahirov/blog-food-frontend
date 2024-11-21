@@ -4,4 +4,4 @@ export { default as GoBackHome } from './UI/GoBackHome/GoBackHome';
 export { default as SubmitButton } from './UI/SubmitButton/SubmitButton';
 export { default as Account } from './Account/Account';
 export { default as Footer } from './Footer/Footer';
-export { default as Header } from './Header/Header';
+export { default as Header } from './Header/MainHeader';

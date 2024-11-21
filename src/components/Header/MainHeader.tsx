@@ -11,12 +11,12 @@ import {
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 
-const Header = () => {
+const MainHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
   const user = useSelector((state: RootState) => state.auth.user);
 
   return (
-    <header className="container-max text-lg mt-4 w-full sm:w-4/5 md:w-3/4 lg:w-3/4">
+    <header className="container-max text-lg mt-4 mb-5 w-full sm:w-4/5 md:w-3/4 lg:w-3/4">
       <div className="main-container relative md:bg-headerDesktop bg-headerPhone bg-cover bg-center h-96 pt-4 rounded-3xl">
         <div className="absolute inset-0 bg-black opacity-40 rounded-3xl"></div>
         <div className="md:flex justify-between relative z-10 items-center xs:grid grid-cols-2">
@@ -82,7 +82,7 @@ const Header = () => {
             {user ? (
               <>
                 <button className="buttonRed buttonHeader max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">
-                  Опубликовать рецепт
+                  <Link to={pageConfig.createPost}>Опубликовать рецепт</Link>
                 </button>
                 <button className="buttonWhite buttonHeader text-black max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">
                   Создать статью
@@ -115,4 +115,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default MainHeader;

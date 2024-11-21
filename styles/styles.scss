@@ -68,11 +68,15 @@
 }
 
 .buttonWhite {
-  @apply px-5 py-2 bg-buttonColorWhite rounded-xl h-10;
+  @apply px-5 py-2 bg-containerWhite rounded-xl h-10;
 }
 
 .buttonIcon {
   @apply p-2.5 bg-buttonColorRed rounded-xl;
+}
+
+.buttonIcon2 {
+  @apply p-2.5 bg-containerWhite rounded-xl;
 }
 
 .buttonHeader {

@@ -17,7 +17,7 @@ import {
   removeStep,
 } from '../../../redux/postCreateSlice';
 
-const PostCreate = () => {
+const RecipeCreate = () => {
   const dispatch = useDispatch<AppDispatch>();
   const {
     title,
@@ -131,4 +131,4 @@ const PostCreate = () => {
   );
 };
 
-export default PostCreate;
+export default RecipeCreate;

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 
 import { Account, Authorization, Registration } from '../../components/Index';
-import PostCreate from '../../components/Posts/PostCreate/PostCreate';
+import RecipeCreate from '../../components/Recipes/RecipeCreate/RecipeCreate';
 import NavRoutes from './NavRoutes';
 
 const AuthRoutes = () => {
@@ -28,7 +28,7 @@ const AuthRoutes = () => {
         element={!user ? <Navigate to={pageConfig.login} /> : <Account />}
       />
       <Route path={pageConfig.account} element={<Account />} />
-      <Route path={pageConfig.createPost} element={<PostCreate />} />
+      <Route path={pageConfig.createPost} element={<RecipeCreate />} />
     </Routes>
   );
 };
