@@ -17,7 +17,7 @@ const CoverUpload = () => {
   };
 
   return (
-    <div className="mb-5 bg-containerWhite w-full rounded-lg">
+    <div className="mb-5 bg-containerWhite w-full rounded-mdPlus">
       <div className="relative cursor-pointer w-full h-[250px] ">
         <input
           className="absolute inset-0 opacity-0 cursor-pointer "
@@ -28,7 +28,7 @@ const CoverUpload = () => {
           <img
             src={image}
             alt=""
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover rounded-mdPlus"
           />
         ) : (
           <button className="flex text-center items-center justify-center w-full h-full">

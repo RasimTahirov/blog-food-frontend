@@ -1,12 +1,11 @@
 class PageConfig {
   home: string = '/';
-  login: string = '/login';
-  register: string = '/register';
   account: string = '/account';
-  createPost: string = '/recipe/create';
+  recipeCreate: string = '/recipe/create';
   recipeList: string = '/recipeList';
   postTest: string = '/postTest';
   recipe: string = '/recipe/:id';
+  successRegistration: string = '/successRegistration';
 }
 
 export const pageConfig = new PageConfig();

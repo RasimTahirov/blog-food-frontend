@@ -15,7 +15,7 @@ const SelectCategories = () => {
   return (
     <div>
       <select
-        className="inputStyle w-[50%]"
+        className="inputStyle"
         value={categories}
         onChange={handleCategoriesChange}
       >

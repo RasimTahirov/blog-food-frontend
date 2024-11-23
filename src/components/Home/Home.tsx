@@ -1,9 +1,9 @@
 import { useLocation } from 'react-router-dom';
-import NavRoutes from '../../app/routes/NavRoutes';
-import { Footer } from '../Index';
 import { pageConfig } from '../../config/PageConfig';
+import NavRoutes from '../../app/routes/NavRoutes';
 import AuthRoutes from '../../app/routes/AuthRoutes';
-import MainHeader from '../Header/MainHeader';
+
+import { Footer, MainHeader } from '../Index';
 
 const Home = () => {
   const location = useLocation();

@@ -25,22 +25,22 @@ const Ingredient = ({ ingredient }: { ingredient: IngredientType }) => {
   };
 
   return (
-    <div className="flex gap-5">
+    <div className="grid grid-cols-[4fr_1fr_1fr] gap-5">
       <input
-        className="inputStyle w-full"
+        className="inputStyle"
         type="text"
         placeholder="Например: лук"
         value={ingredient.name}
         onChange={handleNameChange}
       />
       <input
-        className="inputStyle w-[25%] flex text-center"
+        className="inputStyle flex text-center"
         type="number"
         placeholder="кол-во"
         onChange={handleAmountChange}
       />
       <select
-        className="inputStyle py-1.5 px-2 w-[20%]"
+        className="inputStyle"
         value={ingredient.unit}
         onChange={handleUnitChange}
       >
