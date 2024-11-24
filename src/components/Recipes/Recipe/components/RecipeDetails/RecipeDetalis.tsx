@@ -1,7 +1,7 @@
 import style from '../../Index.module.scss';
 
 import { useSelector } from 'react-redux';
-import { formatHours } from '../../../../../utils/utils';
+import { formatHours } from '../../../../../utils/formatHours';
 import { RootState } from '../../../../../store/store';
 
 const RecipeDetalis = () => {
