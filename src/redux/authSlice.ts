@@ -41,8 +41,8 @@ interface Data {
 }
 
 const initialState: Data = {
-  user: null,
-  token: localStorage.getItem('token'),
+  user: JSON.parse(localStorage.getItem('user') || 'null'),
+  token: localStorage.getItem('token') || '',
   loading: false,
   error: null,
 };
@@ -61,7 +61,8 @@ const authSlice = createSlice({
       localStorage.removeItem('user');
       localStorage.removeItem('userId');
     },
-    setUser: (state, action) => action.payload,
+
+    setUser: (state, action) => (state.user = action.payload),
   },
   extraReducers: (builder) => {
     builder

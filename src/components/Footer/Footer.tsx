@@ -1,4 +1,4 @@
-import { Navigation } from '../Index';
+import { Navigation, SubmitButtonWhite } from '../Index';
 
 const Footer = () => {
   return (
@@ -20,7 +20,7 @@ const Footer = () => {
               type="email"
               placeholder="введите email"
             />
-            <button className="buttonWhite text-textBlack">Подписаться</button>
+            <SubmitButtonWhite>Подписаться</SubmitButtonWhite>
           </form>
         </div>
       </div>

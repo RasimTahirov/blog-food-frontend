@@ -1,15 +1,21 @@
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postsThunk } from '../../../redux/postSlice';
 import { AppDispatch, RootState } from '../../../store/store';
+import { pageConfig } from '../../../config/PageConfig';
 
 import { RecipeDetalis, RecipePreview, RecipeStep } from '../../Index';
 
 const Recipe = () => {
   const { id } = useParams();
   const { post } = useSelector((state: RootState) => state.post);
+
   const dispatch = useDispatch<AppDispatch>();
+
+  if (!id || id === 'create') {
+    return <Navigate to={pageConfig.recipeCreate} replace />;
+  }
 
   useEffect(() => {
     if (id) {

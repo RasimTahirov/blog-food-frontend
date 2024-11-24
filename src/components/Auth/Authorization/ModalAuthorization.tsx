@@ -34,7 +34,7 @@ const ModalAuthorization: React.FC<ModalAuthorization> = ({ setIsActive }) => {
     const result = await dispatch(authThunk(data));
     if (authThunk.fulfilled.match(result)) {
       localStorage.setItem('user', JSON.stringify(result.payload));
-      navigate(pageConfig.home);
+      navigate(pageConfig.account);
       setIsActive(false);
       reset();
     }

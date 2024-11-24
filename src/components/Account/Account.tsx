@@ -1,17 +1,17 @@
 import avatar from '../../../public/assets/avatar/dceb8bb5ac5f91b63912faf77154483c.jpg';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { pageConfig } from '../../config/PageConfig';
-import { AppDispatch, RootState } from '../../store/store';
+import { AppDispatch } from '../../store/store';
 import { logout } from '../../redux/authSlice';
 
 import { GoBackHome, NavButtonBlack, SubmitButtonBlack } from '../Index';
+import { email, name } from '../../utils/userStorage';
 
 const Account = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const user = useSelector((state: RootState) => state.auth.user);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -30,7 +30,9 @@ const Account = () => {
             />
             <div className="flex gap-5">
               <GoBackHome />
-              <SubmitButtonBlack title="Выйти" onClick={() => handleLogout()} />
+              <SubmitButtonBlack onClick={() => handleLogout()}>
+                Выйти
+              </SubmitButtonBlack>
             </div>
           </div>
           <div className="grid gap-5 w-[50%] mb-[20px]">
@@ -40,17 +42,12 @@ const Account = () => {
                 className="inputStyle"
                 disabled
                 type="text"
-                value={user?.email || ''}
+                value={email}
               />
             </div>
             <div className="grid gap-[5px]">
               <label htmlFor="name">Имя</label>
-              <input
-                className="inputStyle"
-                disabled
-                type="text"
-                value={user?.name || ''}
-              />
+              <input className="inputStyle" disabled type="text" value={name} />
             </div>
           </div>
           <div className="flex justify-between">
