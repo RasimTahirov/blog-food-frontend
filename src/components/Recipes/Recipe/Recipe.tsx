@@ -33,7 +33,9 @@ const Recipe = () => {
             <RecipeDetalis />
           </div>
           <div className="mt-5 p-3.5 rounded-mdPlus h-fit bg-containerWhite w-[30%]">
-            <p>Автор: {post.author}</p>
+            <p>
+              Автор: {post.author.name} {post.author.surname}
+            </p>
             <p>Категория: {post.categories}</p>
           </div>
         </div>

@@ -32,6 +32,8 @@ const ModalAuthorization: React.FC<ModalAuthorization> = ({ setIsActive }) => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const result = await dispatch(authThunk(data));
+    console.log(data);
+
     if (authThunk.fulfilled.match(result)) {
       localStorage.setItem('user', JSON.stringify(result.payload));
       navigate(pageConfig.account);
@@ -58,7 +60,7 @@ const ModalAuthorization: React.FC<ModalAuthorization> = ({ setIsActive }) => {
             })}
             className="inputStyle"
             type="email"
-            placeholder="Логин"
+            placeholder="Почта"
             autoComplete="off"
           />
           {errors.email && (

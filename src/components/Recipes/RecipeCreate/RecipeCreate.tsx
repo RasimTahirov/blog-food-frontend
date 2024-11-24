@@ -1,6 +1,7 @@
 import { XMarkIcon, SparklesIcon } from '@heroicons/react/16/solid';
 import { AppDispatch, RootState } from '../../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
+import { name, surname } from '../../../utils/userStorage';
 import {
   addIngredient,
   addStep,
@@ -17,7 +18,6 @@ import {
   CoverUpload,
   RecipeForm,
 } from './components/Index';
-import { name } from '../../../utils/userStorage';
 
 console.log(name);
 
@@ -43,7 +43,10 @@ const RecipeCreate = () => {
       steps,
       image,
       cookTime,
-      author: name,
+      author: {
+        name,
+        surname,
+      },
     };
 
     dispatch(createPostThunk(PostData));
