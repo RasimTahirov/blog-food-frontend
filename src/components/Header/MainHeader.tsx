@@ -1,116 +1,96 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { pageConfig } from '../../config/PageConfig';
-import {
-  ArrowRightEndOnRectangleIcon,
-  HeartIcon,
-  UserCircleIcon,
-  Bars2Icon,
-  XMarkIcon,
-} from '@heroicons/react/16/solid';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { pageConfig } from '../../config/PageConfig';
+import { HeartIcon, UserCircleIcon } from '@heroicons/react/16/solid';
+
+import ModalAuthorization from '../Auth/Authorization/ModalAuthorization';
+import ModalRegistration from '../Auth/Registration/ModalRegistration';
+
+import {
+  Modal,
+  NavButtonIconRed,
+  NavButtonWhite,
+  Navigation,
+  SubmitButtonWhite,
+} from '../Index';
 
 const MainHeader = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isActiveAuthorization, setIsActiveAuthorization] = useState(false);
+  const [isActiveRegister, setIsActiveRegister] = useState(false);
+
   const user = useSelector((state: RootState) => state.auth.user);
 
   return (
-    <header className="container-max text-lg mt-4 mb-5 w-full sm:w-4/5 md:w-3/4 lg:w-3/4">
-      <div className="main-container relative md:bg-headerDesktop bg-headerPhone bg-cover bg-center h-96 pt-4 rounded-3xl">
-        <div className="absolute inset-0 bg-black opacity-40 rounded-3xl"></div>
-        <div className="md:flex justify-between relative z-10 items-center xs:grid grid-cols-2">
+    <header className="container-max text-lg my-5 w-full text-textWhite">
+      <div className="main-container relative bg-headerDesktop bg-cover bg-center h-[380px] py-5 rounded-mdPlus">
+        <div className="absolute inset-0 bg-black opacity-40 rounded-mdPlus "></div>
+        <div className="flex justify-between relative z-10 items-center">
           <div>
-            <p>LOGO</p>
+            <span>LOGO</span>
           </div>
-          <div className="flex gap-10 items-center max-lg:gap-5 xs:justify-end">
-            <nav className="relative max-md:flex gap-2.5 max-sm:grid">
-              <div className="flex md:hidden items-center self-end">
-                <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                  {' '}
-                  {isMenuOpen ? (
-                    <Bars2Icon className="IconSize" />
-                  ) : (
-                    <XMarkIcon className="IconSize" />
-                  )}{' '}
-                </button>
-              </div>
-
-              <ul
-                className={`${isMenuOpen ? 'hidden' : 'flex'} md:gap-4 md:flex md:static xs:absolute xs:gap-1  grid right-0 top-5`}
-              >
-                <li>
-                  <Link to={pageConfig.home}>Главная</Link>
-                </li>
-                <li>
-                  <Link to={pageConfig.recipeList}>Рецепты</Link>
-                </li>
-                <li>
-                  <a href="">Блог</a>
-                </li>
-              </ul>
-            </nav>
-
+          <div className="flex gap-5 items-center">
+            <Navigation />
             {user ? (
-              <div className="flex gap-3">
-                <button className="buttonIcon">
-                  <HeartIcon className="IconSize" />
-                </button>
-                <Link to={pageConfig.account} className="buttonIcon">
-                  <UserCircleIcon className="IconSize" />
-                </Link>
+              <div className="flex gap-5">
+                {/* Временно  to={pageConfig.recipeCreate} */}
+                <NavButtonIconRed to={pageConfig.recipeCreate}>
+                  <HeartIcon className="iconSize" />
+                </NavButtonIconRed>
+
+                <NavButtonIconRed to={pageConfig.account}>
+                  <UserCircleIcon className="iconSize" />
+                </NavButtonIconRed>
               </div>
             ) : (
               <>
-                <button className="max-md:hidden">
-                  <Link className="buttonRed" to={pageConfig.login}>
-                    Войти
-                  </Link>
-                </button>
-                <Link className="buttonIcon md:hidden" to={pageConfig.login}>
-                  <ArrowRightEndOnRectangleIcon className="IconSize" />
-                </Link>
+                <SubmitButtonWhite
+                  onClick={() => setIsActiveAuthorization(true)}
+                >
+                  Войти
+                </SubmitButtonWhite>
               </>
             )}
           </div>
         </div>
-        <div className="grid absolute bottom-5 lg:max-w-[60%] md:max-w-[80%] sm:max-w-[85%] xs:max-w-[90%]">
-          <p className="xl:text-5xl lg:text-5xl md:text-5xl sm:text-4xl xs:text-3xl  font-bold mb-2.5">
-            Еда, которая согревает
-          </p>
+        <div className="grid absolute bottom-5">
+          <p className="text-5xl font-bold mb-2.5">Еда, которая согревает</p>
           <div className="flex gap-2.5 mt-2.5">
             {user ? (
               <>
-                <button className="buttonRed buttonHeader max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">
-                  <Link to={pageConfig.createPost}>Опубликовать рецепт</Link>
-                </button>
-                <button className="buttonWhite buttonHeader text-black max-sm:text-sm max-sm:py-1 max-md:px-5 max-sm:leading-none max-xs:text-[13px] py-1.5 px-2 leading-none">
-                  Создать статью
-                </button>
+                <NavButtonWhite
+                  to={pageConfig.recipeCreate}
+                  title="Опубликовать рецепт"
+                />
+                <NavButtonWhite
+                  to={pageConfig.recipeCreate}
+                  title="Создать статью"
+                />
               </>
             ) : (
               <>
-                <button>
-                  <Link
-                    className="buttonRed buttonHeader "
-                    to={pageConfig.login}
-                  >
-                    Войти
-                  </Link>
-                </button>
-                <button>
-                  <Link
-                    className="buttonWhite buttonHeader text-black"
-                    to={pageConfig.register}
-                  >
-                    Зарегистрироваться
-                  </Link>
-                </button>
+                <SubmitButtonWhite
+                  onClick={() => setIsActiveAuthorization(true)}
+                >
+                  Войти
+                </SubmitButtonWhite>
+                <SubmitButtonWhite onClick={() => setIsActiveRegister(true)}>
+                  Зарегистрироваться
+                </SubmitButtonWhite>
               </>
             )}
           </div>
         </div>
       </div>
+      <Modal
+        active={isActiveAuthorization}
+        setActive={setIsActiveAuthorization}
+      >
+        <ModalAuthorization setIsActive={setIsActiveAuthorization} />
+      </Modal>
+      <Modal active={isActiveRegister} setActive={setIsActiveRegister}>
+        <ModalRegistration setIsActive={setIsActiveRegister} />
+      </Modal>
     </header>
   );
 };

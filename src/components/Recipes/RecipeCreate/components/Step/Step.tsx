@@ -34,15 +34,15 @@ const Step = ({ steps }: { steps: StepType }) => {
 
   return (
     <div className="borderStyle rounded-lg p-5">
-      <p className="text-xl font-bold mb-1">Шаг {steps.stepNumber}</p>
+      <span className="text-xl font-bold mb-1">Шаг {steps.stepNumber}</span>
       {image ? (
         <img
           src={image}
           alt=""
-          className="w-[90%] h-[250px] object-cover rounded-md mb-2"
+          className="w-[90%] h-[250px] object-cover rounded-mdPlus mb-2"
         />
       ) : (
-        <div className="relative bg-containerWhite flex justify-between w-[35%] rounded-md p-2 mb-2.5 cursor-pointer">
+        <div className="relative bg-containerWhite flex justify-between w-[35%] rounded-mdPlus p-2 mb-2.5 cursor-pointer">
           <span>Загрузить фото</span>
           <input
             className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"

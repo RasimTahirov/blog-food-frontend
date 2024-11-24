@@ -36,3 +36,7 @@ export interface Data {
   error: null | string;
   loading: boolean;
 }
+
+export interface SetIsActive {
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
+}

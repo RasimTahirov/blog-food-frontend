@@ -1,79 +1,56 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { pageConfig } from '../../config/PageConfig';
-import {
-  ArrowRightEndOnRectangleIcon,
-  HeartIcon,
-  UserCircleIcon,
-  Bars2Icon,
-  XMarkIcon,
-} from '@heroicons/react/16/solid';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { pageConfig } from '../../config/PageConfig';
+import { HeartIcon, UserCircleIcon } from '@heroicons/react/16/solid';
+
+import NavButtonIconWhite from '../UI/NavButtonIcon/NavButtonIconWhite';
+import ModalAuthorization from '../Auth/Authorization/ModalAuthorization';
+
+import { Modal, Navigation, SubmitButtonWhite } from '../Index';
 
 const CompactHeader = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isActiveAuthorization, setIsActiveAuthorization] = useState(false);
+
   const user = useSelector((state: RootState) => state.auth.user);
-
   return (
-    <header className="container-max text-lg mt-4 mb-5 w-full sm:w-4/5 md:w-3/4 lg:w-3/4 text-textBlack">
-      <div className="main-container relative  bg-cover bg-center h-[60px] pt-4 rounded-[10px]">
-        <div className="md:flex justify-between relative z-10 items-center xs:grid grid-cols-2">
+    <header className="container-max text-lg my-5 w-full text-textBlack">
+      <div className="main-container relative h-[60px] py-5 rounded-mdPlus">
+        <div className="flex justify-between relative z-10 items-center">
           <div>
-            <p>LOGO</p>
+            <span>LOGO</span>
           </div>
-          <div className="flex gap-10 items-center max-lg:gap-5 xs:justify-end">
-            <nav className="relative max-md:flex gap-2.5 max-sm:grid">
-              <div className="flex md:hidden items-center self-end">
-                <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                  {' '}
-                  {isMenuOpen ? (
-                    <Bars2Icon className="IconSize" />
-                  ) : (
-                    <XMarkIcon className="IconSize" />
-                  )}{' '}
-                </button>
-              </div>
-
-              <ul
-                className={`${isMenuOpen ? 'hidden' : 'flex'} md:gap-4 md:flex md:static xs:absolute xs:gap-1  grid right-0 top-5`}
-              >
-                <li>
-                  <Link to={pageConfig.home}>Главная</Link>
-                </li>
-                <li>
-                  <Link to={pageConfig.recipeList}>Рецепты</Link>
-                </li>
-                <li>
-                  <a href="">Блог</a>
-                </li>
-              </ul>
-            </nav>
-
+          <div className="flex gap-5 items-center">
+            <Navigation />
             {user ? (
-              <div className="flex gap-3">
-                <button className="buttonIcon2">
-                  <HeartIcon className="IconSize" />
-                </button>
-                <Link to={pageConfig.account} className="buttonIcon2">
-                  <UserCircleIcon className="IconSize" />
-                </Link>
+              <div className="flex gap-5">
+                {/* Временно  to={pageConfig.recipeCreate} */}
+                <NavButtonIconWhite to={pageConfig.recipeCreate}>
+                  <HeartIcon className="iconSize" />
+                </NavButtonIconWhite>
+
+                <NavButtonIconWhite to={pageConfig.account}>
+                  <UserCircleIcon className="iconSize" />
+                </NavButtonIconWhite>
               </div>
             ) : (
               <>
-                <button className="max-md:hidden bg-containerWhite">
-                  <Link className="buttonWhite" to={pageConfig.login}>
-                    Войти
-                  </Link>
-                </button>
-                <Link className="buttonIcon2 md:hidden" to={pageConfig.login}>
-                  <ArrowRightEndOnRectangleIcon className="IconSize" />
-                </Link>
+                <SubmitButtonWhite
+                  onClick={() => setIsActiveAuthorization(true)}
+                >
+                  Войти
+                </SubmitButtonWhite>
               </>
             )}
           </div>
         </div>
       </div>
+      <Modal
+        active={isActiveAuthorization}
+        setActive={setIsActiveAuthorization}
+      >
+        <ModalAuthorization setIsActive={setIsActiveAuthorization} />
+      </Modal>
     </header>
   );
 };

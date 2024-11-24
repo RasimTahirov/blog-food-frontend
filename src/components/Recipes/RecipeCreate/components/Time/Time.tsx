@@ -32,7 +32,7 @@ const Time = () => {
       <div className="flex gap-2.5">
         <div className="flex gap-2.5 items-center">
           <input
-            className="inputStyle text-center w-[70px]"
+            className="inputStyle text-center"
             type="number"
             placeholder="0"
             max={12}
@@ -43,7 +43,7 @@ const Time = () => {
         </div>
         <div className="flex gap-2.5 items-center">
           <input
-            className="inputStyle text-center w-[70px]"
+            className="inputStyle text-center"
             type="number"
             placeholder="0"
             max={60}

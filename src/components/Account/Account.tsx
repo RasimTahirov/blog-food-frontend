@@ -1,75 +1,66 @@
-import {
-  ArrowRightEndOnRectangleIcon,
-  HeartIcon,
-} from '@heroicons/react/16/solid';
 import avatar from '../../../public/assets/avatar/dceb8bb5ac5f91b63912faf77154483c.jpg';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../redux/authSlice';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AppDispatch, RootState } from '../../store/store';
+import { pageConfig } from '../../config/PageConfig';
+import { AppDispatch } from '../../store/store';
+import { logout } from '../../redux/authSlice';
 
-import { GoBackHome } from '../Index';
+import { GoBackHome, NavButtonBlack, SubmitButtonBlack } from '../Index';
+import { email, name } from '../../utils/userStorage';
 
 const Account = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const user = useSelector((state: RootState) => state.auth.user);
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/');
+    navigate(pageConfig.home);
   };
 
   return (
-    <div className="h-[100vh] grid items-center">
-      <div className="m-auto w-2/5 max-xl:w-2/5 max-lg:w-2/4 max-md:w-4/5">
-        <GoBackHome />
-        <div className="bg-black rounded-3xl w-full">
-          <form className="grid items-center h-[380px] py-5 px-7">
-            <div className="flex justify-between center mb-5">
-              <div>
-                <img className="w-14 rounded-[50%]" src={avatar} alt="" />
-              </div>
-              <div className="flex gap-4 max-lg:hidden">
-                <button className="buttonWhite text-black">Избранное</button>
-                <button
-                  className="buttonWhite text-black"
-                  onClick={handleLogout}
-                >
-                  Выйти
-                </button>
-              </div>
-              <div className="flex gap-4 lg:hidden">
-                <button className="buttonWhite text-black">
-                  <HeartIcon className="IconSize" />
-                </button>
-                <button className="buttonWhite text-black">
-                  <ArrowRightEndOnRectangleIcon className="IconSize" />
-                </button>
-              </div>
+    <div className="container-max text-textBlack">
+      <div className="main-container">
+        <div className="w-[555px] m-10">
+          <div className="flex justify-between items-center mb-[20px]">
+            <img
+              className="w-32 rounded-[50%]"
+              src={avatar}
+              alt="User avatar"
+            />
+            <div className="flex gap-5">
+              <GoBackHome />
+              <SubmitButtonBlack onClick={() => handleLogout()}>
+                Выйти
+              </SubmitButtonBlack>
             </div>
-            <div className="grid gap-5">
-              <div className="grid w-[40%]">
-                <label>Имя</label>
-                <input
-                  className="inputStyle text-black bg-white"
-                  disabled
-                  type="text"
-                  value={user?.name || ''}
-                />
-              </div>
-              <div className="grid w-[40%]">
-                <label>Почта</label>
-                <input
-                  className="inputStyle text-black bg-white"
-                  disabled
-                  type="text"
-                  value={user?.email || ''}
-                />
-              </div>
+          </div>
+          <div className="grid gap-5 w-[50%] mb-[20px]">
+            <div className="grid gap-[5px]">
+              <label htmlFor="email">Почта</label>
+              <input
+                className="inputStyle"
+                disabled
+                type="text"
+                value={email}
+              />
             </div>
-          </form>
+            <div className="grid gap-[5px]">
+              <label htmlFor="name">Имя</label>
+              <input className="inputStyle" disabled type="text" value={name} />
+            </div>
+          </div>
+          <div className="flex justify-between">
+            <NavButtonBlack title="Избранное" to={pageConfig.recipeCreate} />
+            <NavButtonBlack
+              title="Опубликовать рецепт"
+              to={pageConfig.recipeCreate}
+            />
+            <NavButtonBlack
+              title="Создать статью"
+              to={pageConfig.recipeCreate}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ const RecipeForm = () => {
 
   return (
     <div className="grid items-center w-full">
-      <div className="grid containerCreate">
+      <div className="grid mb-[5px]">
         <label className="titleForm">Название рецепта</label>
         <input
           className="inputStyle"
@@ -30,7 +30,7 @@ const RecipeForm = () => {
           // max={38} Запомнить!!!!!
         />
       </div>
-      <div className="grid containerCreate">
+      <div className="grid mb-[5px]">
         <label className="titleForm">Описание рецепта</label>
         <input
           className="inputStyle"
@@ -40,7 +40,7 @@ const RecipeForm = () => {
           onChange={handleDescriptionChange}
         />
       </div>
-      <div className="grid containerCreate">
+      <div className="grid mb-[5px]">
         <label className="titleForm">Категория</label>
         <SelectCategories />
       </div>

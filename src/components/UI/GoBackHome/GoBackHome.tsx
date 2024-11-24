@@ -6,10 +6,10 @@ const GoBackHome = () => {
 
   return (
     <button
-      className="bg-black mb-2.5 py-1.5 px-3.5 rounded-xl max-xs:w-full"
+      className="bg-black py-[5px] px-[15px] rounded-mdPlus"
       onClick={goBack}
     >
-      <p className="text-white">На главную</p>
+      <p className="text-textWhite">На главную</p>
     </button>
   );
 };

@@ -29,7 +29,7 @@ const PostListAll = () => {
   return (
     <div className="container-max text-textBlack">
       <div className="main-container">
-        <div className="flex gap-2.5 pb-4">
+        <div className="flex gap-2.5 pb-5">
           <div className="py-[5px] px-2.5 bg-containerWhite rounded-xl">
             <a href="#!">Завтраки</a>
           </div>
@@ -45,25 +45,25 @@ const PostListAll = () => {
         </div>
 
         <div>
-          <ul className="grid grid-cols-3 gap-3.5 ">
+          <ul className="grid grid-cols-3 gap-[15px]">
             {posts.map((post) => (
               <Link
                 key={post._id}
                 to={`${pageConfig.recipe.replace(':id', post._id)}`}
                 className="overflow-hidden"
               >
-                <li className=" h-fulln ">
-                  <div className="relative h-full ">
-                    <p className="absolute mt-1 ml-1 py-1.5 px-2.5 leading-4 bg-containerWhite rounded-lg">
+                <li>
+                  <div className="relative">
+                    <p className="absolute mt-[5px] ml-[5px] py-[5px] px-2.5 leading-5 bg-containerWhite rounded-mdPlus">
                       {post.categories}
                     </p>
                     <img
                       src={`${fullUrl}${post.image}`}
                       alt=""
-                      className="h-full rounded-xl"
+                      className="w-full h-[200px] object-cover rounded-mdPlus"
                     />
                   </div>
-                  <p className=" px-3 mt-[5px] text-[19px]">{post.title}</p>
+                  <p className="px-5 mt-[5px] text-lg">{post.title}</p>
                 </li>
               </Link>
             ))}

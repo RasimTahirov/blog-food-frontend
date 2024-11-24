@@ -8,6 +8,8 @@
   display: none;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
+  color: #f8f9fa;
 }
 
 .modal.active {
@@ -15,7 +17,5 @@
 }
 
 .modalContent {
-  background-color: white;
-  padding: 20px;
   border-radius: 10px;
 }

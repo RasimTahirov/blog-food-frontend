@@ -1,6 +1,14 @@
-import './modal.scss';
+import './Modal.scss';
 
-const Modal = ({ children, active, setActive }) => {
+import { ReactNode } from 'react';
+
+interface ModalProps {
+  children: ReactNode;
+  active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Modal: React.FC<ModalProps> = ({ children, active, setActive }) => {
   return (
     <div
       className={active ? 'modal active' : 'modal'}

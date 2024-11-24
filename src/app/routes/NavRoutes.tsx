@@ -6,13 +6,12 @@ import Header2 from '../../components/Header/CompactHeader';
 import PostListAll from '../../components/Recipes/PostList/PostListAll';
 
 const NavRoutes = () => {
-  const location = useLocation(); // Получаем текущий путь
-  const isHomePage = location.pathname === pageConfig.home; // Проверяем, находимся ли на главной странице
+  const location = useLocation();
+  const isHomePage = location.pathname === pageConfig.home;
 
   return (
     <>
-      {!isHomePage && <Header2 />}{' '}
-      {/* Показываем Header2, если не на главной */}
+      {!isHomePage && <Header2 />}
       <Routes>
         <Route path={pageConfig.home} element={<HomePageList />} />
         <Route path={pageConfig.recipeList} element={<PostListAll />} />
