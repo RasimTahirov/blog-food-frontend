@@ -6,9 +6,15 @@ export const createPostThunk = createAsyncThunk(
   'createPost',
   async (recipeData: Post, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem('token');
       const res = await axios.post(
         'http://localhost:9000/api/post/create',
-        recipeData
+        recipeData,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
       );
       return res.data;
     } catch (error) {
@@ -44,45 +50,6 @@ export const imageUploadThunk = createAsyncThunk<
   }
 });
 
-// export interface ImageUploadResult {
-//   url: string;
-//   type: 'cover' | 'step';
-//   id?: number;
-// }
-
-// export type IngredientType = {
-//   id: number;
-//   name: string;
-//   unit: string;
-//   amount: number;
-// };
-
-// export type StepType = {
-//   id: number;
-//   description: string;
-//   image: string;
-//   stepNumber: number;
-// };
-
-// export interface Post {
-//   title: string;
-//   description: string;
-//   categories: string;
-//   ingredients: IngredientType[];
-//   steps: StepType[];
-//   image: string;
-//   cookTime: {
-//     hours: number;
-//     minutes: number;
-//   };
-// }
-
-// interface Data {
-//   post: Post;
-//   error: null | string;
-//   loading: boolean;
-// }
-
 const initialStatePost: Post = {
   title: '',
   description: '',
@@ -108,6 +75,7 @@ const initialStatePost: Post = {
     hours: 0,
     minutes: 0,
   },
+  author: '',
 };
 
 const initialState: Data = {

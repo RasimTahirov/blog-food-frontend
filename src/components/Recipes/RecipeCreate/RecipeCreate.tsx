@@ -17,6 +17,9 @@ import {
   CoverUpload,
   RecipeForm,
 } from './components/Index';
+import { name } from '../../../utils/userStorage';
+
+console.log(name);
 
 const RecipeCreate = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -40,6 +43,7 @@ const RecipeCreate = () => {
       steps,
       image,
       cookTime,
+      author: name,
     };
 
     dispatch(createPostThunk(PostData));
