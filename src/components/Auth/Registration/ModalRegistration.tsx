@@ -26,8 +26,6 @@ const ModalRegistration: React.FC<ModalRegistrationProps> = ({
   });
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    console.log(data);
-
     const result = await dispatch(registerThunk(data));
     if (registerThunk.fulfilled.match(result)) {
       reset();

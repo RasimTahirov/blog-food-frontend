@@ -75,7 +75,10 @@ const initialStatePost: Post = {
     hours: 0,
     minutes: 0,
   },
-  author: '',
+  author: {
+    name: '',
+    surname: '',
+  },
 };
 
 const initialState: Data = {

@@ -17,7 +17,6 @@ export const registerThunk = createAsyncThunk(
         'http://localhost:9000/api/auth/register',
         userData
       );
-      console.log(res.data);
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {

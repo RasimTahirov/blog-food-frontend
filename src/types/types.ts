@@ -29,6 +29,10 @@ export interface Post {
     hours: number;
     minutes: number;
   };
+  author: {
+    name: string;
+    surname: string;
+  };
 }
 
 export interface Data {

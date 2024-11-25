@@ -1,9 +1,11 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { pageConfig } from '../../config/PageConfig';
+
 import Recipe from '../../components/Recipes/Recipe/Recipe';
 import HomePageList from '../../components/Home/HomePageList/HomePageList';
-import Header2 from '../../components/Header/CompactHeader';
+import CompactHeader from '../../components/Header/CompactHeader';
 import PostListAll from '../../components/Recipes/PostList/PostListAll';
+import RecipeCategory from '../../components/Recipes/RecipeCategory/RecipeCategory';
 
 const NavRoutes = () => {
   const location = useLocation();
@@ -11,11 +13,12 @@ const NavRoutes = () => {
 
   return (
     <>
-      {!isHomePage && <Header2 />}
+      {!isHomePage && <CompactHeader />}
       <Routes>
         <Route path={pageConfig.home} element={<HomePageList />} />
-        <Route path={pageConfig.recipeList} element={<PostListAll />} />
         <Route path={pageConfig.recipe} element={<Recipe />} />
+        <Route path={pageConfig.recipeList} element={<PostListAll />} />
+        <Route path={pageConfig.recipeCategory} element={<RecipeCategory />} />
       </Routes>
     </>
   );

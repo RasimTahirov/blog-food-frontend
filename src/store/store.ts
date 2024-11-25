@@ -5,6 +5,7 @@ import registerReducer from '../redux/registerSlice';
 import postCreateReducer from '../redux/postCreateSlice';
 import postListReducer from '../redux/postListSlice';
 import postReducer from '../redux/postSlice';
+import postCatrgoryReducer from '../redux/postCategorySlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     postCreate: postCreateReducer,
     postList: postListReducer,
     post: postReducer,
+    postCategory: postCatrgoryReducer,
   },
 });
 

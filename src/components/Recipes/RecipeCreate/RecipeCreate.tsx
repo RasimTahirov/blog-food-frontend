@@ -19,8 +19,6 @@ import {
   RecipeForm,
 } from './components/Index';
 
-console.log(name);
-
 const RecipeCreate = () => {
   const dispatch = useDispatch<AppDispatch>();
   const {
@@ -50,8 +48,6 @@ const RecipeCreate = () => {
     };
 
     dispatch(createPostThunk(PostData));
-
-    console.log(PostData);
   };
 
   return (
