@@ -1,7 +1,7 @@
 import { XMarkIcon, SparklesIcon } from '@heroicons/react/16/solid';
 import { AppDispatch, RootState } from '../../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { name, surname } from '../../../utils/userStorage';
+import { localId, name, surname } from '../../../utils/userStorage';
 import {
   addIngredient,
   addStep,
@@ -42,10 +42,14 @@ const RecipeCreate = () => {
       image,
       cookTime,
       author: {
-        name,
-        surname,
+        name: name,
+        surname: surname,
+        id: localId,
       },
     };
+
+    console.log(localId);
+    console.log(surname);
 
     dispatch(createPostThunk(PostData));
   };

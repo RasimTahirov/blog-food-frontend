@@ -1,17 +1,28 @@
-import { Navigate, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postsThunk } from '../../../redux/postSlice';
 import { AppDispatch, RootState } from '../../../store/store';
 import { pageConfig } from '../../../config/PageConfig';
 
-import { RecipeDetalis, RecipePreview, RecipeStep } from '../../Index';
+import {
+  Modal,
+  RecipeDetalis,
+  RecipePreview,
+  RecipeStep,
+  SubmitButtonWhite,
+} from '../../Index';
+import { deletePostThunk } from '../../../redux/postCreateSlice';
 
 const Recipe = () => {
+  const [isActive, setIsActive] = useState(false);
+
   const { id } = useParams();
   const { post } = useSelector((state: RootState) => state.post);
+  const { user } = useSelector((state: RootState) => state.auth.user);
 
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   if (!id || id === 'create') {
     return <Navigate to={pageConfig.recipeCreate} replace />;
@@ -23,6 +34,12 @@ const Recipe = () => {
     }
   }, [dispatch, id]);
 
+  const handleDelete = () => {
+    dispatch(deletePostThunk(id));
+    setIsActive(false);
+    navigate(pageConfig.home);
+  };
+
   return (
     <div className="container-max text-textBlack w-full">
       {post && (
@@ -32,14 +49,29 @@ const Recipe = () => {
             <RecipeStep />
             <RecipeDetalis />
           </div>
-          <div className="mt-5 p-3.5 rounded-mdPlus h-fit bg-containerWhite w-[30%]">
+          <div className="my-5 p-3.5 rounded-mdPlus h-fit bg-containerWhite w-[30%]">
             <p>
               Автор: {post.author.name} {post.author.surname}
             </p>
             <p>Категория: {post.categories}</p>
           </div>
+          {user.id === post.author.id && (
+            <div>
+              <SubmitButtonWhite onClick={() => setIsActive(true)}>
+                Удалить статью
+              </SubmitButtonWhite>
+            </div>
+          )}
         </div>
       )}
+      <Modal active={isActive} setActive={setIsActive}>
+        <div className="bg-black py-[30px] px-10 rounded-mdPlus">
+          <div className="grid gap-2.5">
+            <span>Вы действительно хотите удалить статью?</span>
+            <button onClick={handleDelete}>Удалить</button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

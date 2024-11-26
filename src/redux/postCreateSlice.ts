@@ -50,6 +50,20 @@ export const imageUploadThunk = createAsyncThunk<
   }
 });
 
+export const deletePostThunk = createAsyncThunk(
+  'deletePostThunk',
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:9000/api/post/delete/${id}`
+      );
+      return res.data;
+    } catch (error) {
+      console.log('test1');
+    }
+  }
+);
+
 const initialStatePost: Post = {
   title: '',
   description: '',
@@ -78,6 +92,7 @@ const initialStatePost: Post = {
   author: {
     name: '',
     surname: '',
+    id: '',
   },
 };
 
@@ -189,6 +204,7 @@ const postCreateSlice = createSlice({
         state.error = action.payload as string;
         state.loading = false;
       })
+
       .addCase(imageUploadThunk.fulfilled, (state, action) => {
         const { url, type, id } = action.payload;
 
@@ -200,6 +216,19 @@ const postCreateSlice = createSlice({
             step.image = url;
           }
         }
+      })
+
+      .addCase(deletePostThunk.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deletePostThunk.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(deletePostThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
       });
   },
 });

@@ -1,3 +1,5 @@
+import { User } from '../redux/authSlice';
+
 export interface ImageUploadResult {
   url: string;
   type: 'cover' | 'step';
@@ -32,6 +34,7 @@ export interface Post {
   author: {
     name: string;
     surname: string;
+    id: string;
   };
 }
 
