@@ -16,6 +16,7 @@ const Account = () => {
   const handleLogout = () => {
     dispatch(logout());
     navigate(pageConfig.home);
+    location.reload();
   };
 
   return (

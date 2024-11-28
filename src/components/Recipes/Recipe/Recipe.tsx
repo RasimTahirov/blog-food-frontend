@@ -13,13 +13,12 @@ import {
   SubmitButtonWhite,
 } from '../../Index';
 import { deletePostThunk } from '../../../redux/postCreateSlice';
+import { localId } from '../../../utils/userStorage';
 
 const Recipe = () => {
   const [isActive, setIsActive] = useState(false);
-
   const { id } = useParams();
   const { post } = useSelector((state: RootState) => state.post);
-  const { user } = useSelector((state: RootState) => state.auth.user);
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -55,13 +54,13 @@ const Recipe = () => {
             </p>
             <p>Категория: {post.categories}</p>
           </div>
-          {user.id === post.author.id && (
+          {localId === post.author.id ? (
             <div>
               <SubmitButtonWhite onClick={() => setIsActive(true)}>
                 Удалить статью
               </SubmitButtonWhite>
             </div>
-          )}
+          ) : null}
         </div>
       )}
       <Modal active={isActive} setActive={setIsActive}>

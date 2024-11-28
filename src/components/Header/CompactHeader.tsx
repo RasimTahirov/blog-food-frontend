@@ -18,7 +18,7 @@ const CompactHeader = () => {
       <div className="main-container relative h-[60px] py-5 rounded-mdPlus">
         <div className="flex justify-between relative z-10 items-center">
           <div>
-            <span>LOGO</span>
+            <span className="text-2xl font-semibold">Flavor Feast</span>
           </div>
           <div className="flex gap-5 items-center">
             <Navigation />
