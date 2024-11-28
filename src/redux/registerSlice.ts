@@ -4,7 +4,12 @@ import axios from 'axios';
 export const registerThunk = createAsyncThunk(
   'register',
   async (
-    userData: { name: string; email: string; password: string },
+    userData: {
+      name: string;
+      surname: string;
+      email: string;
+      password: string;
+    },
     { rejectWithValue }
   ) => {
     try {
@@ -27,6 +32,7 @@ export const registerThunk = createAsyncThunk(
 interface User {
   name?: string;
   email: string;
+  surname?: string;
   password: string;
 }
 

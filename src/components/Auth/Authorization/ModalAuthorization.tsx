@@ -58,7 +58,7 @@ const ModalAuthorization: React.FC<ModalAuthorization> = ({ setIsActive }) => {
             })}
             className="inputStyle"
             type="email"
-            placeholder="Логин"
+            placeholder="Почта"
             autoComplete="off"
           />
           {errors.email && (

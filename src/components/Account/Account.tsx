@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { pageConfig } from '../../config/PageConfig';
 import { AppDispatch } from '../../store/store';
 import { logout } from '../../redux/authSlice';
+import { email, name } from '../../utils/userStorage';
 
 import { GoBackHome, NavButtonBlack, SubmitButtonBlack } from '../Index';
-import { email, name } from '../../utils/userStorage';
 
 const Account = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,6 +16,7 @@ const Account = () => {
   const handleLogout = () => {
     dispatch(logout());
     navigate(pageConfig.home);
+    location.reload();
   };
 
   return (

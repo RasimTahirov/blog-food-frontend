@@ -60,6 +60,23 @@ const ModalRegistration: React.FC<ModalRegistrationProps> = ({
           </div>
           <div className="relative">
             <input
+              {...register('surname', {
+                required: 'Введите фамилию',
+                minLength: {
+                  value: 2,
+                  message: 'Минимум 2 символова',
+                },
+              })}
+              className="inputStyle"
+              type="text"
+              placeholder="Фамилие"
+            />
+            {errors.surname && (
+              <span className="errorStyle">{errors.surname?.message}</span>
+            )}
+          </div>
+          <div className="relative">
+            <input
               {...register('email', {
                 required: 'Введите email',
                 pattern: {

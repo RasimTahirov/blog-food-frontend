@@ -30,7 +30,7 @@ const Ingredient = ({ ingredient }: { ingredient: IngredientType }) => {
         className="inputStyle"
         type="text"
         placeholder="Например: лук"
-        value={ingredient.name}
+        value={ingredient.name.toLowerCase()}
         onChange={handleNameChange}
       />
       <input
@@ -45,10 +45,10 @@ const Ingredient = ({ ingredient }: { ingredient: IngredientType }) => {
         onChange={handleUnitChange}
       >
         <option value="г">г</option>
+        <option value="л">л</option>
         <option value="кг">кг</option>
         <option value="шт">шт</option>
         <option value="мл">мл</option>
-        <option value="л">л</option>
         <option value="ч.л">ч.л</option>
         <option value="ст.л">ст.л</option>
       </select>

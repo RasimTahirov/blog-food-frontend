@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store/store';
 import { postListThunk } from '../../../redux/postListSlice';
 import { fullUrl } from '../../../utils/fullUrl';
-import Modal from '../../UI/Modal/Modal';
+import { postCategoryThunk } from '../../../redux/postCategorySlice';
+import { Modal } from '../../Index';
 
 type Post = {
   _id: string;
@@ -20,25 +21,33 @@ const PostListAll = () => {
   const { posts }: { posts: Post[] } = useSelector(
     (state: RootState) => state.postList
   );
+  const { categories } = useSelector((state: RootState) => state.postCategory);
+
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(postListThunk());
+    dispatch(postCategoryThunk());
   }, [dispatch]);
 
   return (
     <div className="container-max text-textBlack">
       <div className="main-container">
-        <div className="flex gap-2.5 pb-5">
-          <div className="py-[5px] px-2.5 bg-containerWhite rounded-xl">
-            <a href="#!">Завтраки</a>
+        <div className="flex gap-2.5 pb-5 items-center">
+          <div>
+            <ul className="flex gap-2.5">
+              {categories.slice(0, 4).map((cat, index) => (
+                <li key={index}>
+                  <Link
+                    to={pageConfig.recipeCategory.replace(':category', cat)}
+                  >
+                    {cat}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="py-[5px] px-2.5 bg-containerWhite rounded-xl">
-            <a href="#!">Салаты</a>
-          </div>
-          <div className="py-[5px] px-2.5 bg-containerWhite rounded-xl">
-            <a href="#!">Супы</a>
-          </div>
+
           <div className="py-[5px] px-2.5 bg-containerWhite rounded-xl">
             <button onClick={() => setModalActive(true)}>Все категории</button>
           </div>
@@ -71,18 +80,15 @@ const PostListAll = () => {
         </div>
       </div>
       <Modal active={modalActive} setActive={setModalActive}>
-        <div>
+        <div className="bg-black py-10 px-20 rounded-mdPlus">
           <ul className="grid grid-cols-3 gap-x-[30px] gap-y-[5px]">
-            <li>Завтраки</li>
-            <li>Закуски</li>
-            <li>Салаты</li>
-            <li>Супы</li>
-            <li>Основные блюда</li>
-            <li>Десерты</li>
-            <li>Напитки</li>
-            <li>Выпечка</li>
-            <li>Фасфуд</li>
-            <li>Каши</li>
+            {categories.map((cat, index) => (
+              <li key={index}>
+                <Link to={pageConfig.recipeCategory.replace(':category', cat)}>
+                  {cat}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </Modal>

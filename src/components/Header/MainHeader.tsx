@@ -27,7 +27,7 @@ const MainHeader = () => {
         <div className="absolute inset-0 bg-black opacity-40 rounded-mdPlus "></div>
         <div className="flex justify-between relative z-10 items-center">
           <div>
-            <span>LOGO</span>
+            <span className="text-2xl font-semibold">Flavor Feast</span>
           </div>
           <div className="flex gap-5 items-center">
             <Navigation />
