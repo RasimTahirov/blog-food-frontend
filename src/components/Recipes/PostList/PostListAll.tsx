@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { pageConfig } from '../../../config/PageConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store/store';
 import { postListThunk } from '../../../redux/postListSlice';
 import { fullUrl } from '../../../utils/fullUrl';
 import { postCategoryThunk } from '../../../redux/postCategorySlice';
+
 import { Modal } from '../../Index';
 
 type Post = {

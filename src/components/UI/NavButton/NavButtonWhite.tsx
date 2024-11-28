@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
+import { NavButton } from './type';
 
-const NavButtonBlack = ({ title, to }) => {
+const NavButtonBlack: React.FC<NavButton> = ({ title, to }) => {
   return (
-    <button className="bg-buttonColorWhite py-[5px] px-[15px] rounded-mdPlus text-lg">
-      <Link to={to} className="text-textBlack">
-        {title}
-      </Link>
-    </button>
+    <Link
+      to={to}
+      className="text-textBlack bg-buttonColorWhite py-[5px] px-[15px] rounded-mdPlus text-lg"
+    >
+      {title}
+    </Link>
   );
 };
 

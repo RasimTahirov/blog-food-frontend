@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postsThunk } from '../../../redux/postSlice';
 import { AppDispatch, RootState } from '../../../store/store';
 import { pageConfig } from '../../../config/PageConfig';
+import { deletePostThunk } from '../../../redux/postCreateSlice';
+import { localId } from '../../../utils/userStorage';
 
 import {
   Modal,
@@ -12,11 +14,10 @@ import {
   RecipeStep,
   SubmitButtonWhite,
 } from '../../Index';
-import { deletePostThunk } from '../../../redux/postCreateSlice';
-import { localId } from '../../../utils/userStorage';
 
 const Recipe = () => {
   const [isActive, setIsActive] = useState(false);
+
   const { id } = useParams();
   const { post } = useSelector((state: RootState) => state.post);
 

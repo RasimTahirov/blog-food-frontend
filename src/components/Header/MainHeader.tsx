@@ -4,11 +4,10 @@ import { RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
 import { HeartIcon, UserCircleIcon } from '@heroicons/react/16/solid';
 
-import ModalAuthorization from '../Auth/Authorization/ModalAuthorization';
-import ModalRegistration from '../Auth/Registration/ModalRegistration';
-
 import {
   Modal,
+  ModalAuthorization,
+  ModalRegistration,
   NavButtonIconRed,
   NavButtonWhite,
   Navigation,

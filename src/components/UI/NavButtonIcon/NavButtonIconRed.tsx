@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import { NavButtonIcon } from './type';
 
-const NavButtonIconRed = ({ children, to }) => {
+const NavButtonIconRed: React.FC<NavButtonIcon> = ({ children, to }) => {
   return (
     <Link
       to={to}

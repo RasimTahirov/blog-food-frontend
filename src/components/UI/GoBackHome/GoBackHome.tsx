@@ -1,16 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { pageConfig } from '../../../config/PageConfig';
 
 const GoBackHome = () => {
-  const navigate = useNavigate();
-  const goBack = () => navigate('/');
-
   return (
-    <button
+    <Link
       className="bg-black py-[5px] px-[15px] rounded-mdPlus"
-      onClick={goBack}
+      to={pageConfig.home}
     >
-      <p className="text-textWhite">На главную</p>
-    </button>
+      <span className="text-textWhite">На главную</span>
+    </Link>
   );
 };
 

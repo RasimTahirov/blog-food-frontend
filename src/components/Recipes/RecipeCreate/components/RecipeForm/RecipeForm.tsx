@@ -27,7 +27,7 @@ const RecipeForm = () => {
           placeholder="Томатный суп с сырными гренками"
           value={title}
           onChange={handleTitleChange}
-          // max={38} Запомнить!!!!!
+          maxLength={37}
         />
       </div>
       <div className="grid mb-[5px]">
@@ -38,6 +38,7 @@ const RecipeForm = () => {
           placeholder="Быстрый, простой и вкусный рецепт томатного супа-пюре"
           value={description}
           onChange={handleDescriptionChange}
+          maxLength={277}
         />
       </div>
       <div className="grid mb-[5px]">

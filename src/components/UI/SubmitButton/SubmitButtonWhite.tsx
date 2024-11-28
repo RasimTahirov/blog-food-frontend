@@ -1,11 +1,6 @@
-import React, { ReactNode } from 'react';
+import { SubmitButtonProps } from './type';
 
-interface SubmitButtonWhiteProps {
-  children: ReactNode;
-  onClick?: () => void;
-}
-
-const SubmitButtonWhite: React.FC<SubmitButtonWhiteProps> = ({
+const SubmitButtonWhite: React.FC<SubmitButtonProps> = ({
   children,
   onClick,
 }) => {

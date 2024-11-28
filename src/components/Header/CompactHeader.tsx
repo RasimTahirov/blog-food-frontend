@@ -4,10 +4,13 @@ import { RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
 import { HeartIcon, UserCircleIcon } from '@heroicons/react/16/solid';
 
-import NavButtonIconWhite from '../UI/NavButtonIcon/NavButtonIconWhite';
-import ModalAuthorization from '../Auth/Authorization/ModalAuthorization';
-
-import { Modal, Navigation, SubmitButtonWhite } from '../Index';
+import {
+  Modal,
+  ModalAuthorization,
+  NavButtonIconWhite,
+  Navigation,
+  SubmitButtonWhite,
+} from '../Index';
 
 const CompactHeader = () => {
   const [isActiveAuthorization, setIsActiveAuthorization] = useState(false);

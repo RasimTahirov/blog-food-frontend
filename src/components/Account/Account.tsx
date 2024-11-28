@@ -1,17 +1,33 @@
 import avatar from '../../../public/assets/avatar/dceb8bb5ac5f91b63912faf77154483c.jpg';
 
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { pageConfig } from '../../config/PageConfig';
 import { AppDispatch } from '../../store/store';
 import { logout } from '../../redux/authSlice';
-import { email, name } from '../../utils/userStorage';
+import {
+  email as initialEmail,
+  name as initialName,
+} from '../../utils/userStorage';
 
 import { GoBackHome, NavButtonBlack, SubmitButtonBlack } from '../Index';
 
 const Account = () => {
+  const [userEmail, setUserEmail] = useState(initialEmail);
+  const [userName, setUserName] = useState(initialName);
+
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const parserData = JSON.parse(userData);
+      setUserEmail(parserData.user.email);
+      setUserName(parserData.user.name);
+    }
+  }, []);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -43,12 +59,17 @@ const Account = () => {
                 className="inputStyle"
                 disabled
                 type="text"
-                value={email}
+                value={userEmail}
               />
             </div>
             <div className="grid gap-[5px]">
               <label htmlFor="name">Имя</label>
-              <input className="inputStyle" disabled type="text" value={name} />
+              <input
+                className="inputStyle"
+                disabled
+                type="text"
+                value={userName}
+              />
             </div>
           </div>
           <div className="flex justify-between">

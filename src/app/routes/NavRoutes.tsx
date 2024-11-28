@@ -6,6 +6,7 @@ import HomePageList from '../../components/Home/HomePageList/HomePageList';
 import CompactHeader from '../../components/Header/CompactHeader';
 import PostListAll from '../../components/Recipes/PostList/PostListAll';
 import RecipeCategory from '../../components/Recipes/RecipeCategory/RecipeCategory';
+import ScrollToTop from '../../utils/scrollToTop';
 
 const NavRoutes = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const NavRoutes = () => {
   return (
     <>
       {!isHomePage && <CompactHeader />}
+      <ScrollToTop />
       <Routes>
         <Route path={pageConfig.home} element={<HomePageList />} />
         <Route path={pageConfig.recipe} element={<Recipe />} />

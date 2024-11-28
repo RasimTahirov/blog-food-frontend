@@ -1,5 +1,4 @@
 import './Modal.scss';
-
 import { ReactNode } from 'react';
 
 interface ModalProps {

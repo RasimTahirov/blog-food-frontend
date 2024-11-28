@@ -48,9 +48,6 @@ const RecipeCreate = () => {
       },
     };
 
-    console.log(localId);
-    console.log(surname);
-
     dispatch(createPostThunk(PostData));
   };
 
