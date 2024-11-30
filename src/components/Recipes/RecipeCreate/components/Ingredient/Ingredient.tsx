@@ -6,6 +6,7 @@ import {
   setIngredientUnit,
 } from '../../../../../redux/postCreateSlice';
 import { IngredientType } from '../../../../../types/types';
+import { Input, InputNumber, Select } from 'antd';
 
 const Ingredient = ({ ingredient }: { ingredient: IngredientType }) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,44 +15,59 @@ const Ingredient = ({ ingredient }: { ingredient: IngredientType }) => {
     dispatch(setIngredientName({ id: ingredient.id, name: e.target.value }));
   };
 
-  const handleUnitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(setIngredientUnit({ id: ingredient.id, unit: e.target.value }));
+  const handleUnitChange = (value: string) => {
+    dispatch(
+      setIngredientUnit({
+        id: ingredient.id,
+        unit: value,
+      })
+    );
   };
 
-  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(
-      setIngredientAmount({ id: ingredient.id, amount: e.target.value })
-    );
+  const handleAmountChange = (value: number | null) => {
+    if (value !== null) {
+      dispatch(
+        setIngredientAmount({
+          id: ingredient.id,
+          amount: value,
+        })
+      );
+    }
   };
 
   return (
     <div className="grid grid-cols-[4fr_1fr_1fr] gap-5">
-      <input
-        className="inputStyle"
-        type="text"
+      <Input
+        showCount
         placeholder="Например: лук"
+        maxLength={35}
         value={ingredient.name.toLowerCase()}
         onChange={handleNameChange}
+        className="custom-input"
+        style={{ height: 35 }}
       />
-      <input
-        className="inputStyle flex text-center"
-        type="number"
+      <InputNumber
         placeholder="кол-во"
+        min={0}
         onChange={handleAmountChange}
+        className="custom-input"
+        style={{ height: 35 }}
       />
-      <select
-        className="inputStyle"
+      <Select
         value={ingredient.unit}
         onChange={handleUnitChange}
-      >
-        <option value="г">г</option>
-        <option value="л">л</option>
-        <option value="кг">кг</option>
-        <option value="шт">шт</option>
-        <option value="мл">мл</option>
-        <option value="ч.л">ч.л</option>
-        <option value="ст.л">ст.л</option>
-      </select>
+        className="custom-select"
+        options={[
+          { value: 'г', label: 'г' },
+          { value: 'л', label: 'л' },
+          { value: 'кг', label: 'кг' },
+          { value: 'шт', label: 'шт' },
+          { value: 'мл', label: 'мл' },
+          { value: 'ч.л', label: 'ч.л' },
+          { value: 'ст.л', label: 'ст.л' },
+        ]}
+        style={{ height: 35 }}
+      />
     </div>
   );
 };

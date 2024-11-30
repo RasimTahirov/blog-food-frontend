@@ -2,17 +2,16 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
-import { HeartIcon, UserCircleIcon } from '@heroicons/react/16/solid';
+import { Link } from 'react-router-dom';
+import { HeartFilled, UserOutlined } from '@ant-design/icons';
 
 import {
   Modal,
   ModalAuthorization,
   ModalRegistration,
-  NavButtonIconRed,
-  NavButtonWhite,
   Navigation,
-  SubmitButtonWhite,
 } from '../Index';
+import { Button } from 'antd';
 
 const MainHeader = () => {
   const [isActiveAuthorization, setIsActiveAuthorization] = useState(false);
@@ -32,50 +31,56 @@ const MainHeader = () => {
             <Navigation />
             {user ? (
               <div className="flex gap-5">
-                {/* Временно  to={pageConfig.recipeCreate} */}
-                <NavButtonIconRed to={pageConfig.recipeCreate}>
-                  <HeartIcon className="iconSize" />
-                </NavButtonIconRed>
-
-                <NavButtonIconRed to={pageConfig.account}>
-                  <UserCircleIcon className="iconSize" />
-                </NavButtonIconRed>
+                {/* Временно  to={pageConfig.account} */}
+                <Link to={pageConfig.account}>
+                  <Button className="custom-button">
+                    <HeartFilled />
+                  </Button>
+                </Link>
+                <Link to={pageConfig.account}>
+                  <Button className="custom-button">
+                    <UserOutlined />
+                  </Button>
+                </Link>
               </div>
             ) : (
               <>
-                <SubmitButtonWhite
+                <Button
                   onClick={() => setIsActiveAuthorization(true)}
+                  className="custom-button"
                 >
                   Войти
-                </SubmitButtonWhite>
+                </Button>
               </>
             )}
           </div>
         </div>
         <div className="grid absolute bottom-5">
-          <p className="text-5xl font-bold mb-2.5">Еда, которая согревает</p>
+          <p className="text-5xl font-bold">Еда, которая согревает</p>
           <div className="flex gap-2.5 mt-2.5">
             {user ? (
               <>
-                <NavButtonWhite
-                  to={pageConfig.recipeCreate}
-                  title="Опубликовать рецепт"
-                />
-                <NavButtonWhite
-                  to={pageConfig.recipeCreate}
-                  title="Создать статью"
-                />
+                <Link className="link-style" to={pageConfig.recipeCreate}>
+                  <Button className="custom-button">Опубликовать рецепт</Button>
+                </Link>
+                <Link className="link-style" to={pageConfig.recipeCreate}>
+                  <Button className="custom-button">Опубликовать статью</Button>
+                </Link>
               </>
             ) : (
               <>
-                <SubmitButtonWhite
+                <Button
                   onClick={() => setIsActiveAuthorization(true)}
+                  className="custom-button"
                 >
                   Войти
-                </SubmitButtonWhite>
-                <SubmitButtonWhite onClick={() => setIsActiveRegister(true)}>
+                </Button>
+                <Button
+                  onClick={() => setIsActiveRegister(true)}
+                  className="custom-button"
+                >
                   Зарегистрироваться
-                </SubmitButtonWhite>
+                </Button>
               </>
             )}
           </div>

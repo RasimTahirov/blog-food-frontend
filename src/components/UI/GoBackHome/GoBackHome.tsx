@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 import { pageConfig } from '../../../config/PageConfig';
+import { Button } from 'antd';
 
 const GoBackHome = () => {
   return (
-    <Link
-      className="bg-black py-[5px] px-[15px] rounded-mdPlus"
-      to={pageConfig.home}
-    >
-      <span className="text-textWhite">На главную</span>
+    <Link to={pageConfig.home}>
+      <Button className="custom-button">На главную</Button>
     </Link>
   );
 };

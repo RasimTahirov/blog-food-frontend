@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { StarIcon } from '@heroicons/react/16/solid';
 import { fullUrl } from '../../../../../utils/fullUrl';
 import { RootState } from '../../../../../store/store';
 
@@ -25,14 +24,6 @@ const RecipePreview = () => {
             className="w-[580px] h-[320px] object-cover"
           />
         </div>
-        <button className="absolute top-[5%] right-[5%] py-[5px] px-[15px] bg-buttonColorWhite rounded-mdPlus flex items-center gap-[5px]">
-          <StarIcon
-            className="w-5 hover:fill-black"
-            fill="transparent"
-            stroke="#333333"
-          />
-          <span>в избранное</span>
-        </button>
       </div>
     </div>
   );

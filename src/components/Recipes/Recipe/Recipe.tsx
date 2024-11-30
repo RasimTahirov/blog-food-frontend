@@ -7,13 +7,8 @@ import { pageConfig } from '../../../config/PageConfig';
 import { deletePostThunk } from '../../../redux/postCreateSlice';
 import { localId } from '../../../utils/userStorage';
 
-import {
-  Modal,
-  RecipeDetalis,
-  RecipePreview,
-  RecipeStep,
-  SubmitButtonWhite,
-} from '../../Index';
+import { Modal, RecipeDetalis, RecipePreview, RecipeStep } from '../../Index';
+import { Button } from 'antd';
 
 const Recipe = () => {
   const [isActive, setIsActive] = useState(false);
@@ -55,13 +50,19 @@ const Recipe = () => {
             </p>
             <p>Категория: {post.categories}</p>
           </div>
-          {localId === post.author.id ? (
-            <div>
-              <SubmitButtonWhite onClick={() => setIsActive(true)}>
-                Удалить статью
-              </SubmitButtonWhite>
-            </div>
-          ) : null}
+          <div className="flex gap-5">
+            {localId === post.author.id ? (
+              <div>
+                <Button
+                  className="custom-button"
+                  onClick={() => setIsActive(true)}
+                >
+                  Удалть статью
+                </Button>
+              </div>
+            ) : null}
+            <Button className="custom-button">В избранное</Button>
+          </div>
         </div>
       )}
       <Modal active={isActive} setActive={setIsActive}>

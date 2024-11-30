@@ -2,15 +2,11 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
-import { HeartIcon, UserCircleIcon } from '@heroicons/react/16/solid';
+import { HeartFilled, UserOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
-import {
-  Modal,
-  ModalAuthorization,
-  NavButtonIconWhite,
-  Navigation,
-  SubmitButtonWhite,
-} from '../Index';
+import { Modal, ModalAuthorization, Navigation } from '../Index';
+import { Button } from 'antd';
 
 const CompactHeader = () => {
   const [isActiveAuthorization, setIsActiveAuthorization] = useState(false);
@@ -18,7 +14,7 @@ const CompactHeader = () => {
   const user = useSelector((state: RootState) => state.auth.user);
   return (
     <header className="container-max text-lg my-5 w-full text-textBlack">
-      <div className="main-container relative h-[60px] py-5 rounded-mdPlus">
+      <div className="main-container relative py-5 rounded-mdPlus">
         <div className="flex justify-between relative z-10 items-center">
           <div>
             <span className="text-2xl font-semibold">Flavor Feast</span>
@@ -27,22 +23,21 @@ const CompactHeader = () => {
             <Navigation />
             {user ? (
               <div className="flex gap-5">
-                {/* Временно  to={pageConfig.recipeCreate} */}
-                <NavButtonIconWhite to={pageConfig.recipeCreate}>
-                  <HeartIcon className="iconSize" />
-                </NavButtonIconWhite>
-
-                <NavButtonIconWhite to={pageConfig.account}>
-                  <UserCircleIcon className="iconSize" />
-                </NavButtonIconWhite>
+                {/* Временно  to={pageConfig.account} */}
+                <Link to={pageConfig.account}>
+                  <Button className="custom-button">
+                    <HeartFilled />
+                  </Button>
+                </Link>
+                <Link to={pageConfig.account}>
+                  <Button className="custom-button">
+                    <UserOutlined />
+                  </Button>
+                </Link>
               </div>
             ) : (
               <>
-                <SubmitButtonWhite
-                  onClick={() => setIsActiveAuthorization(true)}
-                >
-                  Войти
-                </SubmitButtonWhite>
+                <Button className="custom-button">Войти</Button>
               </>
             )}
           </div>

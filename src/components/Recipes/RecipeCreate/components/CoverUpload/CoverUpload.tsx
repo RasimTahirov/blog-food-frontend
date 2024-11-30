@@ -17,10 +17,10 @@ const CoverUpload = () => {
   };
 
   return (
-    <div className="mb-5 bg-containerWhite w-full rounded-mdPlus">
-      <div className="relative cursor-pointer w-full h-[250px] ">
+    <div className="mb-5 bg-containerWhite w-full rounded-mdPlus border border-solid border-borderWhite custom-input-cover">
+      <div className="relative cursor-pointer w-full h-[250px]">
         <input
-          className="absolute inset-0 opacity-0 cursor-pointer "
+          className="absolute inset-0 opacity-0 cursor-pointer"
           type="file"
           onChange={handleFileChange}
         />

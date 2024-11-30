@@ -1,4 +1,5 @@
-import { Navigation, SubmitButtonWhite } from '../Index';
+import { Button } from 'antd';
+import { Navigation } from '../Index';
 
 const Footer = () => {
   return (
@@ -16,11 +17,11 @@ const Footer = () => {
           <form className="grid justify-end gap-2.5">
             <label htmlFor="email-input">Рассылка о вкусном и полезном</label>
             <input
-              className="inputStyle"
+              className="custom-input"
               type="email"
               placeholder="введите email"
             />
-            <SubmitButtonWhite>Подписаться</SubmitButtonWhite>
+            <Button className="custom-button-white">Подписаться</Button>
           </form>
         </div>
       </div>
