@@ -4,19 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postsThunk } from '../../../redux/postSlice';
 import { AppDispatch, RootState } from '../../../store/store';
 import { pageConfig } from '../../../config/PageConfig';
-
-import {
-  Modal,
-  RecipeDetalis,
-  RecipePreview,
-  RecipeStep,
-  SubmitButtonWhite,
-} from '../../Index';
 import { deletePostThunk } from '../../../redux/postCreateSlice';
 import { localId } from '../../../utils/userStorage';
 
+import { Modal, RecipeDetalis, RecipePreview, RecipeStep } from '../../Index';
+import { Button } from 'antd';
+
 const Recipe = () => {
   const [isActive, setIsActive] = useState(false);
+
   const { id } = useParams();
   const { post } = useSelector((state: RootState) => state.post);
 
@@ -54,13 +50,19 @@ const Recipe = () => {
             </p>
             <p>Категория: {post.categories}</p>
           </div>
-          {localId === post.author.id ? (
-            <div>
-              <SubmitButtonWhite onClick={() => setIsActive(true)}>
-                Удалить статью
-              </SubmitButtonWhite>
-            </div>
-          ) : null}
+          <div className="flex gap-5">
+            {localId === post.author.id ? (
+              <div>
+                <Button
+                  className="custom-button-red"
+                  onClick={() => setIsActive(true)}
+                >
+                  Удалть статью
+                </Button>
+              </div>
+            ) : null}
+            <Button className="custom-button-red">В избранное</Button>
+          </div>
         </div>
       )}
       <Modal active={isActive} setActive={setIsActive}>

@@ -10,7 +10,7 @@
 
 .layout {
   height: 100%;
-  font-family: 'Releway';
+  font-family: 'Noto-Sans';
   font-size: 17px;
   font-weight: 500;
   color: #fff;
@@ -31,26 +31,75 @@
   }
 }
 
-.iconSize {
-  @apply w-5 h-5;
+.custom-error {
+  @apply text-textRed;
 }
 
-.inputText::placeholder {
-  @apply text-base;
-}
-
-.inputStyle {
-  @apply py-[5px] px-2.5 mb-1.5 text-textBlack bg-containerWhite h-full w-full rounded-mdPlus inputText;
-}
-
-.errorStyle {
-  @apply absolute left-1.5 top-[40px] leading-5 text-textWhite;
-}
-
-.borderStyle {
-  @apply border-solid border border-borderBlack;
-}
+// ff4d42
 
 .titleForm {
   @apply text-xl mb-0.5 font-semibold;
+}
+
+.custom-input,
+.custom-select {
+  @apply font-light text-base;
+}
+
+.custom-select .ant-select-selector:hover {
+  @apply border-borderRed !important;
+}
+
+.custom-select .ant-select-selector:focus-within {
+  @apply border-borderRed shadow-custom !important;
+}
+
+.custom-select .ant-select-item-option,
+.ant-select-item:hover,
+.ant-select-item-option-selected {
+  @apply bg-buttonRed text-textWhite !important;
+}
+
+.custom-input:focus-within {
+  @apply border-borderRed shadow-custom;
+}
+
+.custom-input:hover {
+  @apply border-borderRed;
+}
+
+.custom-input-cover:hover {
+  @apply border-borderRed transition-all duration-300 ease-in;
+}
+
+.custom-input-cover {
+  @apply transition-all duration-300 ease-in;
+}
+
+.custom-button-red {
+  @apply border-transparent text-lg bg-buttonRed text-textWhite h-[32px];
+}
+
+.custom-button-red:hover {
+  @apply bg-buttonWhite text-textBlack border-borderRed !important;
+}
+
+.custom-button-white {
+  @apply border-transparent bg-buttonWhite text-textBlack !important;
+}
+
+.custom-button-white:hover {
+  @apply bg-buttonRed text-textWhite !important;
+}
+
+.link-style {
+  @apply block;
+}
+
+.cardHover {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.cardHover:hover {
+  @apply shadow-hoverCard transition-all duration-200 ease-linear;
 }

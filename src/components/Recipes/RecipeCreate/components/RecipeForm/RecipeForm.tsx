@@ -2,6 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setDescription, setTitle } from '../../../../../redux/postCreateSlice';
 import { AppDispatch, RootState } from '../../../../../store/store';
 import { SelectCategories } from '../Index';
+import { Input } from 'antd';
+
+import TextArea from 'antd/es/input/TextArea';
 
 const RecipeForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,7 +16,9 @@ const RecipeForm = () => {
     dispatch(setTitle(e.target.value));
   };
 
-  const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDescriptionChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     dispatch(setDescription(e.target.value));
   };
 
@@ -21,23 +26,27 @@ const RecipeForm = () => {
     <div className="grid items-center w-full">
       <div className="grid mb-[5px]">
         <label className="titleForm">Название рецепта</label>
-        <input
-          className="inputStyle"
-          type="text"
+        <Input
+          showCount
+          maxLength={35}
           placeholder="Томатный суп с сырными гренками"
           value={title}
           onChange={handleTitleChange}
-          // max={38} Запомнить!!!!!
+          className="custom-input"
+          style={{ height: 35 }}
         />
       </div>
       <div className="grid mb-[5px]">
         <label className="titleForm">Описание рецепта</label>
-        <input
-          className="inputStyle"
-          type="text"
+        <TextArea
+          showCount
+          minLength={10}
+          maxLength={250}
           placeholder="Быстрый, простой и вкусный рецепт томатного супа-пюре"
           value={description}
           onChange={handleDescriptionChange}
+          style={{ height: 120, resize: 'none' }}
+          className="custom-input"
         />
       </div>
       <div className="grid mb-[5px]">

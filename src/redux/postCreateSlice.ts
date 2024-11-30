@@ -50,7 +50,7 @@ export const imageUploadThunk = createAsyncThunk<
   }
 });
 
-export const deletePostThunk = createAsyncThunk(
+export const deletePostThunk = createAsyncThunk<string, string>(
   'deletePostThunk',
   async (id, { rejectWithValue }) => {
     try {

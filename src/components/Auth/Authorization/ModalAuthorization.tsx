@@ -1,11 +1,11 @@
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { authThunk } from '../../../redux/authSlice';
 import { AppDispatch, RootState } from '../../../store/store';
 import { pageConfig } from '../../../config/PageConfig';
 
-import AuthForm from '../AuthForm/AuthForm';
+import { Button, Form, Input } from 'antd';
 
 interface FormValues {
   email: string;
@@ -21,67 +21,71 @@ const ModalAuthorization: React.FC<ModalAuthorization> = ({ setIsActive }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { error } = useSelector((state: RootState) => state.auth);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<FormValues>({
-    mode: 'onBlur',
-  });
-
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const result = await dispatch(authThunk(data));
     if (authThunk.fulfilled.match(result)) {
       localStorage.setItem('user', JSON.stringify(result.payload));
       navigate(pageConfig.account);
       setIsActive(false);
-      reset();
+      location.reload();
     }
   };
 
   return (
-    <AuthForm
-      title="Авторизация"
-      onSubmit={handleSubmit(onSubmit)}
-      buttonText="Войти"
-    >
-      <div className="grid gap-10 w-[250px]">
-        <div className="relative">
-          <input
-            {...register('email', {
-              required: 'Введите email',
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: 'Некорректный email',
-              },
-            })}
-            className="inputStyle"
-            type="email"
-            placeholder="Почта"
-            autoComplete="off"
-          />
-          {errors.email && (
-            <span className="errorStyle">{errors.email?.message}</span>
-          )}
+    <div className="h-full grid items-center">
+      <div className="m-auto container-max bg-black rounded-mdPlus">
+        <div className="mx-20 p-10 grid justify-center gap-10">
+          <h3 className="flex justify-center text-3xl font-semibold">
+            Авторизация
+          </h3>
+          <Form onFinish={onSubmit}>
+            <div className="grid justify-items-end w-60">
+              <Form.Item
+                name="email"
+                rules={[
+                  {
+                    type: 'email',
+                    message: 'Введён некорректный адрес электронной почты',
+                  },
+                  {
+                    required: true,
+                    message: 'Пожалуйста, введите адрес электронной почты',
+                  },
+                ]}
+              >
+                <Input className="custom-input w-60" placeholder="Почта" />
+              </Form.Item>
+              <Form.Item
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Пожалуйста, введите пароль',
+                  },
+                ]}
+              >
+                <Input.Password
+                  className="custom-input w-60"
+                  placeholder="Пароль"
+                />
+              </Form.Item>
+            </div>
+            <div className="mt-10 w-60">
+              <Form.Item>
+                <div className="grid gap-[5px]">
+                  <Button htmlType="submit" className="custom-button-white">
+                    Войти
+                  </Button>
+                  <div className="custom-error">
+                    {error && <span>{error}</span>}
+                  </div>
+                </div>
+              </Form.Item>
+            </div>
+          </Form>
         </div>
-        <div className="relative">
-          <input
-            {...register('password', {
-              required: 'Введите пароль',
-            })}
-            className="inputStyle"
-            type="password"
-            placeholder="Пароль"
-            autoComplete="off"
-          />
-          {errors.password && (
-            <span className="errorStyle">{errors.password?.message}</span>
-          )}
-        </div>
-        {error && <span>{error}</span>}
       </div>
-    </AuthForm>
+    </div>
   );
 };
 

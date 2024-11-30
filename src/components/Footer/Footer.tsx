@@ -1,4 +1,5 @@
-import { Navigation, SubmitButtonWhite } from '../Index';
+import { Button } from 'antd';
+import { Navigation } from '../Index';
 
 const Footer = () => {
   return (
@@ -6,7 +7,7 @@ const Footer = () => {
       <div className="main-container py-5">
         <div className="flex justify-between mb-[30px]">
           <div>
-            <p>LOGO</p>
+            <span>Flavor Feast</span>
           </div>
           <div>
             <Navigation />
@@ -16,11 +17,11 @@ const Footer = () => {
           <form className="grid justify-end gap-2.5">
             <label htmlFor="email-input">Рассылка о вкусном и полезном</label>
             <input
-              className="inputStyle"
+              className="rounded-[5px] text-textBlack py-[2.5px] px-[5px]"
               type="email"
               placeholder="введите email"
             />
-            <SubmitButtonWhite>Подписаться</SubmitButtonWhite>
+            <Button className="custom-button-white">Подписаться</Button>
           </form>
         </div>
       </div>

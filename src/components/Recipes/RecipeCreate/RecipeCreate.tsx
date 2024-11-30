@@ -10,7 +10,7 @@ import {
   removeStep,
 } from '../../../redux/postCreateSlice';
 
-import { GoBackHome, SubmitButtonWhite } from '../../Index';
+import { GoBackHome } from '../../Index';
 import {
   Ingredient,
   Step,
@@ -18,6 +18,7 @@ import {
   CoverUpload,
   RecipeForm,
 } from './components/Index';
+import { Button } from 'antd';
 
 const RecipeCreate = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -48,16 +49,13 @@ const RecipeCreate = () => {
       },
     };
 
-    console.log(localId);
-    console.log(surname);
-
     dispatch(createPostThunk(PostData));
   };
 
   return (
     <div className="grid justify-center py-5 px-10 text-textBlack">
       <form onSubmit={handleSubmit} className="max-w-[555px]">
-        <div className="flex justify-between mb-5">
+        <div className="flex justify-between items-center mb-5">
           <h3 className="text-4xl font-bold">Создание рецепта</h3>
           <GoBackHome />
         </div>
@@ -71,19 +69,27 @@ const RecipeCreate = () => {
             {ingredients.map((ingredient) => (
               <div className="flex gap-5" key={ingredient.id}>
                 <Ingredient ingredient={ingredient} />
-                <SubmitButtonWhite
+                <Button
+                  className="custom-button-red"
+                  variant="filled"
                   onClick={() => dispatch(removeIngredient(ingredient.id))}
+                  style={{ height: 35 }}
                 >
-                  <XMarkIcon className="w-5" />
-                </SubmitButtonWhite>
+                  Удалить
+                </Button>
               </div>
             ))}
           </div>
         </div>
         <div className="mt-2.5 mb-2.5">
-          <SubmitButtonWhite onClick={() => dispatch(addIngredient())}>
+          <Button
+            className="custom-button-red"
+            variant="filled"
+            onClick={() => dispatch(addIngredient())}
+            style={{ height: 35 }}
+          >
             Добавить ингредиент
-          </SubmitButtonWhite>
+          </Button>
         </div>
         <div className="grid">
           <div className="mb-2.5">
@@ -91,7 +97,7 @@ const RecipeCreate = () => {
               Инстуркция по приготовлению
             </span>
           </div>
-          <div className="flex items-center gap-[10px] font-extralight bg-containerNotification max-w-[80%] py-[5px] px-2.5 leading-normal rounded-mdPlus mb-2.5">
+          <div className="flex items-center gap-[10px] font-extralight bg-containerNotification py-[5px] px-2.5 leading-normal rounded-mdPlus mb-2.5">
             <SparklesIcon className="fill-black w-5" />
             <p>Для создания рецепта необходимо иметь 3 шага</p>
           </div>
@@ -109,18 +115,26 @@ const RecipeCreate = () => {
               </div>
             ))}
             <div className="mb-2.5">
-              <SubmitButtonWhite onClick={() => dispatch(addStep())}>
+              <Button
+                className="custom-button-red"
+                variant="filled"
+                onClick={() => dispatch(addStep())}
+              >
                 Добавить шаг
-              </SubmitButtonWhite>
+              </Button>
             </div>
           </div>
         </div>
         <div className="max-w-[50%]">
           <Time />
         </div>
-        <button className="bg-buttonColorWhite py-[5px] px-[20px] rounded-mdPlus text-lg text-textBlack">
+        <Button
+          className="custom-button-red"
+          variant="filled"
+          htmlType="submit"
+        >
           Опубликовать
-        </button>
+        </Button>
       </form>
     </div>
   );

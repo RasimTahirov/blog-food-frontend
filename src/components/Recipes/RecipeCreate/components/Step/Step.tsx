@@ -9,11 +9,15 @@ import {
 } from '../../../../../redux/postCreateSlice';
 import { StepType } from '../../../../../types/types';
 
+import TextArea from 'antd/es/input/TextArea';
+
 const Step = ({ steps }: { steps: StepType }) => {
   const dispatch = useDispatch<AppDispatch>();
   const [image, setImage] = useState<string | null>(null);
 
-  const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDescriptionChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     dispatch(setDescriptionStep({ id: steps.id, description: e.target.value }));
   };
 
@@ -33,12 +37,12 @@ const Step = ({ steps }: { steps: StepType }) => {
   };
 
   return (
-    <div className="borderStyle rounded-lg p-5">
+    <div className="border-solid border border-borderRed rounded-lg p-5">
       <span className="text-xl font-bold mb-1">Шаг {steps.stepNumber}</span>
       {image ? (
         <img
           src={image}
-          alt=""
+          alt={`шаг ${steps.stepNumber}`}
           className="w-[90%] h-[250px] object-cover rounded-mdPlus mb-2"
         />
       ) : (
@@ -54,12 +58,15 @@ const Step = ({ steps }: { steps: StepType }) => {
       )}
       <div className="grid">
         <label className="titleForm">Описание шага</label>
-        <input
-          className="inputStyle"
-          type="text"
-          placeholder="Налейте в небольшую кастрюлю 1 ст. л. оливкового масла."
+        <TextArea
+          showCount
+          minLength={10}
+          maxLength={250}
+          placeholder="Быстрый, простой и вкусный рецепт томатного супа-пюре"
           value={steps.description}
           onChange={handleDescriptionChange}
+          style={{ height: 100, resize: 'none' }}
+          className="custom-input"
         />
       </div>
     </div>

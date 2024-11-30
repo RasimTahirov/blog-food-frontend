@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../../store/store';
 import { setCategories } from '../../../../../redux/postCreateSlice';
+import { Select } from 'antd';
 
 const SelectCategories = () => {
   const dispatch = useDispatch();
@@ -8,33 +9,34 @@ const SelectCategories = () => {
     (state: RootState) => state.postCreate.post
   );
 
-  const handleCategoriesChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(setCategories(e.target.value));
+  const handleCategoriesChange = (value: string) => {
+    dispatch(setCategories(value));
   };
 
   return (
     <div>
-      <select
-        className="inputStyle"
+      <Select
         value={categories}
         onChange={handleCategoriesChange}
-      >
-        <option value="Завртаки">Завртаки</option>
-        <option value="Закуски">Закуски</option>
-        <option value="Салаты">Салаты</option>
-        <option value="Основные блюда">Основные блюда</option>
-        <option value="Супы">Супы</option>
-        <option value="Десерты">Десерты</option>
-        <option value="Напитки">Напитки</option>
-        <option value="Выпечка">Выпечка</option>
-        <option value="Фастфуд">Фастфуд</option>
-        <option value="Каши">Каши</option>
-        <option value="Паста">Паста</option>
-        <option value="Соусы">Соусы</option>
-        <option value="Рыба">Рыба</option>
-        <option value="Мясо">Мясо</option>
-        <option value="Морепродукты">Морепродукты</option>
-      </select>
+        style={{ width: 245, height: 35 }}
+        className="custom-select"
+        options={[
+          { value: 'Завртаки', label: 'Завртаки' },
+          { value: 'Закуски', label: 'Закуски' },
+          { value: 'Салаты', label: 'Салаты' },
+          { value: 'Основные блюда', label: 'Основные блюда' },
+          { value: 'Супы', label: 'Супы' },
+          { value: 'Напитки', label: 'Напитки' },
+          { value: 'Выпечка', label: 'Выпечка' },
+          { value: 'Фастфуд', label: 'Фастфуд' },
+          { value: 'Каши', label: 'Каши' },
+          { value: 'Паста', label: 'Паста' },
+          { value: 'Соусы', label: 'Соусы' },
+          { value: 'Рыба', label: 'Рыба' },
+          { value: 'Мясо', label: 'Мясо' },
+          { value: 'Морепродукты', label: 'Морепродукты' },
+        ]}
+      />
     </div>
   );
 };
