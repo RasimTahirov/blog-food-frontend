@@ -70,7 +70,7 @@ const RecipeCreate = () => {
               <div className="flex gap-5" key={ingredient.id}>
                 <Ingredient ingredient={ingredient} />
                 <Button
-                  className="custom-button"
+                  className="custom-button-red"
                   variant="filled"
                   onClick={() => dispatch(removeIngredient(ingredient.id))}
                   style={{ height: 35 }}
@@ -83,7 +83,7 @@ const RecipeCreate = () => {
         </div>
         <div className="mt-2.5 mb-2.5">
           <Button
-            className="custom-button"
+            className="custom-button-red"
             variant="filled"
             onClick={() => dispatch(addIngredient())}
             style={{ height: 35 }}
@@ -116,7 +116,7 @@ const RecipeCreate = () => {
             ))}
             <div className="mb-2.5">
               <Button
-                className="custom-button"
+                className="custom-button-red"
                 variant="filled"
                 onClick={() => dispatch(addStep())}
               >
@@ -128,7 +128,11 @@ const RecipeCreate = () => {
         <div className="max-w-[50%]">
           <Time />
         </div>
-        <Button className="custom-button" variant="filled" htmlType="submit">
+        <Button
+          className="custom-button-red"
+          variant="filled"
+          htmlType="submit"
+        >
           Опубликовать
         </Button>
       </form>

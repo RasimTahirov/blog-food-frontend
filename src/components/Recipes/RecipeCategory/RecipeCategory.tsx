@@ -28,26 +28,28 @@ const RecipeCategory = () => {
         <div className="flex justify-between items-center">
           <h2 className="text-3xl font-semibold mb-2.5">{category}</h2>
           <Button
-            className="custom-button"
+            className="custom-button-red"
             onClick={() => setModalActive(true)}
           >
             Все категории
           </Button>
         </div>
         {categories.length > 0 ? (
-          <ul className="grid grid-cols-3 gap-[15px]">
+          <ul className="grid grid-cols-3 gap-[15px] ">
             {posts.map((post: any) => (
               <Link
                 key={post._id}
                 to={`${pageConfig.recipe.replace(':id', post._id)}`}
-                className="overflow-hidden"
               >
                 <li>
-                  <div className="relative">
+                  <div className="relative overflow-hidden rounded-mdPlus cardHover">
+                    <p className="absolute mt-[5px] ml-[5px] py-[5px] px-2.5 leading-5 bg-containerWhite rounded-mdPlus">
+                      {post.categories}
+                    </p>
                     <img
                       src={`${fullUrl}${post.image}`}
                       alt=""
-                      className="w-full h-[200px] object-cover rounded-mdPlus"
+                      className="w-full h-[200px] object-cover"
                     />
                   </div>
                   <p className="px-5 mt-[5px] text-lg">{post.title}</p>

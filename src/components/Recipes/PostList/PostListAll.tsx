@@ -51,7 +51,7 @@ const PostListAll = () => {
           </div>
           <Button
             onClick={() => setModalActive(true)}
-            className="custom-button"
+            className="custom-button-red"
           >
             Все категории
           </Button>

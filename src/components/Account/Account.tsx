@@ -43,7 +43,10 @@ const Account = () => {
           <div className="flex justify-end items-center mb-5">
             <div className="flex gap-5">
               <GoBackHome />
-              <Button className="custom-button" onClick={() => handleLogout()}>
+              <Button
+                className="custom-button-red"
+                onClick={() => handleLogout()}
+              >
                 Выйти
               </Button>
             </div>
@@ -55,7 +58,7 @@ const Account = () => {
                   Почта
                 </label>
                 <input
-                  className="inputStyle"
+                  className="rounded-[5px] text-textBlack py-[2.5px] px-[5px]"
                   disabled
                   type="text"
                   value={userEmail}
@@ -66,7 +69,7 @@ const Account = () => {
                   Имя
                 </label>
                 <input
-                  className="inputStyle"
+                  className="rounded-[5px] text-textBlack py-[2.5px] px-[5px]"
                   disabled
                   type="text"
                   value={userName}
@@ -83,13 +86,13 @@ const Account = () => {
           </div>
           <div className="flex justify-between">
             <Link to={pageConfig.recipeCreate}>
-              <Button className="custom-button">Избранное</Button>
+              <Button className="custom-button-red">Избранное</Button>
             </Link>
             <Link to={pageConfig.recipeCreate}>
-              <Button className="custom-button">Опубликовать рецепт</Button>
+              <Button className="custom-button-red">Опубликовать рецепт</Button>
             </Link>
             <Link to={pageConfig.recipeCreate}>
-              <Button className="custom-button">Создать статью</Button>
+              <Button className="custom-button-red">Создать статью</Button>
             </Link>
           </div>
         </div>

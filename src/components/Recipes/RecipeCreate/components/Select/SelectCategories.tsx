@@ -18,7 +18,7 @@ const SelectCategories = () => {
       <Select
         value={categories}
         onChange={handleCategoriesChange}
-        style={{ width: 200, height: 35 }}
+        style={{ width: 245, height: 35 }}
         className="custom-select"
         options={[
           { value: 'Завртаки', label: 'Завртаки' },

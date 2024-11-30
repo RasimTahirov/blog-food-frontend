@@ -5,7 +5,7 @@ import { Button } from 'antd';
 const GoBackHome = () => {
   return (
     <Link to={pageConfig.home}>
-      <Button className="custom-button">На главную</Button>
+      <Button className="custom-button-red">На главную</Button>
     </Link>
   );
 };

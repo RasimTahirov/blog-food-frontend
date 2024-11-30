@@ -73,11 +73,7 @@ const ModalAuthorization: React.FC<ModalAuthorization> = ({ setIsActive }) => {
             <div className="mt-10 w-60">
               <Form.Item>
                 <div className="grid gap-[5px]">
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="custom-button-white"
-                  >
+                  <Button htmlType="submit" className="custom-button-white">
                     Войти
                   </Button>
                   <div className="custom-error">

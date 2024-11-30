@@ -54,14 +54,14 @@ const Recipe = () => {
             {localId === post.author.id ? (
               <div>
                 <Button
-                  className="custom-button"
+                  className="custom-button-red"
                   onClick={() => setIsActive(true)}
                 >
                   Удалть статью
                 </Button>
               </div>
             ) : null}
-            <Button className="custom-button">В избранное</Button>
+            <Button className="custom-button-red">В избранное</Button>
           </div>
         </div>
       )}

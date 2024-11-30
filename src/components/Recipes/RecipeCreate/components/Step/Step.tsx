@@ -37,7 +37,7 @@ const Step = ({ steps }: { steps: StepType }) => {
   };
 
   return (
-    <div className="border-solid border border-borderBlack rounded-lg p-5">
+    <div className="border-solid border border-borderRed rounded-lg p-5">
       <span className="text-xl font-bold mb-1">Шаг {steps.stepNumber}</span>
       {image ? (
         <img

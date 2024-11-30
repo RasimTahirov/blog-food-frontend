@@ -2,12 +2,18 @@ import { SubmitHandler } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerThunk } from '../../../redux/registerSlice';
 import { AppDispatch, RootState } from '../../../store/store';
-import { FormValues } from '../types/FormValues';
 
 import { Button, Form, Input } from 'antd';
 
 interface ModalRegistrationProps {
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface FormValues {
+  name: string;
+  surname: string;
+  email: string;
+  password: string;
 }
 
 const ModalRegistration: React.FC<ModalRegistrationProps> = ({
@@ -120,7 +126,7 @@ const ModalRegistration: React.FC<ModalRegistrationProps> = ({
                     <Button
                       type="primary"
                       htmlType="submit"
-                      className="custom-button"
+                      className="custom-button-white"
                     >
                       Зарегистрироваться
                     </Button>

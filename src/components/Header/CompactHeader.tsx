@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
-import { HeartFilled, UserOutlined } from '@ant-design/icons';
+import { HeartOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 import { Modal, ModalAuthorization, Navigation } from '../Index';
@@ -25,19 +25,19 @@ const CompactHeader = () => {
               <div className="flex gap-5">
                 {/* Временно  to={pageConfig.account} */}
                 <Link to={pageConfig.account}>
-                  <Button className="custom-button">
-                    <HeartFilled />
+                  <Button className="custom-button-red">
+                    <HeartOutlined />
                   </Button>
                 </Link>
                 <Link to={pageConfig.account}>
-                  <Button className="custom-button">
+                  <Button className="custom-button-red">
                     <UserOutlined />
                   </Button>
                 </Link>
               </div>
             ) : (
               <>
-                <Button className="custom-button">Войти</Button>
+                <Button className="custom-button-red">Войти</Button>
               </>
             )}
           </div>

@@ -31,7 +31,7 @@ const PostList = () => {
         <div className="flex justify-between items-center gap-2.5 pb-5">
           <span className="text-[30px] font-semibold">Рецепты</span>
           <Link to={pageConfig.recipeList}>
-            <Button className="custom-button">Все рецепты</Button>
+            <Button className="custom-button-red">Все рецепты</Button>
           </Link>
         </div>
         <div>
@@ -42,17 +42,15 @@ const PostList = () => {
                 to={`${pageConfig.recipe.replace(':id', post._id)}`}
               >
                 <li>
-                  <div>
-                    <div className="relative overflow-hidden rounded-mdPlus cardHover">
-                      <p className="absolute mt-[5px] ml-[5px] py-[5px] px-2.5 leading-5 bg-containerWhite rounded-mdPlus">
-                        {post.categories}
-                      </p>
-                      <img
-                        src={`${fullUrl}${post.image}`}
-                        alt=""
-                        className="w-full h-[200px] object-cover"
-                      />
-                    </div>
+                  <div className="relative overflow-hidden rounded-mdPlus cardHover">
+                    <p className="absolute mt-[5px] ml-[5px] py-[5px] px-2.5 leading-5 bg-containerWhite rounded-mdPlus">
+                      {post.categories}
+                    </p>
+                    <img
+                      src={`${fullUrl}${post.image}`}
+                      alt=""
+                      className="w-full h-[200px] object-cover"
+                    />
                   </div>
                   <p className="px-5 mt-[5px] text-lg">{post.title}</p>
                 </li>

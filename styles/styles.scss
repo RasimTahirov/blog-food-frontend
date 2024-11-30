@@ -76,12 +76,20 @@
   @apply transition-all duration-300 ease-in;
 }
 
-.custom-button {
+.custom-button-red {
   @apply border-transparent text-lg bg-buttonRed text-textWhite h-[32px];
 }
 
-.custom-button:hover {
+.custom-button-red:hover {
   @apply bg-buttonWhite text-textBlack border-borderRed !important;
+}
+
+.custom-button-white {
+  @apply border-transparent bg-buttonWhite text-textBlack !important;
+}
+
+.custom-button-white:hover {
+  @apply bg-buttonRed text-textWhite !important;
 }
 
 .link-style {
@@ -94,12 +102,4 @@
 
 .cardHover:hover {
   @apply shadow-hoverCard transition-all duration-200 ease-linear;
-}
-
-.custom-button-white {
-  @apply bg-buttonWhite text-textBlack !important;
-}
-
-.custom-button-white:hover {
-  @apply bg-buttonRed text-textWhite !important;
 }

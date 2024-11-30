@@ -1,9 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { pageConfig } from '../../config/PageConfig';
 import { Account } from '../../components/Index';
-
 import RecipeCreate from '../../components/Recipes/RecipeCreate/RecipeCreate';
-import ScrollToTop from '../../utils/scrollToTop';
+import ScrollToTop from '../../utils/ScrollToTop';
 
 const AuthRoutes = () => {
   return (

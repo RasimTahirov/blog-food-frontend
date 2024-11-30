@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
 import { Link } from 'react-router-dom';
-import { HeartFilled, UserOutlined } from '@ant-design/icons';
+import { HeartOutlined, UserOutlined } from '@ant-design/icons';
 
 import {
   Modal,
@@ -33,12 +33,12 @@ const MainHeader = () => {
               <div className="flex gap-5">
                 {/* Временно  to={pageConfig.account} */}
                 <Link to={pageConfig.account}>
-                  <Button className="custom-button">
-                    <HeartFilled />
+                  <Button className="custom-button-red">
+                    <HeartOutlined />
                   </Button>
                 </Link>
                 <Link to={pageConfig.account}>
-                  <Button className="custom-button">
+                  <Button className="custom-button-red">
                     <UserOutlined />
                   </Button>
                 </Link>
@@ -47,7 +47,7 @@ const MainHeader = () => {
               <>
                 <Button
                   onClick={() => setIsActiveAuthorization(true)}
-                  className="custom-button"
+                  className="custom-button-red"
                 >
                   Войти
                 </Button>
@@ -61,23 +61,27 @@ const MainHeader = () => {
             {user ? (
               <>
                 <Link className="link-style" to={pageConfig.recipeCreate}>
-                  <Button className="custom-button">Опубликовать рецепт</Button>
+                  <Button className="custom-button-red">
+                    Опубликовать рецепт
+                  </Button>
                 </Link>
                 <Link className="link-style" to={pageConfig.recipeCreate}>
-                  <Button className="custom-button">Опубликовать статью</Button>
+                  <Button className="custom-button-red">
+                    Опубликовать статью
+                  </Button>
                 </Link>
               </>
             ) : (
               <>
                 <Button
                   onClick={() => setIsActiveAuthorization(true)}
-                  className="custom-button"
+                  className="custom-button-red"
                 >
                   Войти
                 </Button>
                 <Button
                   onClick={() => setIsActiveRegister(true)}
-                  className="custom-button"
+                  className="custom-button-red"
                 >
                   Зарегистрироваться
                 </Button>
