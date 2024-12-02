@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Post } from '../types/types';
+import { Article } from './articleCreate';
 
-export const postsThunk = createAsyncThunk(
-  'postsThunk',
+export const articleThunk = createAsyncThunk(
+  'articleThunk',
   async (id: string, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`http://localhost:9000/api/post/${id}`);
+      const res = await axios.get(`http://localhost:9000/api/article/${id}`);
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -20,35 +20,34 @@ export const postsThunk = createAsyncThunk(
 );
 
 interface Data {
-  post: null | Post;
+  article: null | Article;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: Data = {
-  post: null,
-  loading: false,
+  article: null,
   error: null,
+  loading: false,
 };
 
-const postSlice = createSlice({
+const articleSlice = createSlice({
   name: 'postsSlice',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(postsThunk.pending, (state) => {
+      .addCase(articleThunk.pending, (state) => {
         state.loading = true;
       })
-      .addCase(postsThunk.fulfilled, (state, action) => {
-        state.post = action.payload;
-        (state.loading = false), (state.error = null);
-        // Запомнить
+      .addCase(articleThunk.fulfilled, (state, action) => {
+        state.loading = false;
+        state.article = action.payload;
       })
-      .addCase(postsThunk.rejected, (state, action) => {
+      .addCase(articleThunk.rejected, (state, action) => {
         state.error = action.payload as string;
       });
   },
 });
 
-export default postSlice.reducer;
+export default articleSlice.reducer;
