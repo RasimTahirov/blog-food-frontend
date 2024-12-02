@@ -34,7 +34,7 @@ const RecipeCategory = () => {
             Все категории
           </Button>
         </div>
-        {categories.length > 0 ? (
+        {categories ? (
           <ul className="grid grid-cols-3 gap-[15px] ">
             {posts.map((post: any) => (
               <Link

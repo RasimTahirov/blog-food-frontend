@@ -18,7 +18,8 @@ import {
   CoverUpload,
   RecipeForm,
 } from './components/Index';
-import { Button } from 'antd';
+import { Button, Form } from 'antd';
+import { useEffect, useState } from 'react';
 
 const RecipeCreate = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -32,8 +33,7 @@ const RecipeCreate = () => {
     cookTime,
   } = useSelector((state: RootState) => state.postCreate.post);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     const PostData = {
       title,
       description,
@@ -54,7 +54,7 @@ const RecipeCreate = () => {
 
   return (
     <div className="grid justify-center py-5 px-10 text-textBlack">
-      <form onSubmit={handleSubmit} className="max-w-[555px]">
+      <Form onFinish={handleSubmit} className="max-w-[555px]">
         <div className="flex justify-between items-center mb-5">
           <h3 className="text-4xl font-bold">Создание рецепта</h3>
           <GoBackHome />
@@ -128,14 +128,10 @@ const RecipeCreate = () => {
         <div className="max-w-[50%]">
           <Time />
         </div>
-        <Button
-          className="custom-button-red"
-          variant="filled"
-          htmlType="submit"
-        >
+        <Button className="custom-button-red" htmlType="submit">
           Опубликовать
         </Button>
-      </form>
+      </Form>
     </div>
   );
 };

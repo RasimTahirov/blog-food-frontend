@@ -65,7 +65,7 @@ const MainHeader = () => {
                     Опубликовать рецепт
                   </Button>
                 </Link>
-                <Link className="link-style" to={pageConfig.recipeCreate}>
+                <Link className="link-style" to={pageConfig.articleCreate}>
                   <Button className="custom-button-red">
                     Опубликовать статью
                   </Button>

@@ -6,6 +6,11 @@ export interface ImageUploadResult {
   id?: number;
 }
 
+export interface ImageUploadArticleResult {
+  url: string;
+  // id?: number;
+}
+
 export type IngredientType = {
   id: number;
   name: string;

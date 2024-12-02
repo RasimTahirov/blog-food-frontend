@@ -175,6 +175,7 @@ const postCreateSlice = createSlice({
       if (step) {
         step.description = description;
       }
+      console.log(id);
     },
     setImageStep: (state, action) => {
       const { id, image } = action.payload;
@@ -187,6 +188,7 @@ const postCreateSlice = createSlice({
       const { hours, minutes } = action.payload;
       if (hours !== undefined) state.post.cookTime.hours = hours;
       if (minutes !== undefined) state.post.cookTime.minutes = minutes;
+      // Тут запомнить
     },
   },
   extraReducers: (builder) => {
