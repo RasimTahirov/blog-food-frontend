@@ -1,11 +1,6 @@
-interface Data {
-  categories: [];
-  posts: [];
-  loading: boolean;
-  error: string | null;
-}
+import { initialStateRecipeCategory } from '../types/types';
 
-export const initialState: Data = {
+export const initialState: initialStateRecipeCategory = {
   categories: [],
   posts: [],
   loading: false,

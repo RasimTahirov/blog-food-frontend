@@ -5,9 +5,10 @@ import { Button } from 'antd';
 import { AppDispatch, RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
 
-import Modal from '../../shared/ui/Modal/Modal';
 import { fullUrl } from '../../shared/helpers';
 import { recipeByCategoryThunk } from '../../entities/recipe/thunks/thunks';
+
+import Modal from '../../shared/ui/Modal/Modal';
 
 const RecipeCategory = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -24,7 +25,7 @@ const RecipeCategory = () => {
   }, [dispatch, category]);
 
   return (
-    <div className="container-max text-textBlack w-full">
+    <div className="container-max text-textBlack w-full h-screen">
       <div className="main-container">
         <div className="flex justify-between items-center">
           <h2 className="text-3xl font-semibold mb-2.5">{category}</h2>

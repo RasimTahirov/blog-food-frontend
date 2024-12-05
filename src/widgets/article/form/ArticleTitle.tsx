@@ -1,7 +1,7 @@
 import { Form, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
-import { setTitle } from '../../../entities/article/slices/createArticleSlice';
+import { setTitle } from '../../../entities/article/slices/articleCreateSlice';
 
 const ArticleTitle = () => {
   const { title } = useSelector(

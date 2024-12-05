@@ -26,8 +26,6 @@ const ArticleCreate = () => {
       },
     };
 
-    console.log(articleData);
-
     dispatch(createArticleThunk(articleData));
   };
 

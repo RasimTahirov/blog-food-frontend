@@ -2,28 +2,22 @@ import { Input } from 'antd';
 import { useDispatch } from 'react-redux';
 
 import TextArea from 'antd/es/input/TextArea';
-import { ParagraphType } from '../../../entities/article/types/types';
+import { Paragraph } from '../../../entities/article/types/types';
 import {
   setParagraphDescription,
   setParagraphTitle,
-} from '../../../entities/article/slices/createArticleSlice';
+} from '../../../entities/article/slices/articleCreateSlice';
 
-const ArticleParagraph = ({ paragraph }: { paragraph: ParagraphType }) => {
+const ArticleParagraph = ({ paragraph }: { paragraph: Paragraph }) => {
   const dispatch = useDispatch();
 
   const handleTitleParagraph = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log({ title: e.target.value });
-
     dispatch(setParagraphTitle({ id: paragraph.id, title: e.target.value }));
-
-    console.log({ id: paragraph.id });
   };
 
   const handleDescriptionParagraph = (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    console.log({ description: e.target.value });
-
     dispatch(
       setParagraphDescription({ id: paragraph.id, description: e.target.value })
     );

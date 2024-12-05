@@ -1,5 +1,3 @@
-import { User } from '../../../redux/authSlice';
-
 export interface ImageUploadResult {
   url: string;
   type: 'cover' | 'step';
@@ -7,6 +5,7 @@ export interface ImageUploadResult {
 }
 
 export type IngredientType = {
+  _id?: string;
   id: number;
   name: string;
   unit: string;
@@ -14,21 +13,12 @@ export type IngredientType = {
 };
 
 export type StepType = {
+  _id?: string;
   id: number;
   description: string;
   image: string;
   stepNumber: number;
 };
-
-export interface Data {
-  post: Post;
-  error: null | string;
-  loading: boolean;
-}
-
-export interface SetIsActive {
-  setActive: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 export interface Post {
   title: string;
@@ -46,4 +36,33 @@ export interface Post {
     surname: string;
     id: string;
   };
+}
+
+export interface initialStateRecipe {
+  post: null | Post;
+  loading: boolean;
+  error: string | null;
+}
+
+export interface initialStateRecipeList {
+  posts: [];
+  loading: boolean;
+  error: string | null;
+}
+
+export interface initialStateRecipeCategory {
+  categories: [];
+  posts: [];
+  loading: boolean;
+  error: string | null;
+}
+
+export interface initialStateRecipeCreate {
+  post: Post;
+  error: null | string;
+  loading: boolean;
+}
+
+export interface SetIsActive {
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -29,7 +29,7 @@ const RecipeList = () => {
     <div className="container-max text-textBlack w-full">
       <div className="main-container">
         <div className="flex justify-between items-center gap-2.5 mb-5">
-          <span className="text-2xl font-semibold">Рецепты</span>
+          <span className="text-3xl font-semibold">Рецепты</span>
           <Link to={pageConfig.recipeList}>
             <Button className="custom-button-red">Все рецепты</Button>
           </Link>

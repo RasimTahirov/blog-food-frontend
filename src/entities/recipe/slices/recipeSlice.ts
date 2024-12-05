@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from '../initialStates/recipeState';
 import { recipeThunk } from '../thunks/thunks';
 
-// postSlice
 const recipeSlice = createSlice({
   name: 'postsSlice',
   initialState,
@@ -11,11 +10,12 @@ const recipeSlice = createSlice({
     builder
       .addCase(recipeThunk.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(recipeThunk.fulfilled, (state, action) => {
         state.post = action.payload;
-        (state.loading = false), (state.error = null);
-        // Запомнить
+        state.loading = false;
+        state.error = null;
       })
       .addCase(recipeThunk.rejected, (state, action) => {
         state.error = action.payload as string;

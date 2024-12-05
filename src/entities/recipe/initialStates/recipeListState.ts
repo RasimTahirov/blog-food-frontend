@@ -1,10 +1,6 @@
-interface Data {
-  posts: [];
-  loading: boolean;
-  error: string | null;
-}
+import { initialStateRecipeList } from '../types/types';
 
-export const initialState: Data = {
+export const initialState: initialStateRecipeList = {
   posts: [],
   loading: false,
   error: null,

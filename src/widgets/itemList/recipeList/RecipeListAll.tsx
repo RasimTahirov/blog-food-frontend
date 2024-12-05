@@ -35,7 +35,7 @@ const RecipeListAll = () => {
   }, [dispatch]);
 
   return (
-    <div className="container-max text-textBlack w-full">
+    <div className="container-max text-textBlack w-full mb-5">
       <div className="main-container">
         <div className="flex gap-5 pb-5 justify-end items-center">
           <ul className="flex gap-2.5">

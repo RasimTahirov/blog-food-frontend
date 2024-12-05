@@ -1,14 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { initialState } from '../initialStates/createRecipeState';
+import { initialState } from '../initialStates/recipeCreateState';
 import {
   createRecipeThunk,
   deleteRecipeThunk,
   imageUploadThunk,
 } from '../thunks/thunks';
 
-// postCreateSlice
 const recipeCreateSlice = createSlice({
-  name: 'createPostSlice',
+  name: 'recipeCreateSlice',
   initialState,
   reducers: {
     setTitle: (state, action) => {
@@ -80,7 +79,6 @@ const recipeCreateSlice = createSlice({
       if (step) {
         step.description = description;
       }
-      console.log(id);
     },
     setImageStep: (state, action) => {
       const { id, image } = action.payload;
@@ -93,7 +91,6 @@ const recipeCreateSlice = createSlice({
       const { hours, minutes } = action.payload;
       if (hours !== undefined) state.post.cookTime.hours = hours;
       if (minutes !== undefined) state.post.cookTime.minutes = minutes;
-      // Тут запомнить
     },
   },
   extraReducers: (builder) => {
@@ -103,13 +100,13 @@ const recipeCreateSlice = createSlice({
         state.error = null;
       })
       .addCase(createRecipeThunk.fulfilled, (state, action) => {
-        state.loading = false;
         state.post = action.payload;
+        state.loading = false;
         state.error = null;
       })
       .addCase(createRecipeThunk.rejected, (state, action) => {
-        state.error = action.payload as string;
         state.loading = false;
+        state.error = action.payload as string;
       })
 
       .addCase(imageUploadThunk.fulfilled, (state, action) => {
@@ -129,7 +126,7 @@ const recipeCreateSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(deleteRecipeThunk.fulfilled, (state, action) => {
+      .addCase(deleteRecipeThunk.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
       })

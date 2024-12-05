@@ -18,7 +18,7 @@ const RecipeDetalis = () => {
         <p className="mb-[5px] text-2xl font-semibold">Ингредиенты</p>
         <ul className="grid gap-y-[5px]">
           {post.ingredients.map((ing) => (
-            <li key={ing.id} className={style.itemList}>
+            <li key={ing._id} className={style.itemList}>
               <div className="flex justify-between items-center">
                 <div className="w-[80%]">
                   <span>{ing.name}</span>

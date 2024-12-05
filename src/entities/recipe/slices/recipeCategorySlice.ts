@@ -2,19 +2,20 @@ import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from '../initialStates/recipeCategorySlice';
 import { recipeByCategoryThunk, recipeCategoryThunk } from '../thunks/thunks';
 
-// postCategorySlice
 const recipeCategorySlice = createSlice({
-  name: 'postCategorySlice',
+  name: 'recipeCategorySlice',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(recipeCategoryThunk.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(recipeCategoryThunk.fulfilled, (state, action) => {
-        state.loading = false;
         state.categories = action.payload;
+        state.loading = false;
+        state.error = null;
       })
       .addCase(recipeCategoryThunk.rejected, (state, action) => {
         state.loading = false;
@@ -23,10 +24,12 @@ const recipeCategorySlice = createSlice({
 
       .addCase(recipeByCategoryThunk.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(recipeByCategoryThunk.fulfilled, (state, action) => {
-        state.loading = false;
         state.posts = action.payload;
+        state.loading = false;
+        state.error = null;
       })
       .addCase(recipeByCategoryThunk.rejected, (state, action) => {
         state.loading = false;

@@ -17,7 +17,7 @@ const MainHeader = () => {
   const user = useSelector((state: RootState) => state.auth.user);
 
   return (
-    <header className="container-max text-lg my-5 w-full text-textWhite">
+    <header className="container-max text-lg py-5 w-full text-textWhite">
       <div className="main-container relative bg-headerDesktop bg-cover bg-center h-[380px] py-5 rounded-mdPlus">
         <div className="absolute inset-0 bg-black opacity-40 rounded-mdPlus "></div>
         <div className="flex justify-between relative z-10 items-center">

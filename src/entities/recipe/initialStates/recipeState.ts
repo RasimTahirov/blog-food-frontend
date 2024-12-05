@@ -1,12 +1,6 @@
-import { Post } from '../types/types';
+import { initialStateRecipe } from '../types/types';
 
-interface Data {
-  post: null | Post;
-  loading: boolean;
-  error: string | null;
-}
-
-export const initialState: Data = {
+export const initialState: initialStateRecipe = {
   post: null,
   loading: false,
   error: null,

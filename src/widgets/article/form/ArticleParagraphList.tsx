@@ -5,7 +5,7 @@ import ArticleParagraph from './ArticleParagraph';
 import {
   addParagraph,
   removeParagraph,
-} from '../../../entities/article/slices/createArticleSlice';
+} from '../../../entities/article/slices/articleCreateSlice';
 
 const ArticleParagraphList = ({ paragraph }) => {
   const dispatch = useDispatch();

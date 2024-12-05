@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ImageUploadResult, Post } from '../types/types';
 import axios from 'axios';
 
-// createPostThunk
 export const createRecipeThunk = createAsyncThunk(
   'createPost',
   async (recipeData: Post, { rejectWithValue }) => {
@@ -51,7 +50,6 @@ export const imageUploadThunk = createAsyncThunk<
   }
 });
 
-// deletePostThunk
 export const deleteRecipeThunk = createAsyncThunk<string, string>(
   'deletePostThunk',
   async (id, { rejectWithValue }) => {
@@ -66,7 +64,6 @@ export const deleteRecipeThunk = createAsyncThunk<string, string>(
   }
 );
 
-// postListThunk
 export const recipeListThunk = createAsyncThunk(
   'postThunk',
   async (_, { rejectWithValue }) => {
@@ -84,7 +81,6 @@ export const recipeListThunk = createAsyncThunk(
   }
 );
 
-// postsThunk
 export const recipeThunk = createAsyncThunk(
   'postsThunk',
   async (id: string, { rejectWithValue }) => {
@@ -102,7 +98,6 @@ export const recipeThunk = createAsyncThunk(
   }
 );
 
-// postCategoryThunk
 export const recipeCategoryThunk = createAsyncThunk(
   'postCategoryThunk',
   async (_, { rejectWithValue }) => {
@@ -119,7 +114,6 @@ export const recipeCategoryThunk = createAsyncThunk(
   }
 );
 
-// postsByCategoryThunk
 export const recipeByCategoryThunk = createAsyncThunk(
   'postsByCategoryThunk',
   async (category: string, { rejectWithValue }) => {

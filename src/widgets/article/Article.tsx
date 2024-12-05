@@ -19,11 +19,12 @@ const Article = () => {
     if (id) {
       dispatch(articleThunk(id));
     }
-    console.log(article);
   }, [dispatch, id]);
 
   const handleDelete = () => {
-    dispatch(deleteArticleThunk(id));
+    if (id) {
+      dispatch(deleteArticleThunk(id));
+    }
   };
 
   if (loading && !article) {
@@ -31,7 +32,7 @@ const Article = () => {
   }
 
   return (
-    <div className="container-max text-textBlack w-full">
+    <div className="container-max text-textBlack w-full h-screen">
       {article && (
         <div className="main-container">
           <div className="mb-5">

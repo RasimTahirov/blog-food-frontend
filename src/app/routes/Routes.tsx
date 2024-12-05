@@ -1,19 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
 import { pageConfig } from '../../config/PageConfig';
+import { ScrollToTop } from '../../shared/helpers';
 
 import Main from '../layouts/Main/Main';
 
 import {
+  Home,
   Account,
   ArticleCreatePage,
-  ArticleList,
-  Home,
+  ArticlePage,
   RecipeCategoriesPage,
   RecipeCreatePage,
-  RecipeList,
   RecipePage,
+  RecipeListPage,
+  ArticleListPage,
 } from '../../pages';
-import { ScrollToTop } from '../../shared/helpers';
 
 const AppRoutes = () => {
   return (
@@ -22,20 +23,24 @@ const AppRoutes = () => {
       <Routes>
         <Route path={pageConfig.home} element={<Main />}>
           <Route index element={<Home />} />
-          <Route path={pageConfig.recipeList} element={<RecipeList />} />
-          <Route path={pageConfig.articleList} element={<ArticleList />} />
+          <Route path={pageConfig.recipeList} element={<RecipeListPage />} />
+          <Route path={pageConfig.articleList} element={<ArticleListPage />} />
+          <Route
+            path={pageConfig.recipeCreate}
+            element={<RecipeCreatePage />}
+          />
+          <Route
+            path={pageConfig.recipeCategory}
+            element={<RecipeCategoriesPage />}
+          />
+          <Route path={pageConfig.recipe} element={<RecipePage />} />
+          <Route path={pageConfig.article} element={<ArticlePage />} />
+          <Route
+            path={pageConfig.articleCreate}
+            element={<ArticleCreatePage />}
+          />
         </Route>
         <Route path={pageConfig.account} element={<Account />} />
-        <Route
-          path={pageConfig.articleCreate}
-          element={<ArticleCreatePage />}
-        />
-        <Route path={pageConfig.recipeCreate} element={<RecipeCreatePage />} />
-        <Route
-          path={pageConfig.recipeCategory}
-          element={<RecipeCategoriesPage />}
-        />
-        <Route path={pageConfig.recipe} element={<RecipePage />} />
       </Routes>
     </>
   );

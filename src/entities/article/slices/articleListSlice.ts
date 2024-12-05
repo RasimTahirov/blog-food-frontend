@@ -10,11 +10,12 @@ const articleListSlice = createSlice({
     builder
       .addCase(articleListThunk.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(articleListThunk.fulfilled, (state, action) => {
+        state.article = action.payload;
         state.loading = false;
         state.error = null;
-        state.article = action.payload;
       })
       .addCase(articleListThunk.rejected, (state, action) => {
         state.loading = false;

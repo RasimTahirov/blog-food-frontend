@@ -1,7 +1,7 @@
 import { RecipeListAll } from '../../widgets';
 
-const RecipeList = () => {
+const RecipeListPage = () => {
   return <RecipeListAll />;
 };
 
-export default RecipeList;
+export default RecipeListPage;

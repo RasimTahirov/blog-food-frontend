@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import authReducer from '../entities/user/auth/slice/authSlice';
 import registerReducer from '../entities/user/register/slice/registerSlice';
-import articleCreateReducer from '../entities/article/slices/createArticleSlice';
+import articleCreateReducer from '../entities/article/slices/articleCreateSlice';
 import articleListReducer from '../entities/article/slices/articleListSlice';
 import articleReducer from '../entities/article/slices/articleSlice';
 

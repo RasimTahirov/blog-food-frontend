@@ -1,7 +1,7 @@
 import { ArticleListAll } from '../../widgets';
 
-const ArticleList = () => {
+const ArticleListPage = () => {
   return <ArticleListAll />;
 };
 
-export default ArticleList;
+export default ArticleListPage;

@@ -14,7 +14,7 @@ const CompactHeader = () => {
 
   const user = useSelector((state: RootState) => state.auth.user);
   return (
-    <header className="container-max text-lg my-5 w-full text-textBlack">
+    <header className="container-max text-lg py-5 w-full text-textBlack">
       <div className="main-container relative py-5 rounded-mdPlus">
         <div className="flex justify-between relative z-10 items-center">
           <span className="text-2xl font-semibold">Flavor Feast</span>

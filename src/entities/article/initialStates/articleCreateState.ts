@@ -1,7 +1,6 @@
-import { Article, Data } from '../types/types';
+import { Article, initialStateCreateArticle } from '../types/types';
 
 const initialStateArticle: Article = {
-  _id: '', // Пока хз
   title: '',
   image: '',
   paragraph: [
@@ -18,7 +17,7 @@ const initialStateArticle: Article = {
   },
 };
 
-export const initialState: Data = {
+export const initialState: initialStateCreateArticle = {
   article: initialStateArticle || null,
   loading: false,
   error: null,

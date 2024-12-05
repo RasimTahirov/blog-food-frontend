@@ -13,7 +13,7 @@ const RecipeStep = () => {
   return (
     <div className="grid gap-y-5 w-[65%]">
       {post.steps.map((step) => (
-        <div key={step.id} className="grid gap-y-2.5 relative">
+        <div key={step._id} className="grid gap-y-2.5 relative">
           <div className="rounded-mdPlus overflow-hidden">
             <img
               src={`${fullUrl}${step.image}`}

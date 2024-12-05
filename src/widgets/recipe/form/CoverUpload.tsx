@@ -12,7 +12,6 @@ const CoverUpload = () => {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
-      console.log(imageUrl);
 
       dispatch(imageUploadThunk({ imageData: file, type: 'cover' }));
     }

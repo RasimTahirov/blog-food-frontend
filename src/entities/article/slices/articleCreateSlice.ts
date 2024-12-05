@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { initialState } from '../initialStates/createArticleState';
+import { initialState } from '../initialStates/articleCreateState';
 import {
   createArticleThunk,
   deleteArticleThunk,
@@ -15,7 +15,7 @@ const articleCreate = createSlice({
     },
     addParagraph: (state) => {
       state.article.paragraph.push({
-        _id: Date.now(),
+        id: Date.now(),
         title: '',
         description: '',
       });
@@ -31,7 +31,6 @@ const articleCreate = createSlice({
       if (paragraph) {
         paragraph.title = title;
       }
-      console.log(id);
     },
     setParagraphDescription: (state, action) => {
       const { id, description } = action.payload;
@@ -39,7 +38,6 @@ const articleCreate = createSlice({
       if (paragraph) {
         paragraph.description = description;
       }
-      console.log(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -49,31 +47,31 @@ const articleCreate = createSlice({
         state.error = null;
       })
       .addCase(createArticleThunk.fulfilled, (state, action) => {
-        state.loading = false;
         state.article = action.payload;
+        state.loading = false;
         state.error = null;
       })
       .addCase(createArticleThunk.rejected, (state, action) => {
-        state.error = action.payload as string;
         state.loading = false;
-      })
-
-      .addCase(imageUploadThunk.fulfilled, (state, action) => {
-        const { url } = action.payload;
-        state.article.image = url;
+        state.error = action.payload as string;
       })
 
       .addCase(deleteArticleThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(deleteArticleThunk.fulfilled, (state, action) => {
+      .addCase(deleteArticleThunk.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
       })
       .addCase(deleteArticleThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
+      })
+
+      .addCase(imageUploadThunk.fulfilled, (state, action) => {
+        const { url } = action.payload;
+        state.article.image = url;
       });
   },
 });

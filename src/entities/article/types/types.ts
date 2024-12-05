@@ -1,34 +1,12 @@
-export interface ParagraphType {
-  id: number;
-  description: string;
-  title: string;
-}
-
-// export interface Article {
-//   title: string;
-//   image: string;
-//   paragraph: ParagraphType[];
-//   author: {
-//     name: string;
-//     surname: string;
-//     id: string;
-//   };
-// }
-
-export interface Data {
-  article: Article;
-  error: null | string;
-  loading: boolean;
-}
-
 export interface Paragraph {
+  _id?: string;
   description: string;
   title: string;
-  _id: number;
+  id: number;
 }
 
 export interface Article {
-  _id: string;
+  _id?: string;
   title: string;
   image: string;
   paragraph: Paragraph[];
@@ -39,19 +17,24 @@ export interface Article {
   };
 }
 
+export interface ImageUploadArticleResult {
+  url: string;
+}
+
+export interface initialStateArticle {
+  article: null | Article;
+  loading: boolean;
+  error: string | null;
+}
+
+export interface initialStateCreateArticle {
+  article: Article;
+  error: null | string;
+  loading: boolean;
+}
+
 export interface initialStateArticleList {
   article: Article[];
   loading: boolean;
   error: null | string;
-}
-
-export interface initialStateArticles {
-  article: Article | null;
-  loading: boolean;
-  error: null | string;
-}
-
-export interface ImageUploadArticleResult {
-  url: string;
-  // id?: number;
 }

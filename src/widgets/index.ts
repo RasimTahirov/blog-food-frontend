@@ -12,4 +12,3 @@ export { default as Recipe } from './recipe/Recipe';
 export { default as RecipeCategory } from './recipe/RecipeCategory';
 export { default as RecipeCreate } from './recipe/RecipeCreate';
 export { default as Profile } from './profile/Profile';
-export { default as ModalAuthorization } from './auth/ModalAuthorization';
