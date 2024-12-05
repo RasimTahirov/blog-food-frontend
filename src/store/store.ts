@@ -1,26 +1,27 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import authReducer from '../redux/authSlice';
-import registerReducer from '../redux/registerSlice';
-import postCreateReducer from '../redux/postCreateSlice';
-import postListReducer from '../redux/postListSlice';
-import postReducer from '../redux/postSlice';
-import postCatrgoryReducer from '../redux/postCategorySlice';
-import articleCreateReducer from '../redux/articleCreate';
-import articleListReducer from '../redux/articleList';
-import articleReducer from '../redux/articleSlice';
+import authReducer from '../entities/user/auth/slice/authSlice';
+import registerReducer from '../entities/user/register/slice/registerSlice';
+import articleCreateReducer from '../entities/article/slices/articleCreateSlice';
+import articleListReducer from '../entities/article/slices/articleListSlice';
+import articleReducer from '../entities/article/slices/articleSlice';
+
+import recipeCreateReducer from '../entities/recipe/slices/recipeCreateSlice';
+import recipeListReducer from '../entities/recipe/slices/recipeListSlice';
+import recipeReducer from '../entities/recipe/slices/recipeSlice';
+import recipeCatrgoryReducer from '../entities/recipe/slices/recipeCategorySlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     register: registerReducer,
-    postCreate: postCreateReducer,
+    postCreate: recipeCreateReducer,
     articleCreate: articleCreateReducer,
     articleList: articleListReducer,
     article: articleReducer,
-    postList: postListReducer,
-    post: postReducer,
-    postCategory: postCatrgoryReducer,
+    postList: recipeListReducer,
+    post: recipeReducer,
+    postCategory: recipeCatrgoryReducer,
   },
 });
 
