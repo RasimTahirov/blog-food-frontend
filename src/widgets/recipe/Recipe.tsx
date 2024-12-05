@@ -39,7 +39,7 @@ const Recipe = () => {
   };
 
   return (
-    <div className="container-max text-textBlack w-full">
+    <div className="container-max text-textBlack w-full mb-10">
       {post && (
         <div className="main-container">
           <RecipePreview />

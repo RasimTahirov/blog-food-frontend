@@ -1,5 +1,6 @@
-import ArticleList from '../itemList/articleList/ArticleList';
-import RecipeList from '../itemList/recipeList/RecipeList';
+import { useState } from 'react';
+import ArticleList from '../ItemViews/ArticleViews/ArticleList';
+import RecipeList from '../ItemViews/RecipeViews/RecipeList';
 
 const HomePageList = () => {
   return (

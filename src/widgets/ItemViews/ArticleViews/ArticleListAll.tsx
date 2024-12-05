@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../../store/store';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../store/store';
 import { useEffect } from 'react';
 
 import { articleListThunk } from '../../../entities/article/thunks/thunk';
@@ -7,10 +7,8 @@ import { Link } from 'react-router-dom';
 import { pageConfig } from '../../../config/PageConfig';
 import { fullUrl } from '../../../shared/helpers';
 
-const ArticleListAll = () => {
+const ArticleListAll = ({ article }) => {
   const dispatch = useDispatch<AppDispatch>();
-
-  const { article } = useSelector((state: RootState) => state.articleList);
 
   useEffect(() => {
     dispatch(articleListThunk());

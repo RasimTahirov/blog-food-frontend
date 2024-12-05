@@ -92,7 +92,9 @@ const RecipeCreate = () => {
           </div>
           <div className="flex items-center gap-[10px] font-extralight bg-containerNotification py-[5px] px-2.5 leading-normal rounded-mdPlus mb-2.5">
             <SparklesIcon className="fill-black w-5" />
-            <p>Для создания рецепта необходимо иметь 3 шага</p>
+            <p className="text-lg">
+              Для создания рецепта необходимо иметь 3 шага
+            </p>
           </div>
           <div className="grid gap-5">
             {steps.map((step) => (
