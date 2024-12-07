@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 import { pageConfig } from '../../../config/PageConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store/store';
-
-import { Button } from 'antd';
-import Modal from '../../../shared/ui/Modal/Modal';
 import { fullUrl } from '../../../shared/helpers';
 import {
   recipeCategoryThunk,
   recipeListThunk,
-} from '../../../entities/recipe/thunks/thunks';
+} from '../../../entities/recipe/thunk/thunk';
+
+import Modal from '../../../shared/ui/Modal/Modal';
+import { Button } from 'antd';
 
 type Post = {
   _id: string;

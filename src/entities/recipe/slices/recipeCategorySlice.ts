@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from '../initialStates/recipeCategorySlice';
-import { recipeByCategoryThunk, recipeCategoryThunk } from '../thunks/thunks';
+import { recipeByCategoryThunk, recipeCategoryThunk } from '../thunk/thunk';
 
 const recipeCategorySlice = createSlice({
   name: 'recipeCategorySlice',

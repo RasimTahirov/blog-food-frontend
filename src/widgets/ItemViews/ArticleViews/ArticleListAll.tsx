@@ -1,8 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store/store';
 import { useEffect } from 'react';
-
-import { articleListThunk } from '../../../entities/article/thunks/thunk';
+import { articleListThunk } from '../../../entities/article/thunk/thunk';
 import { Link } from 'react-router-dom';
 import { pageConfig } from '../../../config/PageConfig';
 import { fullUrl } from '../../../shared/helpers';

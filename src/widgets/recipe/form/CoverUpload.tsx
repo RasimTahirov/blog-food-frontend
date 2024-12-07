@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store/store';
 import { useState } from 'react';
-import { imageUploadThunk } from '../../../entities/recipe/thunks/thunks';
+import { imageUploadThunk } from '../../../entities/recipe/thunk/thunk';
 
 const CoverUpload = () => {
   const dispatch = useDispatch<AppDispatch>();

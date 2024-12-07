@@ -1,4 +1,4 @@
-import { Article, initialStateCreateArticle } from '../types/types';
+import { Article, initialStateCreateArticle } from '../model/types';
 
 const initialStateArticle: Article = {
   title: '',

@@ -1,12 +1,12 @@
 import { Input } from 'antd';
 import { useDispatch } from 'react-redux';
-
-import TextArea from 'antd/es/input/TextArea';
-import { Paragraph } from '../../../entities/article/types/types';
+import { Paragraph } from '../../../entities/article/model/types';
 import {
   setParagraphDescription,
   setParagraphTitle,
 } from '../../../entities/article/slices/articleCreateSlice';
+
+import TextArea from 'antd/es/input/TextArea';
 
 const ArticleParagraph = ({ paragraph }: { paragraph: Paragraph }) => {
   const dispatch = useDispatch();

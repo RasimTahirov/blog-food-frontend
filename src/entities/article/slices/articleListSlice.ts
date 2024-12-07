@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from '../initialStates/articleListState';
-import { articleListThunk } from '../thunks/thunk';
+import { articleListThunk } from '../thunk/thunk';
 
 const articleListSlice = createSlice({
   name: 'articleListSlice',

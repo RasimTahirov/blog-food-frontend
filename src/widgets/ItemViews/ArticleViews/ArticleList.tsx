@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { AppDispatch, RootState } from '../../../store/store';
 import { pageConfig } from '../../../config/PageConfig';
-import { articleListThunk } from '../../../entities/article/thunks/thunk';
+import { articleListThunk } from '../../../entities/article/thunk/thunk';
 import { fullUrl } from '../../../shared/helpers';
 
 const ArticleList = () => {
@@ -27,23 +27,26 @@ const ArticleList = () => {
         </div>
         <div className="mb-2.5">
           <ul className="grid grid-cols-2 gap-[15px]">
-            {article.slice(-4).map((art) => (
-              <Link
-                key={art._id}
-                to={`${pageConfig.article.replace(':id', art._id)}`}
-              >
-                <li key={art._id}>
-                  <div className="relative overflow-hidden rounded-mdPlus cardHover">
-                    <img
-                      src={`${fullUrl}${art.image}`}
-                      alt=""
-                      className="w-full h-[300px] object-cover"
-                    />
-                  </div>
-                  <p className="px-5 mt-[5px] text-lg">{art.title}</p>
-                </li>
-              </Link>
-            ))}
+            {article.slice(-4).map(
+              (art) =>
+                art._id && (
+                  <Link
+                    key={art._id}
+                    to={`${pageConfig.article.replace(':id', art._id)}`}
+                  >
+                    <li key={art._id}>
+                      <div className="relative overflow-hidden rounded-mdPlus cardHover">
+                        <img
+                          src={`${fullUrl}${art.image}`}
+                          alt=""
+                          className="w-full h-[300px] object-cover"
+                        />
+                      </div>
+                      <p className="px-5 mt-[5px] text-lg">{art.title}</p>
+                    </li>
+                  </Link>
+                )
+            )}
           </ul>
         </div>
       </div>

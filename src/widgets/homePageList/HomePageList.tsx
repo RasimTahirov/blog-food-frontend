@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import ArticleList from '../ItemViews/ArticleViews/ArticleList';
 import RecipeList from '../ItemViews/RecipeViews/RecipeList';
 

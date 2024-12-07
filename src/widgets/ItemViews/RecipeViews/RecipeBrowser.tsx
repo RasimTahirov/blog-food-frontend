@@ -1,8 +1,9 @@
-import Pagination from '../../../features/Pagination/Pagination';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
-import RecipeListAll from './RecipeListAll';
 import { useState } from 'react';
+
+import Pagination from '../../../features/Pagination/Pagination';
+import RecipeListAll from './RecipeListAll';
 
 const RecipeBrowser = () => {
   const { posts } = useSelector((state: RootState) => state.postList);

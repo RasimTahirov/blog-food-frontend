@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store/store';
 import { SelectCategories } from './Index';
-import TextArea from 'antd/es/input/TextArea';
-import { Input } from 'antd';
 import {
   setDescription,
   setTitle,
 } from '../../../entities/recipe/slices/recipeCreateSlice';
+
+import { Input } from 'antd';
+import TextArea from 'antd/es/input/TextArea';
 
 const RecipeForm = () => {
   const dispatch = useDispatch<AppDispatch>();

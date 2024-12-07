@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store/store';
-import { imageUploadThunk } from '../../../entities/article/thunks/thunk';
+import { imageUploadThunk } from '../../../entities/article/thunk/thunk';
 
 const CoverUpload = () => {
   const [images, setImages] = useState<string | null>(null);

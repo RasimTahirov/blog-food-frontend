@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
-
 import { Modal } from '../../shared/ui';
 import { RecipeDetalis, RecipePreview, RecipeStep } from './ui';
 import { localId } from '../../shared/helpers';
 import {
   deleteRecipeThunk,
   recipeThunk,
-} from '../../entities/recipe/thunks/thunks';
+} from '../../entities/recipe/thunk/thunk';
 
 const Recipe = () => {
   const [isActive, setIsActive] = useState(false);

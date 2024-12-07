@@ -7,7 +7,7 @@ import { fullUrl, localId } from '../../shared/helpers';
 import {
   articleThunk,
   deleteArticleThunk,
-} from '../../entities/article/thunks/thunk';
+} from '../../entities/article/thunk/thunk';
 
 const Article = () => {
   const dispatch = useDispatch<AppDispatch>();

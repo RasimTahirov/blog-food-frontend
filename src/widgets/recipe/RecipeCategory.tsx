@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Button } from 'antd';
 import { AppDispatch, RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
-
 import { fullUrl } from '../../shared/helpers';
-import { recipeByCategoryThunk } from '../../entities/recipe/thunks/thunks';
+import { recipeByCategoryThunk } from '../../entities/recipe/thunk/thunk';
 
+import { Button } from 'antd';
 import Modal from '../../shared/ui/Modal/Modal';
 
 const RecipeCategory = () => {

@@ -1,18 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
-
-import { Button, Form } from 'antd';
-import { GoBackHome } from '../../shared/ui';
-import { CoverUpload, Ingredient, RecipeForm, Step, Time } from './form/Index';
 import { SparklesIcon, XMarkIcon } from '@heroicons/react/16/solid';
 import { localId, name, surname } from '../../shared/helpers';
-import { createRecipeThunk } from '../../entities/recipe/thunks/thunks';
+import { createRecipeThunk } from '../../entities/recipe/thunk/thunk';
 import {
   addIngredient,
   addStep,
   removeIngredient,
   removeStep,
 } from '../../entities/recipe/slices/recipeCreateSlice';
+
+import { Button, Form } from 'antd';
+import { GoBackHome } from '../../shared/ui';
+import { CoverUpload, Ingredient, RecipeForm, Step, Time } from './form/Index';
 
 const RecipeCreate = () => {
   const dispatch = useDispatch<AppDispatch>();

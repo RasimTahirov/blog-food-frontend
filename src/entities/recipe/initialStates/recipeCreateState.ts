@@ -1,4 +1,4 @@
-import { initialStateRecipeCreate, Post } from '../types/types';
+import { initialStateRecipeCreate, Post } from '../model/types';
 
 const createRecipeState: Post = {
   title: '',

@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store/store';
-
-import { IngredientType } from '../../../entities/recipe/types/types';
-import { Input, InputNumber, Select } from 'antd';
+import { IngredientType } from '../../../entities/recipe/model/types';
 import {
   setIngredientAmount,
   setIngredientName,
   setIngredientUnit,
 } from '../../../entities/recipe/slices/recipeCreateSlice';
+
+import { Input, InputNumber, Select } from 'antd';
 
 const Ingredient = ({ ingredient }: { ingredient: IngredientType }) => {
   const dispatch = useDispatch<AppDispatch>();

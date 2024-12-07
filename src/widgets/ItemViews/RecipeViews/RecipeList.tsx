@@ -6,7 +6,7 @@ import { AppDispatch, RootState } from '../../../store/store';
 
 import { Button } from 'antd';
 import { fullUrl } from '../../../shared/helpers';
-import { recipeListThunk } from '../../../entities/recipe/thunks/thunks';
+import { recipeListThunk } from '../../../entities/recipe/thunk/thunk';
 
 type Post = {
   _id: string;

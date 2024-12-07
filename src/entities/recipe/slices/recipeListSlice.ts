@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from '../initialStates/recipeListState';
-import { recipeListThunk } from '../thunks/thunks';
+import { recipeListThunk } from '../thunk/thunk';
 
 const recipeListSlice = createSlice({
   name: 'postListSlice',

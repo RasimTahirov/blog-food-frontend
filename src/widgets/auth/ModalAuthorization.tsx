@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
+import { authThunk } from '../../entities/user/auth/thunk/thunk';
 
 import { Button, Form, Input } from 'antd';
-import { authThunk } from '../../entities/user/auth/thunk/thunk';
 
 interface FormValues {
   email: string;

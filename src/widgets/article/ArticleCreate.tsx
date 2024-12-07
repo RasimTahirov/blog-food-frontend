@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
-
-import { Button, Form } from 'antd';
-import { ArticleParagraphList, ArticleTitle, CoverUpload } from './form';
-import { GoBackHome } from '../../shared/ui';
 import { localId, name, surname } from '../../shared/helpers';
-import { createArticleThunk } from '../../entities/article/thunks/thunk';
+import { createArticleThunk } from '../../entities/article/thunk/thunk';
+
+import { ArticleParagraphList, ArticleTitle, CoverUpload } from './form';
+import { Button, Form } from 'antd';
+import { GoBackHome } from '../../shared/ui';
 
 const ArticleCreate = () => {
   const dispatch = useDispatch<AppDispatch>();

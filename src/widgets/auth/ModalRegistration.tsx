@@ -1,9 +1,9 @@
 import { SubmitHandler } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
+import { registerThunk } from '../../entities/user/register/thunk/thunk';
 
 import { Button, Form, Input } from 'antd';
-import { registerThunk } from '../../entities/user/register/thunk/thunk';
 
 interface ModalRegistrationProps {
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;

@@ -4,7 +4,7 @@ import {
   createRecipeThunk,
   deleteRecipeThunk,
   imageUploadThunk,
-} from '../thunks/thunks';
+} from '../thunk/thunk';
 
 const recipeCreateSlice = createSlice({
   name: 'recipeCreateSlice',

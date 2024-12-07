@@ -1,11 +1,11 @@
 import { Button } from 'antd';
 import { useDispatch } from 'react-redux';
-
-import ArticleParagraph from './ArticleParagraph';
 import {
   addParagraph,
   removeParagraph,
 } from '../../../entities/article/slices/articleCreateSlice';
+
+import ArticleParagraph from './ArticleParagraph';
 
 const ArticleParagraphList = ({ paragraph }) => {
   const dispatch = useDispatch();

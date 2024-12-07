@@ -1,4 +1,4 @@
-import { initialStateRecipe } from '../types/types';
+import { initialStateRecipe } from '../model/types';
 
 export const initialState: initialStateRecipe = {
   post: null,
