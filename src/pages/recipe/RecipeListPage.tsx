@@ -1,7 +1,7 @@
-import { RecipeListAll } from '../../widgets';
+import RecipeBrowser from '../../widgets/ItemViews/RecipeViews/RecipeBrowser';
 
 const RecipeListPage = () => {
-  return <RecipeListAll />;
+  return <RecipeBrowser />;
 };
 
 export default RecipeListPage;

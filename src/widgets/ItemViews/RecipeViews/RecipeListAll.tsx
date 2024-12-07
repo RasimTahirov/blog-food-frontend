@@ -19,15 +19,12 @@ type Post = {
   image: string;
 };
 
-const RecipeListAll = () => {
+const RecipeListAll = ({ posts }: { posts: Post[] }) => {
   const [modalActive, setModalActive] = useState(false);
 
-  const { posts }: { posts: Post[] } = useSelector(
-    (state: RootState) => state.postList
-  );
-  const { categories } = useSelector((state: RootState) => state.postCategory);
-
   const dispatch = useDispatch<AppDispatch>();
+
+  const { categories } = useSelector((state: RootState) => state.postCategory);
 
   useEffect(() => {
     dispatch(recipeListThunk());
@@ -35,7 +32,7 @@ const RecipeListAll = () => {
   }, [dispatch]);
 
   return (
-    <div className="container-max text-textBlack w-full mb-5">
+    <div className=" text-textBlack w-full mb-5">
       <div className="main-container">
         <div className="flex gap-5 pb-5 justify-end items-center">
           <ul className="flex gap-2.5">
@@ -63,19 +60,19 @@ const RecipeListAll = () => {
                 to={`${pageConfig.recipe.replace(':id', post._id)}`}
               >
                 <li>
-                  <div>
-                    <div className="relative overflow-hidden rounded-mdPlus cardHover">
-                      <p className="absolute mt-[5px] ml-[5px] py-[5px] px-2.5 leading-5 bg-containerWhite rounded-mdPlus">
-                        {post.categories}
-                      </p>
-                      <img
-                        src={`${fullUrl}${post.image}`}
-                        alt=""
-                        className="w-full h-[200px] object-cover"
-                      />
-                    </div>
+                  <div className="relative overflow-hidden rounded-mdPlus cardHover">
+                    <p className="absolute mt-[5px] ml-[5px] py-[5px] px-2.5 leading-5 bg-containerWhite rounded-mdPlus">
+                      {post.categories}
+                    </p>
+                    <img
+                      src={`${fullUrl}${post.image}`}
+                      alt=""
+                      className="w-full h-[200px] object-cover"
+                    />
                   </div>
-                  <p className="px-5 mt-[5px] text-lg">{post.title}</p>
+                  <p className="px-5 mt-[5px] text-lg break-words">
+                    {post.title}
+                  </p>
                 </li>
               </Link>
             ))}

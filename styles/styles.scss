@@ -85,11 +85,11 @@
 }
 
 .custom-button-white {
-  @apply border-transparent bg-buttonWhite text-textBlack !important;
+  @apply bg-buttonWhite text-textBlack !important;
 }
 
 .custom-button-white:hover {
-  @apply bg-buttonRed text-textWhite !important;
+  @apply bg-buttonRed text-textWhite border-transparent !important;
 }
 
 .link-style {

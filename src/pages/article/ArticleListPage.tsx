@@ -1,7 +1,7 @@
-import { ArticleListAll } from '../../widgets';
+import ArticleBrowser from '../../widgets/ItemViews/ArticleViews/ArticleBrowser';
 
 const ArticleListPage = () => {
-  return <ArticleListAll />;
+  return <ArticleBrowser />;
 };
 
 export default ArticleListPage;

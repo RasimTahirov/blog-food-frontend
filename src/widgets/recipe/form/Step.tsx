@@ -44,7 +44,7 @@ const Step = ({ steps }: { steps: StepType }) => {
         <img
           src={image}
           alt={`шаг ${steps.stepNumber}`}
-          className="w-[90%] h-[250px] object-cover rounded-mdPlus mb-2"
+          className="w-full h-[350px] object-cover rounded-mdPlus mb-2"
         />
       ) : (
         <div className="relative bg-containerWhite flex justify-between w-[35%] rounded-mdPlus p-2 mb-2.5 cursor-pointer">
