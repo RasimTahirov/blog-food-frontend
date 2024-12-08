@@ -1,6 +1,6 @@
-import { initialStateRecipeCreate, Post } from '../types/types';
+import { initialStateRecipeCreate, Recipe } from '../model/types';
 
-const createRecipeState: Post = {
+const createRecipeState: Recipe = {
   title: '',
   description: '',
   categories: 'Завртаки',
@@ -33,7 +33,7 @@ const createRecipeState: Post = {
 };
 
 export const initialState: initialStateRecipeCreate = {
-  post: createRecipeState || null,
+  recipe: createRecipeState || null,
   loading: false,
   error: null,
 };

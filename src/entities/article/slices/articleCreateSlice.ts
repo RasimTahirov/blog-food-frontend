@@ -4,7 +4,7 @@ import {
   createArticleThunk,
   deleteArticleThunk,
   imageUploadThunk,
-} from '../thunks/thunk';
+} from '../thunk/thunk';
 
 const articleCreate = createSlice({
   name: 'articleCreate',
@@ -34,7 +34,7 @@ const articleCreate = createSlice({
     },
     setParagraphDescription: (state, action) => {
       const { id, description } = action.payload;
-      const paragraph = state.article.paragraph.find((p) => p.id === id);
+      const paragraph = state.article.paragraph.find((para) => para.id === id);
       if (paragraph) {
         paragraph.description = description;
       }

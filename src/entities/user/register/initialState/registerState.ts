@@ -1,4 +1,4 @@
-import { User } from '../../types/types';
+import { User } from '../../model/types';
 
 interface Data {
   user: User | null;

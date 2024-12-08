@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from '../initialStates/recipeListState';
-import { recipeListThunk } from '../thunks/thunks';
+import { recipeListThunk } from '../thunk/thunk';
 
 const recipeListSlice = createSlice({
-  name: 'postListSlice',
+  name: 'recipeListSlice',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -13,7 +13,7 @@ const recipeListSlice = createSlice({
         state.error = null;
       })
       .addCase(recipeListThunk.fulfilled, (state, action) => {
-        state.posts = action.payload;
+        state.recipes = action.payload;
         state.loading = false;
         state.error = null;
       })

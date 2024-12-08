@@ -1,13 +1,20 @@
 import { Button } from 'antd';
 import { useDispatch } from 'react-redux';
-
-import ArticleParagraph from './ArticleParagraph';
 import {
   addParagraph,
   removeParagraph,
 } from '../../../entities/article/slices/articleCreateSlice';
 
-const ArticleParagraphList = ({ paragraph }) => {
+import { Paragraph } from '../../../entities/article/model/types';
+import ArticleParagraph from './ArticleParagraph';
+
+interface ArticleParagraphListProps {
+  paragraph: Paragraph[];
+}
+
+const ArticleParagraphList: React.FC<ArticleParagraphListProps> = ({
+  paragraph,
+}) => {
   const dispatch = useDispatch();
 
   return (

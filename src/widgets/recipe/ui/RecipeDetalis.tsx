@@ -3,13 +3,13 @@ import style from './Index.module.scss';
 import { useSelector } from 'react-redux';
 import { formatHours } from '../../../utils/formatHours';
 import { RootState } from '../../../store/store';
+import { SpinLoading } from '../../../shared/ui';
 
 const RecipeDetalis = () => {
-  const { post } = useSelector((state: RootState) => state.post);
+  const { recipe } = useSelector((state: RootState) => state.recipe);
 
-  if (!post) {
-    // Временно
-    return <div>Загрузка...</div>;
+  if (!recipe) {
+    return <SpinLoading />;
   }
 
   return (
@@ -17,7 +17,7 @@ const RecipeDetalis = () => {
       <div className="p-3.5 rounded-mdPlus h-fit bg-containerWhite">
         <p className="mb-[5px] text-2xl font-semibold">Ингредиенты</p>
         <ul className="grid gap-y-[5px]">
-          {post.ingredients.map((ing) => (
+          {recipe.ingredients.map((ing) => (
             <li key={ing._id} className={style.itemList}>
               <div className="flex justify-between items-center">
                 <div className="w-[80%]">
@@ -34,11 +34,11 @@ const RecipeDetalis = () => {
       </div>
       <div className="p-3.5 rounded-mdPlus h-fit bg-containerWhite flex gap-2.5">
         <span>Время приготовления:</span>
-        {post.cookTime.hours > 0 && (
-          <span>{formatHours(post.cookTime.hours)}</span>
+        {recipe.cookTime.hours > 0 && (
+          <span>{formatHours(recipe.cookTime.hours)}</span>
         )}
-        {post.cookTime.minutes > 0 && (
-          <span>{post.cookTime.minutes} минут</span>
+        {recipe.cookTime.minutes > 0 && (
+          <span>{recipe.cookTime.minutes} минут</span>
         )}
       </div>
     </div>

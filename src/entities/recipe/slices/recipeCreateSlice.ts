@@ -4,23 +4,23 @@ import {
   createRecipeThunk,
   deleteRecipeThunk,
   imageUploadThunk,
-} from '../thunks/thunks';
+} from '../thunk/thunk';
 
 const recipeCreateSlice = createSlice({
   name: 'recipeCreateSlice',
   initialState,
   reducers: {
     setTitle: (state, action) => {
-      state.post.title = action.payload;
+      state.recipe.title = action.payload;
     },
     setDescription: (state, action) => {
-      state.post.description = action.payload;
+      state.recipe.description = action.payload;
     },
     setCategories: (state, action) => {
-      state.post.categories = action.payload;
+      state.recipe.categories = action.payload;
     },
     addIngredient: (state) => {
-      state.post.ingredients.push({
+      state.recipe.ingredients.push({
         id: Date.now(),
         name: '',
         unit: 'г',
@@ -28,13 +28,13 @@ const recipeCreateSlice = createSlice({
       });
     },
     removeIngredient: (state, action) => {
-      state.post.ingredients = state.post.ingredients.filter(
+      state.recipe.ingredients = state.recipe.ingredients.filter(
         (ingredient) => ingredient.id !== action.payload
       );
     },
     setIngredientName: (state, action) => {
       const { id, name } = action.payload;
-      const ingredient = state.post.ingredients.find(
+      const ingredient = state.recipe.ingredients.find(
         (ingredient) => ingredient.id === id
       );
       if (ingredient) {
@@ -43,7 +43,7 @@ const recipeCreateSlice = createSlice({
     },
     setIngredientUnit: (state, action) => {
       const { id, unit } = action.payload;
-      const ingredient = state.post.ingredients.find(
+      const ingredient = state.recipe.ingredients.find(
         (ingredient) => ingredient.id === id
       );
       if (ingredient) {
@@ -52,7 +52,7 @@ const recipeCreateSlice = createSlice({
     },
     setIngredientAmount: (state, action) => {
       const { id, amount } = action.payload;
-      const ingredient = state.post.ingredients.find(
+      const ingredient = state.recipe.ingredients.find(
         (ingredient) => ingredient.id === id
       );
       if (ingredient) {
@@ -60,37 +60,37 @@ const recipeCreateSlice = createSlice({
       }
     },
     addStep: (state) => {
-      state.post.steps.push({
+      state.recipe.steps.push({
         id: Date.now(),
         description: '',
         image: '',
-        stepNumber: state.post.steps.length + 1,
+        stepNumber: state.recipe.steps.length + 1,
       });
     },
     removeStep: (state, action) => {
-      state.post.steps = state.post.steps.filter(
+      state.recipe.steps = state.recipe.steps.filter(
         (step) => step.id !== action.payload
       );
     },
 
     setDescriptionStep: (state, action) => {
       const { id, description } = action.payload;
-      const step = state.post.steps.find((step) => step.id === id);
+      const step = state.recipe.steps.find((step) => step.id === id);
       if (step) {
         step.description = description;
       }
     },
     setImageStep: (state, action) => {
       const { id, image } = action.payload;
-      const step = state.post.steps.find((step) => step.id === id);
+      const step = state.recipe.steps.find((step) => step.id === id);
       if (step) {
         step.image = image;
       }
     },
     setTime: (state, action) => {
       const { hours, minutes } = action.payload;
-      if (hours !== undefined) state.post.cookTime.hours = hours;
-      if (minutes !== undefined) state.post.cookTime.minutes = minutes;
+      if (hours !== undefined) state.recipe.cookTime.hours = hours;
+      if (minutes !== undefined) state.recipe.cookTime.minutes = minutes;
     },
   },
   extraReducers: (builder) => {
@@ -100,7 +100,7 @@ const recipeCreateSlice = createSlice({
         state.error = null;
       })
       .addCase(createRecipeThunk.fulfilled, (state, action) => {
-        state.post = action.payload;
+        state.recipe = action.payload;
         state.loading = false;
         state.error = null;
       })
@@ -113,9 +113,9 @@ const recipeCreateSlice = createSlice({
         const { url, type, id } = action.payload;
 
         if (type === 'cover') {
-          state.post.image = url;
+          state.recipe.image = url;
         } else if (type === 'step' && id !== undefined) {
-          const step = state.post.steps.find((step) => step.id === id);
+          const step = state.recipe.steps.find((step) => step.id === id);
           if (step) {
             step.image = url;
           }

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from '../initialStates/recipeCategorySlice';
-import { recipeByCategoryThunk, recipeCategoryThunk } from '../thunks/thunks';
+import { recipeByCategoryThunk, recipeCategoryThunk } from '../thunk/thunk';
 
 const recipeCategorySlice = createSlice({
   name: 'recipeCategorySlice',
@@ -27,7 +27,7 @@ const recipeCategorySlice = createSlice({
         state.error = null;
       })
       .addCase(recipeByCategoryThunk.fulfilled, (state, action) => {
-        state.posts = action.payload;
+        state.recipes = action.payload;
         state.loading = false;
         state.error = null;
       })

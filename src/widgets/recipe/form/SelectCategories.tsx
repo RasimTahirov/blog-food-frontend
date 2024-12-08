@@ -6,7 +6,7 @@ import { setCategories } from '../../../entities/recipe/slices/recipeCreateSlice
 const SelectCategories = () => {
   const dispatch = useDispatch();
   const { categories } = useSelector(
-    (state: RootState) => state.postCreate.post
+    (state: RootState) => state.recipeCreate.recipe
   );
 
   const handleCategoriesChange = (value: string) => {

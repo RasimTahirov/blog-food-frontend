@@ -5,15 +5,18 @@
 @tailwind utilities;
 
 #root {
-  background: #f8f9fa;
+  height: 100%;
 }
 
 .layout {
-  height: 100%;
+  min-height: 100vh;
+  background: #f8f9fa;
   font-family: 'Noto-Sans';
   font-size: 17px;
   font-weight: 500;
   color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
 .container-max {
@@ -34,8 +37,6 @@
 .custom-error {
   @apply text-textRed;
 }
-
-// ff4d42
 
 .titleForm {
   @apply text-xl mb-0.5 font-semibold;
@@ -102,4 +103,8 @@
 
 .cardHover:hover {
   @apply shadow-hoverCard transition-all duration-200 ease-linear;
+}
+
+.ant-spin-dot {
+  @apply text-buttonRed !important;
 }

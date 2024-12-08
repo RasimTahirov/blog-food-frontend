@@ -3,7 +3,7 @@ import { Navigation } from '../../shared/ui';
 
 const Footer = () => {
   return (
-    <footer className="container-max bg-black w-full rounded-mdPlus text-textWhite">
+    <footer className="container-max bg-black mt-auto w-full rounded-mdPlus text-textWhite">
       <div className="main-container py-5">
         <div className="flex justify-between mb-[30px]">
           <div>

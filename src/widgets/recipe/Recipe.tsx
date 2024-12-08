@@ -4,23 +4,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
-
 import { Modal } from '../../shared/ui';
 import { RecipeDetalis, RecipePreview, RecipeStep } from './ui';
 import { localId } from '../../shared/helpers';
 import {
   deleteRecipeThunk,
   recipeThunk,
-} from '../../entities/recipe/thunks/thunks';
+} from '../../entities/recipe/thunk/thunk';
 
 const Recipe = () => {
-  const [isActive, setIsActive] = useState(false);
-
-  const { id } = useParams();
-  const { post } = useSelector((state: RootState) => state.post);
-
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const [isActive, setIsActive] = useState(false);
+  const { id } = useParams();
+  const { recipe } = useSelector((state: RootState) => state.recipe);
 
   if (!id || id === 'create') {
     return <Navigate to={pageConfig.recipeCreate} replace />;
@@ -40,7 +37,7 @@ const Recipe = () => {
 
   return (
     <div className="container-max text-textBlack w-full mb-10">
-      {post && (
+      {recipe && (
         <div className="main-container">
           <RecipePreview />
           <div className="flex justify-between gap-x-5">
@@ -49,12 +46,12 @@ const Recipe = () => {
           </div>
           <div className="my-5 p-3.5 rounded-mdPlus h-fit bg-containerWhite w-[30%]">
             <p>
-              Автор: {post.author.name} {post.author.surname}
+              Автор: {recipe.author.name} {recipe.author.surname}
             </p>
-            <p>Категория: {post.categories}</p>
+            <p>Категория: {recipe.categories}</p>
           </div>
           <div className="flex gap-5">
-            {localId === post.author.id ? (
+            {localId === recipe.author.id ? (
               <div>
                 <Button
                   className="custom-button-red"
@@ -69,9 +66,9 @@ const Recipe = () => {
         </div>
       )}
       <Modal active={isActive} setActive={setIsActive}>
-        <div className="bg-black py-[30px] px-10 rounded-mdPlus">
+        <div className="bg-black p-10 rounded-mdPlus">
           <div className="grid gap-2.5">
-            <span>Вы действительно хотите удалить статью?</span>
+            <span>Вы действительно хотите удалить рецепт?</span>
             <button onClick={handleDelete}>Удалить</button>
           </div>
         </div>

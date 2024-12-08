@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
 import avatar from '../../../../public/assets/avatar/dceb8bb5ac5f91b63912faf77154483c.jpg';
-
+import { useEffect, useState } from 'react';
 import {
   email as initialEmail,
   name as initialName,

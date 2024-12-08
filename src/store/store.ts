@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import authReducer from '../entities/user/auth/slice/authSlice';
 import registerReducer from '../entities/user/register/slice/registerSlice';
+
 import articleCreateReducer from '../entities/article/slices/articleCreateSlice';
 import articleListReducer from '../entities/article/slices/articleListSlice';
 import articleReducer from '../entities/article/slices/articleSlice';
@@ -15,13 +16,13 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     register: registerReducer,
-    postCreate: recipeCreateReducer,
-    articleCreate: articleCreateReducer,
-    articleList: articleListReducer,
     article: articleReducer,
-    postList: recipeListReducer,
-    post: recipeReducer,
-    postCategory: recipeCatrgoryReducer,
+    articleList: articleListReducer,
+    articleCreate: articleCreateReducer,
+    recipe: recipeReducer,
+    recipeList: recipeListReducer,
+    recipeCreate: recipeCreateReducer,
+    recipeCategory: recipeCatrgoryReducer,
   },
 });
 

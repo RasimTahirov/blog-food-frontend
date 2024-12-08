@@ -8,11 +8,12 @@ import { HeartOutlined, UserOutlined } from '@ant-design/icons';
 import ModalRegistration from '../auth/ModalRegistration';
 import ModalAuthorization from '../auth/ModalAuthorization';
 import { Button } from 'antd';
-import { Modal, Navigation } from '../../shared/ui';
+import { Modal, Navigation, Success } from '../../shared/ui';
 
 const MainHeader = () => {
   const [isActiveAuthorization, setIsActiveAuthorization] = useState(false);
   const [isActiveRegister, setIsActiveRegister] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const user = useSelector((state: RootState) => state.auth.user);
 
@@ -87,15 +88,24 @@ const MainHeader = () => {
           </div>
         </div>
       </div>
+
       <Modal
         active={isActiveAuthorization}
         setActive={setIsActiveAuthorization}
       >
         <ModalAuthorization setIsActive={setIsActiveAuthorization} />
       </Modal>
-      <Modal active={isActiveRegister} setActive={setIsActiveRegister}>
-        <ModalRegistration setIsActive={setIsActiveRegister} />
-      </Modal>
+
+      {isActiveRegister && (
+        <Modal active={isActiveRegister} setActive={setIsActiveRegister}>
+          <ModalRegistration
+            setIsActive={setIsActiveRegister}
+            setShowSuccess={setShowSuccess}
+          />
+        </Modal>
+      )}
+
+      {showSuccess && <Success message="Вы успешно зарегистрировались" />}
     </header>
   );
 };

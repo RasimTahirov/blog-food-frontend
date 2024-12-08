@@ -3,33 +3,48 @@ import { useEffect, useState } from 'react';
 import { pageConfig } from '../../../config/PageConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store/store';
-
-import { Button } from 'antd';
-import Modal from '../../../shared/ui/Modal/Modal';
 import { fullUrl } from '../../../shared/helpers';
 import {
   recipeCategoryThunk,
   recipeListThunk,
-} from '../../../entities/recipe/thunks/thunks';
+} from '../../../entities/recipe/thunk/thunk';
+import { Recipe } from '../../../entities/recipe/model/types';
 
-type Post = {
-  _id: string;
-  categories: string;
-  title: string;
-  image: string;
-};
+import Modal from '../../../shared/ui/Modal/Modal';
+import { Button } from 'antd';
+import { Error, SpinLoading } from '../../../shared/ui';
 
-const RecipeListAll = ({ posts }: { posts: Post[] }) => {
+interface RecipeListAllProps {
+  recipes: Recipe[];
+  error: string | null;
+  loading: boolean;
+}
+
+const RecipeListAll: React.FC<RecipeListAllProps> = ({
+  recipes,
+  error,
+  loading,
+}) => {
   const [modalActive, setModalActive] = useState(false);
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const { categories } = useSelector((state: RootState) => state.postCategory);
+  const { categories } = useSelector(
+    (state: RootState) => state.recipeCategory
+  );
 
   useEffect(() => {
     dispatch(recipeListThunk());
     dispatch(recipeCategoryThunk());
   }, [dispatch]);
+
+  if (loading) {
+    return <SpinLoading />;
+  }
+
+  if (error) {
+    return <Error subTitle={error} />;
+  }
 
   return (
     <div className=" text-textBlack w-full mb-5">
@@ -54,24 +69,24 @@ const RecipeListAll = ({ posts }: { posts: Post[] }) => {
 
         <div className="">
           <ul className="grid grid-cols-3 gap-[15px]">
-            {posts.map((post) => (
+            {recipes.map((recipe) => (
               <Link
-                key={post._id}
-                to={`${pageConfig.recipe.replace(':id', post._id)}`}
+                key={recipe._id}
+                to={`${pageConfig.recipe.replace(':id', recipe._id as string)}`}
               >
                 <li>
                   <div className="relative overflow-hidden rounded-mdPlus cardHover">
                     <p className="absolute mt-[5px] ml-[5px] py-[5px] px-2.5 leading-5 bg-containerWhite rounded-mdPlus">
-                      {post.categories}
+                      {recipe.categories}
                     </p>
                     <img
-                      src={`${fullUrl}${post.image}`}
+                      src={`${fullUrl}${recipe.image}`}
                       alt=""
                       className="w-full h-[200px] object-cover"
                     />
                   </div>
                   <p className="px-5 mt-[5px] text-lg break-words">
-                    {post.title}
+                    {recipe.title}
                   </p>
                 </li>
               </Link>

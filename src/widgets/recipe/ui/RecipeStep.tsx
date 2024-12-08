@@ -1,18 +1,18 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 import { fullUrl } from '../../../shared/helpers';
+import { SpinLoading } from '../../../shared/ui';
 
 const RecipeStep = () => {
-  const { post } = useSelector((state: RootState) => state.post);
+  const { recipe } = useSelector((state: RootState) => state.recipe);
 
-  if (!post) {
-    // Временно
-    return <div>Загрузка...</div>;
+  if (!recipe) {
+    return <SpinLoading />;
   }
 
   return (
     <div className="grid gap-y-5 w-[65%]">
-      {post.steps.map((step) => (
+      {recipe.steps.map((step) => (
         <div key={step._id} className="grid gap-y-2.5 relative">
           <div className="rounded-mdPlus overflow-hidden">
             <img

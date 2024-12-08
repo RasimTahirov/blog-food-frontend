@@ -1,4 +1,4 @@
-import { initialStateArticle } from '../types/types';
+import { initialStateArticle } from '../model/types';
 
 export const initialState: initialStateArticle = {
   article: null,

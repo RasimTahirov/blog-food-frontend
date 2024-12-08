@@ -1,20 +1,27 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { pageConfig } from '../../config/PageConfig';
 import { ScrollToTop } from '../../shared/helpers';
 
 import Main from '../layouts/Main/Main';
 
-import {
-  Home,
-  Account,
-  ArticleCreatePage,
-  ArticlePage,
-  RecipeCategoriesPage,
-  RecipeCreatePage,
-  RecipePage,
-  RecipeListPage,
-  ArticleListPage,
-} from '../../pages';
+const Home = lazy(() => import('../../pages/home/Home'));
+const Account = lazy(() => import('../../pages/account/Account'));
+const ArticleCreatePage = lazy(
+  () => import('../../pages/article/ArticleCreatePage')
+);
+const ArticlePage = lazy(() => import('../../pages/article/Article'));
+const RecipeCategoriesPage = lazy(
+  () => import('../../pages/recipe/RecipeCategoriesPage')
+);
+const RecipeCreatePage = lazy(
+  () => import('../../pages/recipe/RecipeCreatePage')
+);
+const RecipePage = lazy(() => import('../../pages/recipe/Recipe'));
+const RecipeListPage = lazy(() => import('../../pages/recipe/RecipeListPage'));
+const ArticleListPage = lazy(
+  () => import('../../pages/article/ArticleListPage')
+);
 
 const AppRoutes = () => {
   return (

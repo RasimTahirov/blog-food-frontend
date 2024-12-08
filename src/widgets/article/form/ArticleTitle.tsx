@@ -4,10 +4,10 @@ import { RootState } from '../../../store/store';
 import { setTitle } from '../../../entities/article/slices/articleCreateSlice';
 
 const ArticleTitle = () => {
+  const dispatch = useDispatch();
   const { title } = useSelector(
     (state: RootState) => state.articleCreate.article
   );
-  const dispatch = useDispatch();
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setTitle(e.target.value));

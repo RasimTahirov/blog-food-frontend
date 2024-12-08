@@ -1,10 +1,3 @@
-export interface Paragraph {
-  _id?: string;
-  description: string;
-  title: string;
-  id: number;
-}
-
 export interface Article {
   _id?: string;
   title: string;
@@ -15,6 +8,13 @@ export interface Article {
     surname: string;
     id: string;
   };
+}
+
+export interface Paragraph {
+  _id?: string;
+  description: string;
+  title: string;
+  id: number;
 }
 
 export interface ImageUploadArticleResult {

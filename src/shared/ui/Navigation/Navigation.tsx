@@ -12,7 +12,7 @@ const Navigation = () => {
           <Link to={pageConfig.recipeList}>Рецепты</Link>
         </li>
         <li>
-          <Link to={pageConfig.recipeList}>Блог</Link>
+          <Link to={pageConfig.articleList}>Блог</Link>
         </li>
       </ul>
     </nav>

@@ -2,15 +2,14 @@ import { useState } from 'react';
 import { PlusIcon } from '@heroicons/react/16/solid';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../store/store';
-
-import { StepType } from '../../../entities/recipe/types/types';
-
-import TextArea from 'antd/es/input/TextArea';
+import { StepType } from '../../../entities/recipe/model/types';
 import {
   setDescriptionStep,
   setImageStep,
 } from '../../../entities/recipe/slices/recipeCreateSlice';
-import { imageUploadThunk } from '../../../entities/recipe/thunks/thunks';
+import { imageUploadThunk } from '../../../entities/recipe/thunk/thunk';
+
+import TextArea from 'antd/es/input/TextArea';
 
 const Step = ({ steps }: { steps: StepType }) => {
   const dispatch = useDispatch<AppDispatch>();
