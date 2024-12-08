@@ -5,9 +5,16 @@ import {
   removeParagraph,
 } from '../../../entities/article/slices/articleCreateSlice';
 
+import { Paragraph } from '../../../entities/article/model/types';
 import ArticleParagraph from './ArticleParagraph';
 
-const ArticleParagraphList = ({ paragraph }) => {
+interface ArticleParagraphListProps {
+  paragraph: Paragraph[];
+}
+
+const ArticleParagraphList: React.FC<ArticleParagraphListProps> = ({
+  paragraph,
+}) => {
   const dispatch = useDispatch();
 
   return (

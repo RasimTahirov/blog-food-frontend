@@ -9,11 +9,14 @@ import {
   deleteArticleThunk,
 } from '../../entities/article/thunk/thunk';
 
+import { Error, SpinLoading } from '../../shared/ui';
+
 const Article = () => {
   const dispatch = useDispatch<AppDispatch>();
-
   const { id } = useParams();
-  const { article, loading } = useSelector((state: RootState) => state.article);
+  const { article, loading, error } = useSelector(
+    (state: RootState) => state.article
+  );
 
   useEffect(() => {
     if (id) {
@@ -27,8 +30,12 @@ const Article = () => {
     }
   };
 
-  if (loading && !article) {
-    return <div>загрузка...</div>;
+  if (loading && !error) {
+    return <SpinLoading />;
+  }
+
+  if (error) {
+    return <Error subTitle={error} />;
   }
 
   return (
@@ -39,7 +46,7 @@ const Article = () => {
             <div className="mb-5">
               <img
                 src={`${fullUrl}${article.image}`}
-                alt=""
+                alt={article.title}
                 className="w-full h-[500px] object-cover rounded-mdPlus"
               />
             </div>

@@ -20,7 +20,8 @@ export const createRecipeThunk = createAsyncThunk(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(
-          error.response?.data || 'Не удалось создать рецепт'
+          error.response?.data ||
+            'Не удалось создать рецепт. Пожалуйста, попробуйте обновить страницу.'
         );
       }
     }
@@ -39,7 +40,8 @@ export const deleteRecipeThunk = createAsyncThunk<string, string>(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(
-          error.response?.data || 'Не удалось удалить рецепт'
+          error.response?.data ||
+            'Не удалось удалить рецепт. Пожалуйста, попробуйте обновить страницу.'
         );
       }
     }
@@ -56,7 +58,8 @@ export const recipeListThunk = createAsyncThunk(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(
-          error.response?.data || 'Не удалось загрузить рецепты'
+          error.response?.data ||
+            'Не удалось загрузить рецепты. Пожалуйста, попробуйте обновить страницу.'
         );
       }
       return rejectWithValue('Не удалось загрузить рецепты');
@@ -73,7 +76,8 @@ export const recipeCategoryThunk = createAsyncThunk(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(
-          error.response?.data || 'Не удалось загрузить категории'
+          error.response?.data ||
+            'Не удалось загрузить категории. Пожалуйста, попробуйте обновить страницу.'
         );
       }
     }
@@ -92,7 +96,8 @@ export const recipeByCategoryThunk = createAsyncThunk(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(
-          error.response?.data || 'Не удалось загрузить категории'
+          error.response?.data ||
+            'Не удалось загрузить категории. Пожалуйста, попробуйте обновить страницу.'
         );
       }
     }
@@ -109,7 +114,8 @@ export const recipeThunk = createAsyncThunk(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(
-          error.response?.data || 'Не удалось загрузить рецепт'
+          error.response?.data ||
+            'Не удалось загрузить рецепт. Пожалуйста, попробуйте обновить страницу.'
         );
       }
       return rejectWithValue('Не удалось загрузить рецепт');
@@ -132,7 +138,8 @@ export const imageUploadThunk = createAsyncThunk<
   } catch (error) {
     if (axios.isAxiosError(error)) {
       return rejectWithValue(
-        error.response?.data || 'Не удалось загрузить изображение'
+        error.response?.data ||
+          'Не удалось загрузить изображение. Пожалуйста, попробуйте обновить страницу.'
       );
     }
     return rejectWithValue('Не удалось загрузить изображение');

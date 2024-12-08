@@ -54,7 +54,8 @@ export const articleListThunk = createAsyncThunk(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(
-          error.response?.data || 'Не удалось загрузить статьи'
+          error.response?.data ||
+            'Не удалось загрузить статьи. Пожалуйста, попробуйте обновить страницу.'
         );
       }
     }
@@ -71,7 +72,8 @@ export const articleThunk = createAsyncThunk(
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(
-          error.response?.data || 'Не удалось загрузить статью'
+          error.response?.data ||
+            'Не удалось загрузить статью. Пожалуйста, попробуйте обновить страницу.'
         );
       }
       return rejectWithValue('Не удалось загрузить статью');

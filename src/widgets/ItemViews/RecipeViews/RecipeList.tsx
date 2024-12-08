@@ -7,23 +7,25 @@ import { AppDispatch, RootState } from '../../../store/store';
 import { Button } from 'antd';
 import { fullUrl } from '../../../shared/helpers';
 import { recipeListThunk } from '../../../entities/recipe/thunk/thunk';
-
-type Post = {
-  _id: string;
-  categories: string;
-  title: string;
-  image: string;
-};
+import { Error, SpinLoading } from '../../../shared/ui';
 
 const RecipeList = () => {
-  const { posts }: { posts: Post[] } = useSelector(
+  const dispatch = useDispatch<AppDispatch>();
+  const { posts, error, loading } = useSelector(
     (state: RootState) => state.postList
   );
-  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(recipeListThunk());
   }, [dispatch]);
+
+  if (loading) {
+    return <SpinLoading />;
+  }
+
+  if (error) {
+    return <Error subTitle={error} />;
+  }
 
   return (
     <div className="container-max text-textBlack w-full">

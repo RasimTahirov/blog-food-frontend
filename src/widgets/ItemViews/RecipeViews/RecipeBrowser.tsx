@@ -2,14 +2,15 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 import { useState } from 'react';
 
-import Pagination from '../../../features/Pagination/Pagination';
 import RecipeListAll from './RecipeListAll';
+import { Pagination } from '../../../features';
 
 const RecipeBrowser = () => {
-  const { posts } = useSelector((state: RootState) => state.postList);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [itemPerPage] = useState(6);
+  const { posts, error, loading } = useSelector(
+    (state: RootState) => state.postList
+  );
 
   const lastItemIndex = currentPage * itemPerPage;
   const firstItemIndex = lastItemIndex - itemPerPage;
@@ -21,7 +22,7 @@ const RecipeBrowser = () => {
 
   return (
     <div className="container-max mb-5">
-      <RecipeListAll posts={currentItem} />
+      <RecipeListAll posts={currentItem} error={error} loading={loading} />
       <Pagination
         itemPerPage={itemPerPage}
         totalItem={posts.length}

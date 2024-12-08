@@ -6,15 +6,25 @@ import { AppDispatch, RootState } from '../../../store/store';
 import { pageConfig } from '../../../config/PageConfig';
 import { articleListThunk } from '../../../entities/article/thunk/thunk';
 import { fullUrl } from '../../../shared/helpers';
+import { Error, SpinLoading } from '../../../shared/ui';
 
 const ArticleList = () => {
   const dispatch = useDispatch<AppDispatch>();
-
-  const { article } = useSelector((state: RootState) => state.articleList);
+  const { article, loading, error } = useSelector(
+    (state: RootState) => state.articleList
+  );
 
   useEffect(() => {
     dispatch(articleListThunk());
   }, [dispatch]);
+
+  if (loading) {
+    return <SpinLoading />;
+  }
+
+  if (error) {
+    return <Error subTitle={error} />;
+  }
 
   return (
     <div className="container-max text-textBlack w-full">

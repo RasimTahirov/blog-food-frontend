@@ -10,12 +10,12 @@ import { Button } from 'antd';
 import Modal from '../../shared/ui/Modal/Modal';
 
 const RecipeCategory = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const [modalActive, setModalActive] = useState(false);
   const { category } = useParams<{ category: string }>();
   const { categories, posts } = useSelector(
     (state: RootState) => state.postCategory
   );
-  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (category) {

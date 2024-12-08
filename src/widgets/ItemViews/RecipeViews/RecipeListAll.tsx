@@ -11,15 +11,21 @@ import {
 
 import Modal from '../../../shared/ui/Modal/Modal';
 import { Button } from 'antd';
+import SpinLoading from '../../../shared/ui/Spin/Spin';
+import Error from '../../../shared/ui/Error/Error';
+import { Post } from '../../../entities/recipe/model/types';
 
-type Post = {
-  _id: string;
-  categories: string;
-  title: string;
-  image: string;
-};
+interface RecipeListAllProps {
+  posts: Post[];
+  error: string | null;
+  loading: boolean;
+}
 
-const RecipeListAll = ({ posts }: { posts: Post[] }) => {
+const RecipeListAll: React.FC<RecipeListAllProps> = ({
+  posts,
+  error,
+  loading,
+}) => {
   const [modalActive, setModalActive] = useState(false);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -30,6 +36,14 @@ const RecipeListAll = ({ posts }: { posts: Post[] }) => {
     dispatch(recipeListThunk());
     dispatch(recipeCategoryThunk());
   }, [dispatch]);
+
+  if (loading) {
+    return <SpinLoading />;
+  }
+
+  if (error) {
+    return <Error subTitle={error} />;
+  }
 
   return (
     <div className=" text-textBlack w-full mb-5">

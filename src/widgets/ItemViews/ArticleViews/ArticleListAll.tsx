@@ -5,13 +5,33 @@ import { articleListThunk } from '../../../entities/article/thunk/thunk';
 import { Link } from 'react-router-dom';
 import { pageConfig } from '../../../config/PageConfig';
 import { fullUrl } from '../../../shared/helpers';
+import { Error, SpinLoading } from '../../../shared/ui';
+import { Article } from '../../../entities/article/model/types';
 
-const ArticleListAll = ({ article }) => {
+interface ArticleListAllProps {
+  article: Article[];
+  error: string | null;
+  loading: boolean;
+}
+
+const ArticleListAll: React.FC<ArticleListAllProps> = ({
+  article,
+  error,
+  loading,
+}) => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(articleListThunk());
   }, [dispatch]);
+
+  if (loading) {
+    return <SpinLoading />;
+  }
+
+  if (error) {
+    return <Error subTitle={error} />;
+  }
 
   return (
     <div className="container-max text-textBlack w-full mb-5">

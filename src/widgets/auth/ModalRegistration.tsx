@@ -7,6 +7,7 @@ import { Button, Form, Input } from 'antd';
 
 interface ModalRegistrationProps {
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowSuccess: (_: boolean) => void;
 }
 
 interface FormValues {
@@ -18,6 +19,7 @@ interface FormValues {
 
 const ModalRegistration: React.FC<ModalRegistrationProps> = ({
   setIsActive,
+  setShowSuccess,
 }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { error } = useSelector((state: RootState) => state.register);
@@ -26,7 +28,10 @@ const ModalRegistration: React.FC<ModalRegistrationProps> = ({
     const result = await dispatch(registerThunk(data));
     if (registerThunk.fulfilled.match(result)) {
       setIsActive(false);
-      location.reload();
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
     }
   };
 

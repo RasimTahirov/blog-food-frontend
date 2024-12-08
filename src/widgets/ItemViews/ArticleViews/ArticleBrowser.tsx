@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 
+import { Pagination } from '../../../features';
 import ArticleListAll from './ArticleListAll';
-import Pagination from '../../../features/Pagination/Pagination';
 
 const ArticleBrowser = () => {
-  const { article } = useSelector((state: RootState) => state.articleList);
+  const { article, error, loading } = useSelector(
+    (state: RootState) => state.articleList
+  );
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemPerPage] = useState(4);
@@ -21,7 +23,7 @@ const ArticleBrowser = () => {
 
   return (
     <>
-      <ArticleListAll article={currentItem} />
+      <ArticleListAll article={currentItem} error={error} loading={loading} />
       <Pagination
         itemPerPage={itemPerPage}
         totalItem={article.length}

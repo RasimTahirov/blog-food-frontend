@@ -5,13 +5,15 @@ import { createArticleThunk } from '../../entities/article/thunk/thunk';
 
 import { ArticleParagraphList, ArticleTitle, CoverUpload } from './form';
 import { Button, Form } from 'antd';
-import { GoBackHome } from '../../shared/ui';
+import { Error, GoBackHome, SpinLoading } from '../../shared/ui';
 
 const ArticleCreate = () => {
   const dispatch = useDispatch<AppDispatch>();
-
   const { title, image, paragraph } = useSelector(
     (state: RootState) => state.articleCreate.article
+  );
+  const { error, loading } = useSelector(
+    (state: RootState) => state.articleCreate
   );
 
   const handleSubmit = () => {
@@ -28,6 +30,14 @@ const ArticleCreate = () => {
 
     dispatch(createArticleThunk(articleData));
   };
+
+  if (loading && !error) {
+    return <SpinLoading />;
+  }
+
+  if (error) {
+    return <Error subTitle={error} />;
+  }
 
   return (
     <main className="container-max text-textBlack py-5">

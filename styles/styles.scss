@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+#root {
+  height: 100%;
+}
+
 .layout {
   min-height: 100vh;
   background: #f8f9fa;
@@ -11,7 +15,8 @@
   font-size: 17px;
   font-weight: 500;
   color: #fff;
-  display: grid;
+  display: flex;
+  flex-direction: column;
 }
 
 .container-max {
@@ -100,4 +105,8 @@
 
 .cardHover:hover {
   @apply shadow-hoverCard transition-all duration-200 ease-linear;
+}
+
+.ant-spin-dot {
+  @apply text-buttonRed !important;
 }

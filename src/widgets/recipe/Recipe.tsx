@@ -13,13 +13,11 @@ import {
 } from '../../entities/recipe/thunk/thunk';
 
 const Recipe = () => {
-  const [isActive, setIsActive] = useState(false);
-
-  const { id } = useParams();
-  const { post } = useSelector((state: RootState) => state.post);
-
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const [isActive, setIsActive] = useState(false);
+  const { id } = useParams();
+  const { post } = useSelector((state: RootState) => state.post);
 
   if (!id || id === 'create') {
     return <Navigate to={pageConfig.recipeCreate} replace />;

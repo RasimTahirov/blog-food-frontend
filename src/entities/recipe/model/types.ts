@@ -21,6 +21,7 @@ export type StepType = {
 };
 
 export interface Post {
+  _id?: string;
   title: string;
   description: string;
   categories: string;

@@ -4,8 +4,8 @@ import { AppDispatch } from '../../../store/store';
 import { imageUploadThunk } from '../../../entities/article/thunk/thunk';
 
 const CoverUpload = () => {
-  const [images, setImages] = useState<string | null>(null);
   const dispatch = useDispatch<AppDispatch>();
+  const [images, setImages] = useState<string | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
