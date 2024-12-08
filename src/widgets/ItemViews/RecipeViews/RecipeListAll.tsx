@@ -8,21 +8,20 @@ import {
   recipeCategoryThunk,
   recipeListThunk,
 } from '../../../entities/recipe/thunk/thunk';
+import { Recipe } from '../../../entities/recipe/model/types';
 
 import Modal from '../../../shared/ui/Modal/Modal';
 import { Button } from 'antd';
-import SpinLoading from '../../../shared/ui/Spin/Spin';
-import Error from '../../../shared/ui/Error/Error';
-import { Post } from '../../../entities/recipe/model/types';
+import { Error, SpinLoading } from '../../../shared/ui';
 
 interface RecipeListAllProps {
-  posts: Post[];
+  recipes: Recipe[];
   error: string | null;
   loading: boolean;
 }
 
 const RecipeListAll: React.FC<RecipeListAllProps> = ({
-  posts,
+  recipes,
   error,
   loading,
 }) => {
@@ -30,7 +29,9 @@ const RecipeListAll: React.FC<RecipeListAllProps> = ({
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const { categories } = useSelector((state: RootState) => state.postCategory);
+  const { categories } = useSelector(
+    (state: RootState) => state.recipeCategory
+  );
 
   useEffect(() => {
     dispatch(recipeListThunk());
@@ -68,24 +69,24 @@ const RecipeListAll: React.FC<RecipeListAllProps> = ({
 
         <div className="">
           <ul className="grid grid-cols-3 gap-[15px]">
-            {posts.map((post) => (
+            {recipes.map((recipe) => (
               <Link
-                key={post._id}
-                to={`${pageConfig.recipe.replace(':id', post._id)}`}
+                key={recipe._id}
+                to={`${pageConfig.recipe.replace(':id', recipe._id as string)}`}
               >
                 <li>
                   <div className="relative overflow-hidden rounded-mdPlus cardHover">
                     <p className="absolute mt-[5px] ml-[5px] py-[5px] px-2.5 leading-5 bg-containerWhite rounded-mdPlus">
-                      {post.categories}
+                      {recipe.categories}
                     </p>
                     <img
-                      src={`${fullUrl}${post.image}`}
+                      src={`${fullUrl}${recipe.image}`}
                       alt=""
                       className="w-full h-[200px] object-cover"
                     />
                   </div>
                   <p className="px-5 mt-[5px] text-lg break-words">
-                    {post.title}
+                    {recipe.title}
                   </p>
                 </li>
               </Link>

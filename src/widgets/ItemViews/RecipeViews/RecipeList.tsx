@@ -11,8 +11,8 @@ import { Error, SpinLoading } from '../../../shared/ui';
 
 const RecipeList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { posts, error, loading } = useSelector(
-    (state: RootState) => state.postList
+  const { recipes, error, loading } = useSelector(
+    (state: RootState) => state.recipeList
   );
 
   useEffect(() => {
@@ -38,23 +38,23 @@ const RecipeList = () => {
         </div>
         <div className="mb-2.5">
           <ul className="grid grid-cols-3 gap-[15px]">
-            {posts.slice(-6).map((post) => (
+            {recipes.slice(-6).map((recipe) => (
               <Link
-                key={post._id}
-                to={`${pageConfig.recipe.replace(':id', post._id)}`}
+                key={recipe._id}
+                to={`${pageConfig.recipe.replace(':id', recipe._id as string)}`}
               >
                 <li>
                   <div className="relative overflow-hidden rounded-mdPlus cardHover">
                     <p className="absolute mt-[5px] ml-[5px] py-[5px] px-2.5 leading-5 bg-containerWhite rounded-mdPlus">
-                      {post.categories}
+                      {recipe.categories}
                     </p>
                     <img
-                      src={`${fullUrl}${post.image}`}
+                      src={`${fullUrl}${recipe.image}`}
                       alt=""
                       className="w-full h-[200px] object-cover"
                     />
                   </div>
-                  <p className="px-5 mt-[5px] text-lg">{post.title}</p>
+                  <p className="px-5 mt-[5px] text-lg">{recipe.title}</p>
                 </li>
               </Link>
             ))}

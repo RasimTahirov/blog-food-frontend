@@ -1,7 +1,7 @@
 import { initialStateRecipe } from '../model/types';
 
 export const initialState: initialStateRecipe = {
-  post: null,
+  recipe: null,
   loading: false,
   error: null,
 };

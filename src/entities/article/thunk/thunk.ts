@@ -32,7 +32,15 @@ export const deleteArticleThunk = createAsyncThunk<string, string>(
   'deleteArticleThunk',
   async (id, { rejectWithValue }) => {
     try {
-      const res = await axios.delete(`http://localhost:9000/api/delete/${id}`);
+      const token = localStorage.getItem('token');
+      const res = await axios.delete(
+        `http://localhost:9000/api/article/delete/${id}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {

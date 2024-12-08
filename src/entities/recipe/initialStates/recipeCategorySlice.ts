@@ -2,7 +2,7 @@ import { initialStateRecipeCategory } from '../model/types';
 
 export const initialState: initialStateRecipeCategory = {
   categories: [],
-  posts: [],
+  recipes: [],
   loading: false,
   error: null,
 };

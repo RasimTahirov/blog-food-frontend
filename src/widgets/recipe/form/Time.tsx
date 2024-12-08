@@ -5,7 +5,9 @@ import { setTime } from '../../../entities/recipe/slices/recipeCreateSlice';
 
 const Time = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { cookTime } = useSelector((state: RootState) => state.postCreate.post);
+  const { cookTime } = useSelector(
+    (state: RootState) => state.recipeCreate.recipe
+  );
 
   const handleHoursChange = (value: number | null) => {
     let updatedValue = value ?? 0;

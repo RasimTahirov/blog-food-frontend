@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ImageUploadResult, Post } from '../model/types';
+import { ImageUploadResult, Recipe } from '../model/types';
 import axios from 'axios';
 
 export const createRecipeThunk = createAsyncThunk(
-  'createPost',
-  async (recipeData: Post, { rejectWithValue }) => {
+  'createRecipe',
+  async (recipeData: Recipe, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.post(
@@ -30,11 +30,17 @@ export const createRecipeThunk = createAsyncThunk(
 );
 
 export const deleteRecipeThunk = createAsyncThunk<string, string>(
-  'deletePostThunk',
+  'deleteRecipeThunk',
   async (id, { rejectWithValue }) => {
     try {
+      const token = localStorage.getItem('token');
       const res = await axios.delete(
-        `http://localhost:9000/api/post/delete/${id}`
+        `http://localhost:9000/api/post/delete/${id}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
       );
       return res.data;
     } catch (error) {
@@ -50,7 +56,7 @@ export const deleteRecipeThunk = createAsyncThunk<string, string>(
 );
 
 export const recipeListThunk = createAsyncThunk(
-  'postThunk',
+  'recipeListThunk',
   async (_, { rejectWithValue }) => {
     try {
       const res = await axios.get('http://localhost:9000/api/post/all');
@@ -68,7 +74,7 @@ export const recipeListThunk = createAsyncThunk(
 );
 
 export const recipeCategoryThunk = createAsyncThunk(
-  'postCategoryThunk',
+  'recipeCategoryThunk',
   async (_, { rejectWithValue }) => {
     try {
       const res = await axios.get('http://localhost:9000/api/post/categories');
@@ -86,7 +92,7 @@ export const recipeCategoryThunk = createAsyncThunk(
 );
 
 export const recipeByCategoryThunk = createAsyncThunk(
-  'postsByCategoryThunk',
+  'recipeByCategoryThunk',
   async (category: string, { rejectWithValue }) => {
     try {
       const res = await axios.get(
@@ -106,7 +112,7 @@ export const recipeByCategoryThunk = createAsyncThunk(
 );
 
 export const recipeThunk = createAsyncThunk(
-  'postsThunk',
+  'recipeThunk',
   async (id: string, { rejectWithValue }) => {
     try {
       const res = await axios.get(`http://localhost:9000/api/post/${id}`);

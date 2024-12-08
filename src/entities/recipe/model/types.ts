@@ -20,7 +20,7 @@ export type StepType = {
   stepNumber: number;
 };
 
-export interface Post {
+export interface Recipe {
   _id?: string;
   title: string;
   description: string;
@@ -40,26 +40,26 @@ export interface Post {
 }
 
 export interface initialStateRecipe {
-  post: null | Post;
+  recipe: null | Recipe;
   loading: boolean;
   error: string | null;
 }
 
 export interface initialStateRecipeList {
-  posts: [];
+  recipes: [] | Recipe[];
   loading: boolean;
   error: string | null;
 }
 
 export interface initialStateRecipeCategory {
   categories: [];
-  posts: [];
+  recipes: [];
   loading: boolean;
   error: string | null;
 }
 
 export interface initialStateRecipeCreate {
-  post: Post;
+  recipe: Recipe;
   error: null | string;
   loading: boolean;
 }

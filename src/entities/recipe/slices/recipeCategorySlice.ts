@@ -27,7 +27,7 @@ const recipeCategorySlice = createSlice({
         state.error = null;
       })
       .addCase(recipeByCategoryThunk.fulfilled, (state, action) => {
-        state.posts = action.payload;
+        state.recipes = action.payload;
         state.loading = false;
         state.error = null;
       })

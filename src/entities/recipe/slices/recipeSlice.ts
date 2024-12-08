@@ -13,7 +13,7 @@ const recipeSlice = createSlice({
         state.error = null;
       })
       .addCase(recipeThunk.fulfilled, (state, action) => {
-        state.post = action.payload;
+        state.recipe = action.payload;
         state.loading = false;
         state.error = null;
       })

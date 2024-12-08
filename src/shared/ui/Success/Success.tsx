@@ -1,6 +1,6 @@
 import style from './index.module.scss';
-import { CheckCircleOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react';
+import { CheckCircleOutlined } from '@ant-design/icons';
 
 interface SuccessProps {
   message: string;

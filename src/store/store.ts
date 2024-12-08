@@ -12,18 +12,17 @@ import recipeListReducer from '../entities/recipe/slices/recipeListSlice';
 import recipeReducer from '../entities/recipe/slices/recipeSlice';
 import recipeCatrgoryReducer from '../entities/recipe/slices/recipeCategorySlice';
 
-// вот тут надо исправить
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     register: registerReducer,
-    postCreate: recipeCreateReducer,
-    articleCreate: articleCreateReducer,
-    articleList: articleListReducer,
     article: articleReducer,
-    postList: recipeListReducer,
-    post: recipeReducer,
-    postCategory: recipeCatrgoryReducer,
+    articleList: articleListReducer,
+    articleCreate: articleCreateReducer,
+    recipe: recipeReducer,
+    recipeList: recipeListReducer,
+    recipeCreate: recipeCreateReducer,
+    recipeCategory: recipeCatrgoryReducer,
   },
 });
 

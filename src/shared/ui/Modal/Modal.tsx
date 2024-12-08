@@ -1,4 +1,5 @@
 import './Modal.scss';
+import { CloseOutlined } from '@ant-design/icons';
 import { ReactNode } from 'react';
 
 interface ModalProps {
@@ -13,8 +14,14 @@ const Modal: React.FC<ModalProps> = ({ children, active, setActive }) => {
       className={active ? 'modal active' : 'modal'}
       onClick={() => setActive(false)}
     >
-      <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-        {children}
+      <div className="relative">
+        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <CloseOutlined
+            onClick={() => setActive(false)}
+            className="absolute top-[3%] right-[4%] cursor-pointer"
+          />
+          {children}
+        </div>
       </div>
     </div>
   );

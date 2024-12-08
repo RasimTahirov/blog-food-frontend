@@ -1,4 +1,4 @@
-import RecipeBrowser from '../../widgets/ItemViews/RecipeViews/RecipeBrowser';
+import { RecipeBrowser } from '../../widgets';
 
 const RecipeListPage = () => {
   return <RecipeBrowser />;

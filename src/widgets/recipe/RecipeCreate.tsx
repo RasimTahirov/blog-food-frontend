@@ -24,10 +24,10 @@ const RecipeCreate = () => {
     steps,
     image,
     cookTime,
-  } = useSelector((state: RootState) => state.postCreate.post);
+  } = useSelector((state: RootState) => state.recipeCreate.recipe);
 
   const handleSubmit = () => {
-    const PostData = {
+    const RecipeDate = {
       title,
       description,
       categories,
@@ -42,7 +42,7 @@ const RecipeCreate = () => {
       },
     };
 
-    dispatch(createRecipeThunk(PostData));
+    dispatch(createRecipeThunk(RecipeDate));
   };
 
   return (

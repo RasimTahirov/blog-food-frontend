@@ -12,7 +12,7 @@ import TextArea from 'antd/es/input/TextArea';
 const RecipeForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { title, description } = useSelector(
-    (state: RootState) => state.postCreate.post
+    (state: RootState) => state.recipeCreate.recipe
   );
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

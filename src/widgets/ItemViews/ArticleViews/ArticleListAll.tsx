@@ -40,7 +40,7 @@ const ArticleListAll: React.FC<ArticleListAllProps> = ({
           {article.map((art) => (
             <Link
               key={art._id}
-              to={`${pageConfig.article.replace(':id', art._id)}`}
+              to={`${pageConfig.article.replace(':id', art._id as string)}`}
             >
               <li key={art._id}>
                 <div className="relative overflow-hidden rounded-mdPlus cardHover">

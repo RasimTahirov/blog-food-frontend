@@ -33,57 +33,55 @@ const ModalAuthorization: React.FC<ModalAuthorization> = ({ setIsActive }) => {
 
   return (
     <div className="h-full grid items-center">
-      <div className="m-auto container-max bg-black rounded-mdPlus">
-        <div className="mx-20 p-10 grid justify-center gap-10">
-          <h3 className="flex justify-center text-3xl font-semibold">
-            Авторизация
-          </h3>
-          <Form onFinish={onSubmit}>
-            <div className="grid justify-items-end w-60">
-              <Form.Item
-                name="email"
-                rules={[
-                  {
-                    type: 'email',
-                    message: 'Введён некорректный адрес электронной почты',
-                  },
-                  {
-                    required: true,
-                    message: 'Пожалуйста, введите адрес электронной почты',
-                  },
-                ]}
-              >
-                <Input className="custom-input w-60" placeholder="Почта" />
-              </Form.Item>
-              <Form.Item
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Пожалуйста, введите пароль',
-                  },
-                ]}
-              >
-                <Input.Password
-                  className="custom-input w-60"
-                  placeholder="Пароль"
-                />
-              </Form.Item>
-            </div>
-            <div className="mt-10 w-60">
-              <Form.Item>
-                <div className="grid gap-[5px]">
-                  <Button htmlType="submit" className="custom-button-white">
-                    Войти
-                  </Button>
-                  <div className="custom-error">
-                    {error && <span>{error}</span>}
-                  </div>
+      <div className="mx-20 py-10 grid justify-center gap-10">
+        <h3 className="flex justify-center text-3xl font-semibold">
+          Авторизация
+        </h3>
+        <Form onFinish={onSubmit}>
+          <div className="grid justify-items-end w-60">
+            <Form.Item
+              name="email"
+              rules={[
+                {
+                  type: 'email',
+                  message: 'Введён некорректный адрес электронной почты',
+                },
+                {
+                  required: true,
+                  message: 'Пожалуйста, введите адрес электронной почты',
+                },
+              ]}
+            >
+              <Input className="custom-input w-60" placeholder="Почта" />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: 'Пожалуйста, введите пароль',
+                },
+              ]}
+            >
+              <Input.Password
+                className="custom-input w-60"
+                placeholder="Пароль"
+              />
+            </Form.Item>
+          </div>
+          <div className="mt-10 w-60">
+            <Form.Item>
+              <div className="grid gap-[5px]">
+                <Button htmlType="submit" className="custom-button-white">
+                  Войти
+                </Button>
+                <div className="custom-error">
+                  {error && <span>{error}</span>}
                 </div>
-              </Form.Item>
-            </div>
-          </Form>
-        </div>
+              </div>
+            </Form.Item>
+          </div>
+        </Form>
       </div>
     </div>
   );
