@@ -1,0 +1,20 @@
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.success {
+  background-color: black;
+  position: absolute;
+  top: 2%;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  animation: slideDown 0.5s ease-out forwards;
+}

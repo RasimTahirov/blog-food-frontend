@@ -1,0 +1,52 @@
+@keyframes openModal {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes closeModal {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.modal {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background-color: rgb(0, 0, 0, 0.4);
+  color: #f8f9fa;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.modal.active {
+  opacity: 1;
+  display: flex;
+  pointer-events: all;
+}
+
+.modal-content {
+  background-color: black;
+  border-radius: 10px;
+  animation: openModal 0.4s ease-in-out;
+}
+
+.modal.close {
+  animation: closeModal 0.4s ease-in-out;
+}
