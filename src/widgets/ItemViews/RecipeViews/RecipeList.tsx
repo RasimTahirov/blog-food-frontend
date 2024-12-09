@@ -54,7 +54,9 @@ const RecipeList = () => {
                       className="w-full h-[200px] object-cover"
                     />
                   </div>
-                  <p className="px-5 mt-[5px] text-lg">{recipe.title}</p>
+                  <p className="px-5 mt-[5px] text-lg break-words">
+                    {recipe.title}
+                  </p>
                 </li>
               </Link>
             ))}

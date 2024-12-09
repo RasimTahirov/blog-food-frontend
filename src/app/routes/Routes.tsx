@@ -4,6 +4,7 @@ import { pageConfig } from '../../config/PageConfig';
 import { ScrollToTop } from '../../shared/helpers';
 
 import Main from '../layouts/Main/Main';
+import FavoritesPage from '../../pages/favrotite/Favorite';
 
 const Home = lazy(() => import('../../pages/home/Home'));
 const Account = lazy(() => import('../../pages/account/Account'));
@@ -46,6 +47,7 @@ const AppRoutes = () => {
             path={pageConfig.articleCreate}
             element={<ArticleCreatePage />}
           />
+          <Route path={pageConfig.recipeFavorite} element={<FavoritesPage />} />
         </Route>
         <Route path={pageConfig.account} element={<Account />} />
       </Routes>

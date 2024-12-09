@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import { registerThunk } from '../../entities/user/register/thunk/thunk';
 
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 
 interface ModalRegistrationProps {
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
-  setShowSuccess: (_: boolean) => void;
 }
 
 interface FormValues {
@@ -19,7 +18,6 @@ interface FormValues {
 
 const ModalRegistration: React.FC<ModalRegistrationProps> = ({
   setIsActive,
-  setShowSuccess,
 }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { error } = useSelector((state: RootState) => state.register);
@@ -27,11 +25,8 @@ const ModalRegistration: React.FC<ModalRegistrationProps> = ({
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const result = await dispatch(registerThunk(data));
     if (registerThunk.fulfilled.match(result)) {
+      message.success('Вы успешно зарегистрировались');
       setIsActive(false);
-      setShowSuccess(true);
-      setTimeout(() => {
-        setShowSuccess(false);
-      }, 3000);
     }
   };
 
@@ -121,7 +116,7 @@ const ModalRegistration: React.FC<ModalRegistrationProps> = ({
                   },
                 ]}
               >
-                <Input className="custom-input w-60" placeholder="Фамилия" />
+                <Input className="custom-input w-60" placeholder="Фамилие" />
               </Form.Item>
             </div>
             <div className="mt-10 w-60">

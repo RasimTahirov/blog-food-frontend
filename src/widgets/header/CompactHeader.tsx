@@ -22,8 +22,7 @@ const CompactHeader = () => {
             <Navigation />
             {user ? (
               <div className="flex gap-5">
-                {/* Временно  to={pageConfig.account} */}
-                <Link to={pageConfig.account}>
+                <Link to={pageConfig.recipeFavorite}>
                   <Button className="custom-button-red">
                     <HeartOutlined />
                   </Button>

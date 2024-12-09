@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
@@ -9,6 +9,9 @@ import { RecipeDetalis, RecipePreview, RecipeStep } from './ui';
 import { localId } from '../../shared/helpers';
 import {
   deleteRecipeThunk,
+  recipeAddFavorites,
+  recipeAllFavorites,
+  recipeRemoveFavorites,
   recipeThunk,
 } from '../../entities/recipe/thunk/thunk';
 
@@ -18,21 +21,37 @@ const Recipe = () => {
   const [isActive, setIsActive] = useState(false);
   const { id } = useParams();
   const { recipe } = useSelector((state: RootState) => state.recipe);
+  const { recipes } = useSelector((state: RootState) => state.recipeFavorite);
 
   if (!id || id === 'create') {
     return <Navigate to={pageConfig.recipeCreate} replace />;
   }
 
+  const isFavorite =
+    Array.isArray(recipes) &&
+    recipes.some((favRecipe) => favRecipe._id === recipe?._id);
+
   useEffect(() => {
     if (id) {
       dispatch(recipeThunk(id));
+      dispatch(recipeAllFavorites());
     }
-  }, [dispatch, id]);
+  }, [dispatch, id, isFavorite]);
 
   const handleDelete = () => {
     dispatch(deleteRecipeThunk(id));
     setIsActive(false);
     navigate(pageConfig.home);
+    message.success('Рецепт успешно удалён');
+  };
+
+  const handleAddFavorite = () => {
+    dispatch(recipeAddFavorites({ recipeId: recipe?._id }));
+    console.log({ recipeId: recipe?._id });
+  };
+
+  const handleDeleteFavorite = () => {
+    dispatch(recipeRemoveFavorites({ recipeId: recipe?._id }));
   };
 
   return (
@@ -61,15 +80,29 @@ const Recipe = () => {
                 </Button>
               </div>
             ) : null}
-            <Button className="custom-button-red">В избранное</Button>
+
+            {isFavorite ? (
+              <Button
+                onClick={handleDeleteFavorite}
+                className="custom-button-white"
+              >
+                Удалить из избранного
+              </Button>
+            ) : (
+              <Button onClick={handleAddFavorite} className="custom-button-red">
+                В избранное
+              </Button>
+            )}
           </div>
         </div>
       )}
       <Modal active={isActive} setActive={setIsActive}>
-        <div className="bg-black p-10 rounded-mdPlus">
-          <div className="grid gap-2.5">
-            <span>Вы действительно хотите удалить рецепт?</span>
-            <button onClick={handleDelete}>Удалить</button>
+        <div className="grid gap-5 mx-20 py-10">
+          <span>Вы действительно хотите удалить рецепт?</span>
+          <div className="justify-center flex">
+            <Button className="custom-button-white" onClick={handleDelete}>
+              Удалить
+            </Button>
           </div>
         </div>
       </Modal>

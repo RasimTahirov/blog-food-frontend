@@ -2,13 +2,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import { localId, name, surname } from '../../shared/helpers';
 import { createArticleThunk } from '../../entities/article/thunk/thunk';
+import { useNavigate } from 'react-router-dom';
+import { pageConfig } from '../../config/PageConfig';
 
 import { ArticleParagraphList, ArticleTitle, CoverUpload } from './form';
-import { Button, Form } from 'antd';
+import { Button, Form, message } from 'antd';
 import { Error, GoBackHome, SpinLoading } from '../../shared/ui';
 
 const ArticleCreate = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const { title, image, paragraph } = useSelector(
     (state: RootState) => state.articleCreate.article
   );
@@ -29,6 +32,8 @@ const ArticleCreate = () => {
     };
 
     dispatch(createArticleThunk(articleData));
+    navigate(pageConfig.home);
+    message.success('Статья опубликованна');
   };
 
   if (loading && !error) {

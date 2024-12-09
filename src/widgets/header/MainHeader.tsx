@@ -8,12 +8,11 @@ import { HeartOutlined, UserOutlined } from '@ant-design/icons';
 import ModalRegistration from '../auth/ModalRegistration';
 import ModalAuthorization from '../auth/ModalAuthorization';
 import { Button } from 'antd';
-import { Modal, Navigation, Success } from '../../shared/ui';
+import { Modal, Navigation } from '../../shared/ui';
 
 const MainHeader = () => {
   const [isActiveAuthorization, setIsActiveAuthorization] = useState(false);
   const [isActiveRegister, setIsActiveRegister] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
 
   const user = useSelector((state: RootState) => state.auth.user);
 
@@ -29,8 +28,7 @@ const MainHeader = () => {
             <Navigation />
             {user ? (
               <div className="flex gap-5">
-                {/* Временно  to={pageConfig.account} */}
-                <Link to={pageConfig.account}>
+                <Link to={pageConfig.recipeFavorite}>
                   <Button className="custom-button-red">
                     <HeartOutlined />
                   </Button>
@@ -98,14 +96,9 @@ const MainHeader = () => {
 
       {isActiveRegister && (
         <Modal active={isActiveRegister} setActive={setIsActiveRegister}>
-          <ModalRegistration
-            setIsActive={setIsActiveRegister}
-            setShowSuccess={setShowSuccess}
-          />
+          <ModalRegistration setIsActive={setIsActiveRegister} />
         </Modal>
       )}
-
-      {showSuccess && <Success message="Вы успешно зарегистрировались" />}
     </header>
   );
 };

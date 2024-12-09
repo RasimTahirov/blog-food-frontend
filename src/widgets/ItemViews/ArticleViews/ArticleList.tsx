@@ -52,7 +52,9 @@ const ArticleList = () => {
                           className="w-full h-[300px] object-cover"
                         />
                       </div>
-                      <p className="px-5 mt-[5px] text-lg">{art.title}</p>
+                      <p className="px-5 mt-[5px] text-lg break-words">
+                        {art.title}
+                      </p>
                     </li>
                   </Link>
                 )
