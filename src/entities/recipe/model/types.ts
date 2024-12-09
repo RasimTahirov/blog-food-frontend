@@ -64,6 +64,10 @@ export interface initialStateRecipeCreate {
   loading: boolean;
 }
 
+export interface RecipeActionPayload {
+  recipeId: string | undefined;
+}
+
 export interface SetIsActive {
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
 }

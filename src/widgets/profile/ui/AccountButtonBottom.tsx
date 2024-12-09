@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const AccountButtonButtom = () => {
   return (
     <div className="flex justify-between gap-5">
-      <Link to={pageConfig.recipeCreate}>
+      <Link to={pageConfig.recipeFavorite}>
         <Button className="custom-button-red">Избранное</Button>
       </Link>
       <Link to={pageConfig.recipeCreate}>
