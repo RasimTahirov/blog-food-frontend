@@ -18,7 +18,7 @@ const Modal: React.FC<ModalProps> = ({ children, active, setActive }) => {
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
           <CloseOutlined
             onClick={() => setActive(false)}
-            className="absolute top-[3%] right-[4%] cursor-pointer"
+            className="absolute top-[10px] right-[15px] cursor-pointer"
           />
           {children}
         </div>

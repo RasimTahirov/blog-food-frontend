@@ -9,13 +9,16 @@ import {
   removeIngredient,
   removeStep,
 } from '../../entities/recipe/slices/recipeCreateSlice';
+import { useNavigate } from 'react-router-dom';
+import { pageConfig } from '../../config/PageConfig';
 
-import { Button, Form } from 'antd';
+import { Button, Form, message } from 'antd';
 import { GoBackHome } from '../../shared/ui';
 import { CoverUpload, Ingredient, RecipeForm, Step, Time } from './form/Index';
 
 const RecipeCreate = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const {
     title,
     description,
@@ -43,6 +46,8 @@ const RecipeCreate = () => {
     };
 
     dispatch(createRecipeThunk(RecipeDate));
+    navigate(pageConfig.home);
+    message.success('Рецепт опубликован');
   };
 
   return (

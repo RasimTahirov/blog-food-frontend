@@ -1,6 +1,6 @@
+import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Article, ImageUploadArticleResult } from '../model/types';
-import axios from 'axios';
 
 export const createArticleThunk = createAsyncThunk(
   'createArticleThunk',

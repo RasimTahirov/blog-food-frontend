@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../store/store';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { fullUrl, localId } from '../../shared/helpers';
 import {
   articleThunk,
@@ -34,6 +34,7 @@ const Article = () => {
       dispatch(deleteArticleThunk(id));
       setIsActive(false);
       navigate(pageConfig.home);
+      message.success('Статья успешно удалена');
     }
   };
 
@@ -57,9 +58,9 @@ const Article = () => {
                 className="w-full h-[500px] object-cover rounded-mdPlus"
               />
             </div>
-            <h3 className="text-3xl font-bold">{article.title}</h3>
+            <h3 className="text-3xl font-bold break-words">{article.title}</h3>
           </div>
-          <div className="">
+          <div>
             <div className="flex gap-2.5 text-lg mb-5">
               <span className="">Автор статьи:</span>
               <span>
@@ -69,7 +70,9 @@ const Article = () => {
             <div className="grid gap-10">
               {article.paragraph.map((art) => (
                 <div key={art._id} className={style.articleContainer}>
-                  <h4 className="text-2xl font-bold">{art.title}</h4>
+                  <h4 className="text-2xl font-bold break-words">
+                    {art.title}
+                  </h4>
                   <span className="text-lg ">{art.description}</span>
                 </div>
               ))}
@@ -88,10 +91,12 @@ const Article = () => {
         </div>
       )}
       <Modal active={isActive} setActive={setIsActive}>
-        <div className="bg-black p-10 rounded-mdPlus">
-          <div className="grid gap-2.5">
-            <span>Вы действительно хотите удалить рецепт?</span>
-            <button onClick={handleDelete}>Удалить</button>
+        <div className="grid gap-5 mx-20 py-10">
+          <span>Вы действительно хотите удалить статью?</span>
+          <div className="justify-center flex">
+            <Button className="custom-button-white" onClick={handleDelete}>
+              Удалить
+            </Button>
           </div>
         </div>
       </Modal>

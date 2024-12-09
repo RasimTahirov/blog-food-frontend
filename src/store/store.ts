@@ -11,6 +11,7 @@ import recipeCreateReducer from '../entities/recipe/slices/recipeCreateSlice';
 import recipeListReducer from '../entities/recipe/slices/recipeListSlice';
 import recipeReducer from '../entities/recipe/slices/recipeSlice';
 import recipeCatrgoryReducer from '../entities/recipe/slices/recipeCategorySlice';
+import recipeAddFavoritesReducer from '../entities/recipe/slices/recipeFavorite';
 
 export const store = configureStore({
   reducer: {
@@ -23,6 +24,7 @@ export const store = configureStore({
     recipeList: recipeListReducer,
     recipeCreate: recipeCreateReducer,
     recipeCategory: recipeCatrgoryReducer,
+    recipeFavorite: recipeAddFavoritesReducer,
   },
 });
 

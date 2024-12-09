@@ -3,6 +3,8 @@ import { RootState } from '../../../store/store';
 import { fullUrl } from '../../../shared/helpers';
 import { SpinLoading } from '../../../shared/ui';
 
+import style from './Index.module.scss';
+
 const RecipeStep = () => {
   const { recipe } = useSelector((state: RootState) => state.recipe);
 
@@ -26,7 +28,7 @@ const RecipeStep = () => {
             <span>{step.stepNumber}</span>
           </div>
           <div className="px-2.5">
-            <span className="text-[17px]">{step.description}</span>
+            <span className={style.description}>{step.description}</span>
           </div>
         </div>
       ))}

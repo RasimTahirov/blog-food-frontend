@@ -1,3 +1,14 @@
 .itemList {
   border-bottom: inset;
 }
+
+.title {
+  overflow-wrap: anywhere;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 2.5rem;
+}
+
+.description {
+  overflow-wrap: anywhere;
+}

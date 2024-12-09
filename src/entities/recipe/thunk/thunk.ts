@@ -1,6 +1,6 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ImageUploadResult, Recipe } from '../model/types';
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { ImageUploadResult, Recipe, RecipeActionPayload } from '../model/types';
 
 export const createRecipeThunk = createAsyncThunk(
   'createRecipe',
@@ -151,3 +151,86 @@ export const imageUploadThunk = createAsyncThunk<
     return rejectWithValue('Не удалось загрузить изображение');
   }
 });
+
+export const recipeAddFavorites = createAsyncThunk(
+  'recipeFavorites',
+  async ({ recipeId }: RecipeActionPayload, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem('token');
+
+      const res = await axios.post(
+        'http://localhost:9000/api/favorite/favorites/add',
+        { recipeId },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      return res.data; // Возвращаем весь ответ от сервера
+    } catch (error) {
+      if (axios.isAxiosError(error))
+        return rejectWithValue(
+          error.response?.data || 'Не удалось добавить рецепт в избранное'
+        );
+    }
+    return rejectWithValue('Не удалось добавить рецепт в избранное');
+  }
+);
+
+export const recipeAllFavorites = createAsyncThunk(
+  'recipeAllFavorites',
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.get(
+        'http://localhost:9000/api/favorite/favorites',
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      console.log(res.data);
+
+      return res.data;
+    } catch (error) {
+      if (axios.isAxiosError(error))
+        return rejectWithValue(
+          error.response?.data ||
+            'Не удалось загрузить рецепты. Пожалуйста, попробуйте обновить страницу.'
+        );
+    }
+    return rejectWithValue(
+      'Не удалось загрузить рецепты. Пожалуйста, попробуйте обновить страницу.'
+    );
+  }
+);
+
+export const recipeRemoveFavorites = createAsyncThunk(
+  'recipeRemoveFavorites',
+  async ({ recipeId }: RecipeActionPayload, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem('token');
+
+      const res = await axios.post(
+        'http://localhost:9000/api/favorite/favorites/remove',
+        { recipeId },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      return res.data; // Возвращаем весь ответ от сервера
+    } catch (error) {
+      if (axios.isAxiosError(error))
+        return rejectWithValue(
+          error.response?.data || 'Не удалось удалить рецепт'
+        );
+    }
+    return rejectWithValue('Не удалось удалить рецепт');
+  }
+);
