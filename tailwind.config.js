@@ -5,7 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         headerDesktop:
-          "url('./public/assets/header-background/foodiesfeed.com_grapefruit-slices-pattern.jpg')",
+          "url('/assets/header-background/foodiesfeed.com_grapefruit-slices-pattern.jpg')",
       },
       colors: {
         buttonWhite: '#f8f9fa',
