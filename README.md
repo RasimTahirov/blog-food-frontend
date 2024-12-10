@@ -15,3 +15,6 @@
 - **Node JS**
 - **Express JS**
 - **MongoDB**
+
+## Ссылка на проект
+Перейти на сайт: [Ссылкаа](https://blog-food-frontend.vercel.app/)
