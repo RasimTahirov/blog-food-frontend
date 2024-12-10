@@ -1,6 +1,7 @@
-import './Modal.scss';
 import { CloseOutlined } from '@ant-design/icons';
 import { ReactNode } from 'react';
+
+import './modal.scss'
 
 interface ModalProps {
   children: ReactNode;
