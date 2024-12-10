@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
-import { fullUrl } from '../../../shared/helpers';
 import { SpinLoading } from '../../../shared/ui';
 
 import style from './Index.module.scss';
@@ -18,7 +17,7 @@ const RecipeStep = () => {
         <div key={step._id} className="grid gap-y-2.5 relative">
           <div className="rounded-mdPlus overflow-hidden">
             <img
-              src={`${fullUrl}${step.image}`}
+              src={step.image}
               alt="step image"
               className="w-[735px] h-[450px] object-cover"
             />

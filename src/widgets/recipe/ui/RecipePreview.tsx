@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
-import { fullUrl } from '../../../shared/helpers';
 import { SpinLoading } from '../../../shared/ui';
 
 import style from './Index.module.scss';
@@ -21,7 +20,7 @@ const RecipePreview = () => {
       <div className="relative">
         <div className="rounded-mdPlus overflow-hidden w-[580px] h-[320px]">
           <img
-            src={`${fullUrl}${recipe.image}`}
+            src={recipe.image}
             alt=""
             className="w-[580px] h-[320px] object-cover"
           />

@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { articleListThunk } from '../../../entities/article/thunk/thunk';
 import { Link } from 'react-router-dom';
 import { pageConfig } from '../../../config/PageConfig';
-import { fullUrl } from '../../../shared/helpers';
 import { Error, SpinLoading } from '../../../shared/ui';
 import { Article } from '../../../entities/article/model/types';
 
@@ -45,7 +44,7 @@ const ArticleListAll: React.FC<ArticleListAllProps> = ({
               <li key={art._id}>
                 <div className="relative overflow-hidden rounded-mdPlus cardHover">
                   <img
-                    src={`${fullUrl}${art.image}`}
+                    src={art.image}
                     alt=""
                     className="w-full h-[300px] object-cover"
                   />

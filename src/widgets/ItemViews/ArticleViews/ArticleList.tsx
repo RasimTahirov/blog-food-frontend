@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { AppDispatch, RootState } from '../../../store/store';
 import { pageConfig } from '../../../config/PageConfig';
 import { articleListThunk } from '../../../entities/article/thunk/thunk';
-import { fullUrl } from '../../../shared/helpers';
 import { Error, SpinLoading } from '../../../shared/ui';
 
 const ArticleList = () => {
@@ -47,7 +46,7 @@ const ArticleList = () => {
                     <li key={art._id}>
                       <div className="relative overflow-hidden rounded-mdPlus cardHover">
                         <img
-                          src={`${fullUrl}${art.image}`}
+                          src={art.image}
                           alt=""
                           className="w-full h-[300px] object-cover"
                         />

@@ -9,7 +9,7 @@ export const authThunk = createAsyncThunk(
   ) => {
     try {
       const res = await axios.post(
-        'http://localhost:9000/api/auth/login',
+        'https://blog-food-backend.onrender.com/api/auth/login',
         userData
       );
 

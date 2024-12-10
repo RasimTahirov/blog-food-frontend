@@ -8,7 +8,7 @@ export const createArticleThunk = createAsyncThunk(
     try {
       const token = localStorage.getItem('token');
       const res = await axios.post(
-        'http://localhost:9000/api/article/create',
+        'https://blog-food-backend.onrender.com/api/article/create',
         articleData,
         {
           headers: {
@@ -34,7 +34,7 @@ export const deleteArticleThunk = createAsyncThunk<string, string>(
     try {
       const token = localStorage.getItem('token');
       const res = await axios.delete(
-        `http://localhost:9000/api/article/delete/${id}`,
+        `https://blog-food-backend.onrender.com/api/article/delete/${id}`,
         {
           headers: {
             Authorization: token,
@@ -57,7 +57,9 @@ export const articleListThunk = createAsyncThunk(
   'articleListThunk',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get('http://localhost:9000/api/article/all');
+      const res = await axios.get(
+        'https://blog-food-backend.onrender.com/api/article/all'
+      );
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -75,7 +77,9 @@ export const articleThunk = createAsyncThunk(
   'articleThunk',
   async (id: string, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`http://localhost:9000/api/article/${id}`);
+      const res = await axios.get(
+        `https://blog-food-backend.onrender.com/api/article/${id}`
+      );
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -97,7 +101,10 @@ export const imageUploadThunk = createAsyncThunk<
     const formData = new FormData();
     formData.append('image', imageData);
 
-    const res = await axios.post('http://localhost:9000/upload', formData);
+    const res = await axios.post(
+      'https://blog-food-backend.onrender.com/upload',
+      formData
+    );
     return { url: res.data.url };
   } catch (error) {
     if (axios.isAxiosError(error)) {

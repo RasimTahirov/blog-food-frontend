@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store/store';
 
 import { Button } from 'antd';
-import { fullUrl } from '../../../shared/helpers';
 import { recipeListThunk } from '../../../entities/recipe/thunk/thunk';
 import { Error, SpinLoading } from '../../../shared/ui';
 
@@ -49,7 +48,7 @@ const RecipeList = () => {
                       {recipe.categories}
                     </p>
                     <img
-                      src={`${fullUrl}${recipe.image}`}
+                      src={recipe.image}
                       alt=""
                       className="w-full h-[200px] object-cover"
                     />
