@@ -8,7 +8,7 @@ export const createRecipeThunk = createAsyncThunk(
     try {
       const token = localStorage.getItem('token');
       const res = await axios.post(
-        'http://localhost:9000/api/post/create',
+        'https://blog-food-backend.onrender.com/api/post/create',
         recipeData,
         {
           headers: {
@@ -35,7 +35,7 @@ export const deleteRecipeThunk = createAsyncThunk<string, string>(
     try {
       const token = localStorage.getItem('token');
       const res = await axios.delete(
-        `http://localhost:9000/api/post/delete/${id}`,
+        `https://blog-food-backend.onrender.com/api/post/delete/${id}`,
         {
           headers: {
             Authorization: token,
@@ -59,7 +59,9 @@ export const recipeListThunk = createAsyncThunk(
   'recipeListThunk',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get('http://localhost:9000/api/post/all');
+      const res = await axios.get(
+        'https://blog-food-backend.onrender.com/api/post/all'
+      );
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -77,7 +79,9 @@ export const recipeCategoryThunk = createAsyncThunk(
   'recipeCategoryThunk',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get('http://localhost:9000/api/post/categories');
+      const res = await axios.get(
+        'https://blog-food-backend.onrender.com/api/post/categories'
+      );
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -96,7 +100,7 @@ export const recipeByCategoryThunk = createAsyncThunk(
   async (category: string, { rejectWithValue }) => {
     try {
       const res = await axios.get(
-        `http://localhost:9000/api/post/categories/${category}`
+        `https://blog-food-backend.onrender.com/api/post/categories/${category}`
       );
       return res.data;
     } catch (error) {
@@ -115,7 +119,9 @@ export const recipeThunk = createAsyncThunk(
   'recipeThunk',
   async (id: string, { rejectWithValue }) => {
     try {
-      const res = await axios.get(`http://localhost:9000/api/post/${id}`);
+      const res = await axios.get(
+        `https://blog-food-backend.onrender.com/api/post/${id}`
+      );
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -138,7 +144,10 @@ export const imageUploadThunk = createAsyncThunk<
     const formData = new FormData();
     formData.append('image', imageData);
 
-    const res = await axios.post('http://localhost:9000/upload', formData);
+    const res = await axios.post(
+      'https://blog-food-backend.onrender.com/upload',
+      formData
+    );
 
     return { url: res.data.url, type, id };
   } catch (error) {
@@ -159,7 +168,7 @@ export const recipeAddFavorites = createAsyncThunk(
       const token = localStorage.getItem('token');
 
       const res = await axios.post(
-        'http://localhost:9000/api/favorite/favorites/add',
+        'https://blog-food-backend.onrender.com/api/favorite/favorites/add',
         { recipeId },
         {
           headers: {
@@ -168,7 +177,7 @@ export const recipeAddFavorites = createAsyncThunk(
         }
       );
 
-      return res.data; // Возвращаем весь ответ от сервера
+      return res.data;
     } catch (error) {
       if (axios.isAxiosError(error))
         return rejectWithValue(
@@ -185,7 +194,7 @@ export const recipeAllFavorites = createAsyncThunk(
     try {
       const token = localStorage.getItem('token');
       const res = await axios.get(
-        'http://localhost:9000/api/favorite/favorites',
+        'https://blog-food-backend.onrender.com/api/favorite/favorites',
         {
           headers: {
             Authorization: token,
@@ -215,7 +224,7 @@ export const recipeRemoveFavorites = createAsyncThunk(
       const token = localStorage.getItem('token');
 
       const res = await axios.post(
-        'http://localhost:9000/api/favorite/favorites/remove',
+        'https://blog-food-backend.onrender.com/api/favorite/favorites/remove',
         { recipeId },
         {
           headers: {
@@ -224,7 +233,7 @@ export const recipeRemoveFavorites = createAsyncThunk(
         }
       );
 
-      return res.data; // Возвращаем весь ответ от сервера
+      return res.data;
     } catch (error) {
       if (axios.isAxiosError(error))
         return rejectWithValue(

@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { AppDispatch, RootState } from '../../store/store';
 import { pageConfig } from '../../config/PageConfig';
-import { fullUrl } from '../../shared/helpers';
 import { recipeByCategoryThunk } from '../../entities/recipe/thunk/thunk';
 
 import { Button } from 'antd';
@@ -48,7 +47,7 @@ const RecipeCategory = () => {
                       {recipe.categories}
                     </p>
                     <img
-                      src={`${fullUrl}${recipe.image}`}
+                      src={recipe.image}
                       alt=""
                       className="w-full h-[200px] object-cover"
                     />

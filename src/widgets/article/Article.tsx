@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../store/store';
 import { Button, message } from 'antd';
-import { fullUrl, localId } from '../../shared/helpers';
 import {
   articleThunk,
   deleteArticleThunk,
@@ -13,6 +12,7 @@ import { Error, Modal, SpinLoading } from '../../shared/ui';
 
 import style from './Index.module.scss';
 import { pageConfig } from '../../config/PageConfig';
+import { localId } from '../../shared/helpers';
 
 const Article = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -53,7 +53,7 @@ const Article = () => {
           <div className="mb-5">
             <div className="mb-5">
               <img
-                src={`${fullUrl}${article.image}`}
+                src={article.image}
                 alt={article.title}
                 className="w-full h-[500px] object-cover rounded-mdPlus"
               />

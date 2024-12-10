@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { pageConfig } from '../../../config/PageConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store/store';
-import { fullUrl } from '../../../shared/helpers';
 import {
   recipeCategoryThunk,
   recipeListThunk,
@@ -80,7 +79,7 @@ const RecipeListAll: React.FC<RecipeListAllProps> = ({
                       {recipe.categories}
                     </p>
                     <img
-                      src={`${fullUrl}${recipe.image}`}
+                      src={recipe.image}
                       alt=""
                       className="w-full h-[200px] object-cover"
                     />

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { recipeAllFavorites } from '../../entities/recipe/thunk/thunk';
 import { pageConfig } from '../../config/PageConfig';
 import { Link } from 'react-router-dom';
-import { fullUrl } from '../../shared/helpers';
 import { AppDispatch, RootState } from '../../store/store';
 
 import { Button, Result } from 'antd';
@@ -34,7 +33,7 @@ const Favorite = () => {
                         {recipe.categories}
                       </p>
                       <img
-                        src={`${fullUrl}${recipe.image}`}
+                        src={recipe.image}
                         alt=""
                         className="w-full h-[200px] object-cover"
                       />

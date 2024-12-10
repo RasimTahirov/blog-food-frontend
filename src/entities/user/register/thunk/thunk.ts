@@ -14,7 +14,7 @@ export const registerThunk = createAsyncThunk(
   ) => {
     try {
       const res = await axios.post(
-        'http://localhost:9000/api/auth/register',
+        'https://blog-food-backend.onrender.com/api/auth/register',
         userData
       );
       return res.data;
