@@ -10,11 +10,4 @@ export default defineConfig({
     strictPort: true
   },
   base: '/',
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "./styles/styles.scss"`
-      }
-    }
-  }
 });
