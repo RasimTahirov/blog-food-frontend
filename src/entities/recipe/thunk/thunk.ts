@@ -2,13 +2,15 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ImageUploadResult, Recipe, RecipeActionPayload } from '../model/types';
 
+const API_BASE_URL = import.meta.env.VITE_BASE_URL;
+
 export const createRecipeThunk = createAsyncThunk(
   'createRecipe',
   async (recipeData: Recipe, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.post(
-        'https://blog-food-backend.onrender.com/api/post/create',
+        `${API_BASE_URL}/api/post/create`,
         recipeData,
         {
           headers: {
@@ -34,14 +36,11 @@ export const deleteRecipeThunk = createAsyncThunk<string, string>(
   async (id, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.delete(
-        `https://blog-food-backend.onrender.com/api/post/delete/${id}`,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
+      const res = await axios.delete(`${API_BASE_URL}/api/post/delete/${id}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -59,9 +58,7 @@ export const recipeListThunk = createAsyncThunk(
   'recipeListThunk',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(
-        'https://blog-food-backend.onrender.com/api/post/all'
-      );
+      const res = await axios.get(`${API_BASE_URL}/api/post/all`);
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -79,9 +76,7 @@ export const recipeCategoryThunk = createAsyncThunk(
   'recipeCategoryThunk',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.get(
-        'https://blog-food-backend.onrender.com/api/post/categories'
-      );
+      const res = await axios.get(`${API_BASE_URL}/api/post/categories`);
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -100,7 +95,7 @@ export const recipeByCategoryThunk = createAsyncThunk(
   async (category: string, { rejectWithValue }) => {
     try {
       const res = await axios.get(
-        `https://blog-food-backend.onrender.com/api/post/categories/${category}`
+        `${API_BASE_URL}/api/post/categories/${category}`
       );
       return res.data;
     } catch (error) {
@@ -119,9 +114,7 @@ export const recipeThunk = createAsyncThunk(
   'recipeThunk',
   async (id: string, { rejectWithValue }) => {
     try {
-      const res = await axios.get(
-        `https://blog-food-backend.onrender.com/api/post/${id}`
-      );
+      const res = await axios.get(`${API_BASE_URL}/api/post/${id}`);
       return res.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -144,10 +137,7 @@ export const imageUploadThunk = createAsyncThunk<
     const formData = new FormData();
     formData.append('image', imageData);
 
-    const res = await axios.post(
-      'https://blog-food-backend.onrender.com/upload',
-      formData
-    );
+    const res = await axios.post(`${API_BASE_URL}/upload`, formData);
 
     return { url: res.data.url, type, id };
   } catch (error) {
@@ -168,7 +158,7 @@ export const recipeAddFavorites = createAsyncThunk(
       const token = localStorage.getItem('token');
 
       const res = await axios.post(
-        'https://blog-food-backend.onrender.com/api/favorite/favorites/add',
+        `${API_BASE_URL}/api/favorite/favorites/add`,
         { recipeId },
         {
           headers: {
@@ -193,14 +183,11 @@ export const recipeAllFavorites = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get(
-        'https://blog-food-backend.onrender.com/api/favorite/favorites',
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
+      const res = await axios.get(`${API_BASE_URL}/api/favorite/favorites`, {
+        headers: {
+          Authorization: token,
+        },
+      });
       console.log(res.data);
 
       return res.data;
@@ -224,7 +211,7 @@ export const recipeRemoveFavorites = createAsyncThunk(
       const token = localStorage.getItem('token');
 
       const res = await axios.post(
-        'https://blog-food-backend.onrender.com/api/favorite/favorites/remove',
+        `${API_BASE_URL}/api/favorite/favorites/remove`,
         { recipeId },
         {
           headers: {

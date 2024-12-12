@@ -116,7 +116,7 @@ const ModalRegistration: React.FC<ModalRegistrationProps> = ({
                   },
                 ]}
               >
-                <Input className="custom-input w-60" placeholder="Фамилие" />
+                <Input className="custom-input w-60" placeholder="Фамилия" />
               </Form.Item>
             </div>
             <div className="mt-10 w-60">

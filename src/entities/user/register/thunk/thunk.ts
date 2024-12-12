@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.VITE_BASE_URL;
+
 export const registerThunk = createAsyncThunk(
   'register',
   async (
@@ -14,7 +16,7 @@ export const registerThunk = createAsyncThunk(
   ) => {
     try {
       const res = await axios.post(
-        'https://blog-food-backend.onrender.com/api/auth/register',
+        `${API_BASE_URL}/api/auth/register`,
         userData
       );
       return res.data;

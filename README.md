@@ -17,4 +17,4 @@
 - **MongoDB**
 
 ## Ссылка на проект
-Перейти на сайт: [Ссылкаа](https://blog-food-frontend.vercel.app/)
+Перейти на сайт: [Ссылка](https://blog-food-frontend.vercel.app/)
